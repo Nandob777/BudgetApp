@@ -1,22 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="horizontal">
-<!-- -
-    <EditText android:id="@+id/edit_message"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:hint="@string/add_item" />
-    <!- -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin" tools:context="comp3350.budgetapp.presentation.MainActivity">
 
-    <Button
+    <TextView
+        android:id="@+id/textTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Personal Budgeting App" />
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/manage_wishlist"
-        android:id="@+id/button"
-        android:onClick="addWishlist" />
-</LinearLayout>
+        android:layout_alignWithParentIfMissing="false"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Wish List"
+            android:id="@+id/buttonWishlist"
+            android:onClick="addWishlist" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Income Sources"
+            android:enabled="false"
+            android:id="@+id/buttonIncome"
+            android:layout_marginTop="60dp"
+            android:layout_marginBottom="60dp"
+            android:onClick="" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Expenses"
+            android:enabled="false"
+            android:id="@+id/buttonExpense"
+            android:layout_marginBottom="60dp"
+            android:onClick="" />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Financial Summary"
+            android:enabled="false"
+            android:id="@+id/buttonSummary" />
+    </LinearLayout>
+
+</RelativeLayout>
+

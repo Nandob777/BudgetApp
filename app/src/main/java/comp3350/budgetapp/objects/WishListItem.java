@@ -4,21 +4,32 @@ public class WishListItem
 {
     private String itemName = "";
     private int priority = 0;
+    private int price = 0;
 
-    public WishListItem(String itemName)
+    public WishListItem(String itemName , int price)
     {
         this.itemName = itemName;
+        this.price = price;
         this.priority = 0;
     }
 
-    public WishListItem(String itemName , int priority)
+    public WishListItem(String itemName , int price ,int priority)
     {
         this.itemName = itemName;
+        this.price = price;
         this.priority = priority;
     }
 
     public String getItemName() {
         return itemName;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
     }
 
     public int getPriority() {

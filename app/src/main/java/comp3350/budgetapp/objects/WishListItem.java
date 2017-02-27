@@ -54,7 +54,7 @@ public class WishListItem
 
     public String toString()
     {
-        return "Item Name: " +itemName +" Price " +price +" Current Discount " +discount+" % .";
+        return "Item Name: " +itemName +", Price: " +price +", Current Discount: " +discount+" % .";
     }
 
     public boolean equals(Object object)

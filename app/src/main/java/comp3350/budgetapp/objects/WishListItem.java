@@ -3,33 +3,45 @@ package comp3350.budgetapp.objects;
 public class WishListItem
 {
     private String itemName = "";
+    private double price = 0.0;
     private int priority = 0;
-    private int price = 0;
+    private int discount = 0;
 
-    public WishListItem(String itemName , int price)
+    public WishListItem(String itemName , double price)
     {
         this.itemName = itemName;
         this.price = price;
         this.priority = 0;
+        this.discount = 0;
+
     }
 
-    public WishListItem(String itemName , int price ,int priority)
+    public WishListItem(String itemName , double price ,int priority)
     {
         this.itemName = itemName;
         this.price = price;
         this.priority = priority;
+        this.discount = 0;
     }
 
     public String getItemName() {
         return itemName;
     }
 
-    public int getPrice() {
+    public double getPrice() {
+
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
+    }
+
+    public void setDiscount(int discount) {
+        this.discount = discount;
+
+        double discountAmount = (discount*0.01)*this.price;
+        this.price = this.price - discountAmount;
     }
 
     public int getPriority() {
@@ -42,7 +54,7 @@ public class WishListItem
 
     public String toString()
     {
-        return "Item Name: " +itemName +"With Priority " +priority;
+        return "Item Name: " +itemName +" Price " +price +" Current Discount " +discount+" % .";
     }
 
     public boolean equals(Object object)

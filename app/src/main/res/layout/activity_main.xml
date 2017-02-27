@@ -10,7 +10,10 @@
         android:id="@+id/textTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Personal Budgeting App" />
+        android:text="Personal Budgeting App"
+        android:textAppearance="@android:style/TextAppearance.Material.Headline"
+        android:layout_alignParentEnd="true"
+        android:textAlignment="center" />
 
     <LinearLayout
         android:orientation="vertical"

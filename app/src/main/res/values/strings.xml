@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">BudgetApp</string>
+    <string name="add_item">Add an item to your WishList</string>
+    <string name="button_add">Add</string>
+    <string name="manage_wishlist">Manage Wishlist</string>
 </resources>

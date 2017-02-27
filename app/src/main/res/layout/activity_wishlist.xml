@@ -5,18 +5,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
-<!-- -
+
     <EditText android:id="@+id/edit_message"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/add_item" />
-    <!- -->
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/manage_wishlist"
-        android:id="@+id/button"
-        android:onClick="addWishlist" />
+        android:text="@string/button_add"
+        android:id="@+id/button" />
 </LinearLayout>

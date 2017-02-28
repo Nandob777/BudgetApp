@@ -3,22 +3,22 @@ package comp3350.budgetapp.application;
 /**
  * Created by mardelmaduro on 2017-02-27.
  */
-import comp3350.budgetapp.persistence.DBMSstub.DBManSys;
+import comp3350.budgetapp.persistence.DataAccessStub;
 
 public class Services {
-    private static DBManSys dataAccessService = null;
+    private static DataAccessStub dataAccessService = null;
 
-    public static DBManSys createDataAccess()
+    public static DataAccessStub createDataAccess(String dbName)
     {
         if (dataAccessService == null)
         {
-            dataAccessService = new DBManSys();
-            dataAccessService.loadDB();
+            dataAccessService = new DataAccessStub(dbName);
+            dataAccessService.open(Main.dbName);
         }
         return dataAccessService;
     }
 
-    public static DBManSys getDataAccess()
+    public static DataAccessStub getDataAccess(String dbName)
     {
         if (dataAccessService == null)
         {

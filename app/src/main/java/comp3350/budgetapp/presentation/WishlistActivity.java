@@ -1,13 +1,15 @@
 package comp3350.budgetapp.presentation;
 
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.widget.ListViewCompat;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -15,34 +17,123 @@ import comp3350.budgetapp.R;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.business.AccessWishListItems;
 
-public class WishlistActivity extends AppCompatActivity {
+public class WishlistActivity extends Activity {
 
     private AccessWishListItems accessWishListItems;
     private ArrayList<WishListItem> itemList;
+    private ArrayAdapter<WishListItem> itemArrayAdapter;
+    private int selectedItemPosition = -1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishlist);
-        //this.accessWishListItems = new AccessWishListItems();
+
+        accessWishListItems = new AccessWishListItems();
+
+        itemList = new ArrayList<WishListItem>();
+        String result = accessWishListItems.getWishListItems(itemList);
+        if (result != null)
+        {
+            Messages.fatalError(this, result);
+        }
+        else
+        {
+            itemArrayAdapter = new ArrayAdapter<WishListItem>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, itemList)
+            {
+                @Override
+                public View getView(int position, View convertView, ViewGroup parent) {
+                    View view = super.getView(position, convertView, parent);
+
+                    TextView text1 = (TextView) view.findViewById(android.R.id.text1);
+                    TextView text2 = (TextView) view.findViewById(android.R.id.text2);
+
+                    text1.setText(itemList.get(position).getItemName());
+                    text2.setText(String.format("%.2f", itemList.get(position).getPrice()));
+
+                    return view;
+                }
+            };
+
+            final ListView listView = (ListView)findViewById(R.id.listWishes);
+            listView.setAdapter(itemArrayAdapter);
+
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Button updateButton = (Button)findViewById(R.id.buttonItemUpdate);
+                    Button deleteButton = (Button)findViewById(R.id.buttonItemDelete);
+
+                    if (position == selectedItemPosition) {
+                        listView.setItemChecked(position, false);
+                        updateButton.setEnabled(false);
+                        deleteButton.setEnabled(false);
+                        selectedItemPosition = -1;
+                    } else {
+                        listView.setItemChecked(position, true);
+                        updateButton.setEnabled(true);
+                        deleteButton.setEnabled(true);
+                        selectedItemPosition = position;
+                        selectItemAtPosition(position);
+                    }
+                }
+            });
+
+//            final EditText editItemName = (EditText)findViewById(R.id.editItemName);
+//            //final Button buttonCourseStudents = (Button)findViewById(R.id.buttonCourseStudents);
+//            editItemName.addTextChangedListener(new TextWatcher() {
+//                @Override
+//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+//                @Override
+//                public void onTextChanged(CharSequence s, int start, int before, int count) {}
+//
+//                @Override
+//                public void afterTextChanged(Editable s) {
+//                    buttonCourseStudents.setEnabled(editCourseID.getText().toString().length() > 0);
+//                }
+//            });
+        }
+    }
+
+    public void selectItemAtPosition(int position)
+    {
+        WishListItem selected = itemArrayAdapter.getItem(position);
+
+        EditText editName = (EditText)findViewById(R.id.editItemName);
+        EditText editPrice = (EditText)findViewById(R.id.editPrice);
+
+        editName.setText(selected.getItemName());
+        editPrice.setText((int) selected.getPrice());
     }
 
     public void buttonItemAddOnClick(View v)
     {
-       WishListItem item = createItemFromEditText();
+        WishListItem item = createItemFromEditText();
         String result;
 
-
-        if(item != null)
+        result = validateItemData(item, true);
+        if (result == null)
         {
-            result = accessWishListItems.insertWishListItem(item);
-
-            if(result == null)
+            result = accessWishListItems.addWishListItem(item);
+            if (result == null)
             {
-                accessWishListItems.getWishlistItems(itemList);
+                accessWishListItems.getWishListItems(itemList);
+                itemArrayAdapter.notifyDataSetChanged();
+                int pos = itemList.indexOf(item);
+                if (pos >= 0)
+                {
+                    ListView listView = (ListView) findViewById(R.id.listWishes);
+                    listView.setSelection(pos);
+                }
             }
-        }else{
-            System.out.println("Error");
+            else
+            {
+                Messages.fatalError(this, result);
+            }
+        }
+        else
+        {
+            Messages.fatalError(this, result);
         }
 
     }
@@ -59,12 +150,15 @@ public class WishlistActivity extends AppCompatActivity {
             int pos = itemList.indexOf(item);
             if(pos >=0)
             {
-                ListViewCompat listViewCompat = (ListViewCompat) findViewById(R.id.listWishes);
-                listViewCompat.setSelection(pos);
+                ListView listView = (ListView) findViewById(R.id.listWishes);
+                listView.setSelection(pos);
             }
-            accessWishListItems.getWishlistItems(itemList);
-        }else{
-            System.out.println("Error");
+            accessWishListItems.getWishListItems(itemList);
+            itemArrayAdapter.notifyDataSetChanged();
+        }
+        else
+        {
+            Messages.warning(this, result);
         }
     }
 
@@ -73,23 +167,29 @@ public class WishlistActivity extends AppCompatActivity {
         WishListItem item = createItemFromEditText();
         String result;
 
-        if(item != null)
+        result = validateItemData(item, false);
+        if(result == null)
         {
             result = accessWishListItems.updateWishListItem(item);
             if(result == null)
             {
-                accessWishListItems.getWishlistItems(itemList);
+                accessWishListItems.getWishListItems(itemList);
+                itemArrayAdapter.notifyDataSetChanged();
                 int pos = itemList.indexOf(item);
                 if(pos >= 0)
                 {
-                    ListViewCompat listViewCompat = (ListViewCompat) findViewById(R.id.listWishes);
-                    listViewCompat.setSelection(pos);
+                    ListView listView = (ListView) findViewById(R.id.listWishes);
+                    listView.setSelection(pos);
                 }
-            }else{
-                System.out.println("Error");
             }
-        }else{
-            System.out.println("Error");
+            else
+            {
+                Messages.fatalError(this, result);
+            }
+        }
+        else
+        {
+            Messages.fatalError(this, result);
         }
     }
 
@@ -98,13 +198,25 @@ public class WishlistActivity extends AppCompatActivity {
         EditText editItemName = (EditText) findViewById(R.id.editItemName);
         EditText editPrice = (EditText) findViewById(R.id.editPrice);
 
-        WishListItem item = new WishListItem(editItemName.getText().toString() , Integer.parseInt(editPrice.getText().toString()));
+        WishListItem item = new WishListItem(editItemName.getText().toString(), Double.parseDouble(editPrice.getText().toString()));
+
         return item;
     }
 
+    private String validateItemData(WishListItem item, boolean isNewItem)
+    {
+        if (item.getItemName().length() == 0)
+        {
+            return "Item Name required!";
+        }
 
+        if (isNewItem && accessWishListItems.getRandom(item.getItemName()) != null)
+        {
+            return "Item " + item.getItemName() + " already exists";
+        }
 
-
+        return null;
+    }
 }
 
 

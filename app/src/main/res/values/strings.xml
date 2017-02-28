@@ -3,4 +3,6 @@
     <string name="add_item">Add an item to your WishList</string>
     <string name="button_add">Add</string>
     <string name="manage_wishlist">Manage Wishlist</string>
+    <string name="fatalError">Fatal error</string>
+    <string name="warning">Warning</string>
 </resources>

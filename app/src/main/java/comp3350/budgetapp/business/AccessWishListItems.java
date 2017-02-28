@@ -1,36 +1,32 @@
 
 package comp3350.budgetapp.business;
-public class AccessWishListItems
-{
 
-}
 
-/*
-package comp3350.budgetapp.business;
+import comp3350.budgetapp.persistence.DBMSstub.DBManSys;
 
 
 
- * Created by mardelmaduro on 2017-02-27.
+
+ // Created by mardelmaduro on 2017-02-27.
 
 
 import java.util.List;
 
-import comp3350.srsys.application.Main;
-import comp3350.srsys.application.Services;
-import comp3350.srsys.objects.Course;
-import comp3350.srsys.objects.WishListItem;
-import comp3350.srsys.persistence.DataAccessStub;
+import comp3350.budgetapp.application.Main;
+import comp3350.budgetapp.application.Services;
+import comp3350.budgetapp.objects.WishListItem;
+import comp3350.budgetapp.persistence.DBMSstub.DBManSys;
 
 public class AccessWishListItems
 {
-    private DataAccessStub dataAccess;
+    private DBManSys dataAccess;
     private List<WishListItem> wishlist;
     private WishListItem wishlistItem;
     private int currentItem;
-/*
+
     public AccessWishListItems()
     {
-        dataAccess = (DataAccessStub) Services.getDataAccess(Main.dbName);
+        dataAccess = (DBManSys) Services.getDataAccess(Main.dbName);
         wishlist = null;
         wishlistItem = null;
         currentItem = 0;
@@ -39,63 +35,24 @@ public class AccessWishListItems
     public String getWishlistItems(List<WishListItem> wishlist)
     {
         wishlist.clear();
-        return dataAccess.getWishlistItemsSequential(wishlist);
+        return dataAccess.toString();
     }
 
-    public WishListItem getSequential()
-    {
-        String result = null;
-        if (wishlist == null)
-        {
-            result = dataAccess.getWishlistItemSequential(wishlist);
-            currentItem = 0;
-        }
-        if (currentItem < wishlist.size())
-        {
-            wishlistItem = (WishListItem) wishlist.get(currentItem);
-            currentItem++;
-        }
-        else
-        {
-            wishlist = null;
-            wishlistItem = null;
-            currentItem = 0;
-        }
-        return wishlistItem;
-    }
 
-    public WishListItem getRandom(String itemName)
-    {
-        wishlist = dataAccess.getWishListItemRandom(new WishListItem(itemName));
-        currentItem = 0;
-        if (currentItem < wishlist.size())
-        {
-            wishlistItem = (WishListItem) wishlist.get(currentItem);
-            currentItem++;
-        }
-        else
-        {
-            wishlist = null;
-            wishlistItem = null;
-            currentItem = 0;
-        }
-        return wishlistItem;
-    }
 
     public String insertWishListItem(WishListItem currentItem)
     {
-        return dataAccess.insertWishlistItem(currentItem);
+        return dataAccess.addWishListItem(currentItem);
     }
 
-	public String updateCourse(Course currentCourse)
+	public String updateWishListItem(WishListItem currentItem)
 	{
-		return dataAccess.updateCourse(currentCourse);
+		return dataAccess.updateWishListItem(currentItem);
 	}
 
     public String deleteWishListItem(WishListItem currentItem)
     {
-        return dataAccess.deleteWishlistItem(currentItem);
+        return dataAccess.deleteWishListItem(currentItem);
     }
 
 }
-*/

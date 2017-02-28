@@ -34,4 +34,9 @@ class Database extends HashMap<String, Object>{
 
         return key;
     }
+
+    public boolean contains(Object o)
+    {
+        return this.contains(o);
+    }
 }

@@ -75,4 +75,10 @@ public class DBManSys{
         db.put(item.getItemName(),item);
         return null;
     }
+
+    public boolean contains(WishListItem item)
+    {
+        return db.contains(item);
+    }
+
 }

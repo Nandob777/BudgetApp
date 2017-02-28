@@ -16,12 +16,14 @@ public class WishListItem
 
     }
 
-    public WishListItem(String itemName , double price ,int priority)
+    public WishListItem(String itemName , double price ,int discount)
     {
         this.itemName = itemName;
-        this.price = price;
-        this.priority = priority;
-        this.discount = 0;
+
+        double discountAmount = (discount*0.01)*this.price;
+        this.price = price - discountAmount;
+        this.priority = 0;
+        this.discount = discount;
     }
 
     public String getItemName() {

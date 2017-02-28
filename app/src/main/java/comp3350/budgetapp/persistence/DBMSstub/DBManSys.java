@@ -83,4 +83,22 @@ public class DBManSys{
         return db.contains(item);
     }
 
+    public int indexOf(WishListItem item)
+    {
+        int index = -1;
+
+        WishListItem [] itemListAsArray = (WishListItem [] )db.getAllValues();
+
+        for (int i = 0; i < itemListAsArray.length; i++)
+        {
+            if(item.equals(itemListAsArray[i]))
+            {
+                index = i;
+                break;
+            }
+        }
+
+        return index;
+    }
+
 }

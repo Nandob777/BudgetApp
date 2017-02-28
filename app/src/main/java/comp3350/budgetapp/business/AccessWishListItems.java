@@ -55,4 +55,9 @@ public class AccessWishListItems
         return dataAccess.deleteWishListItem(currentItem);
     }
 
+    public boolean contains(WishListItem item)
+    {
+        return dataAccess.contains(item);
+    }
+
 }

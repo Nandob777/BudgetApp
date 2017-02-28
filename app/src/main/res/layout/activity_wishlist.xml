@@ -75,7 +75,7 @@
             android:text="delete"
             android:id="@+id/buttonItemDelete"
             android:layout_alignParentRight="true"
-            android:enabled="false"
+            android:enabled="true"
             android:onClick="buttonItemDeleteOnClick" />
 
         <Button
@@ -84,7 +84,7 @@
             android:text="add"
             android:id="@+id/buttonItemAdd"
             android:layout_alignParentLeft="true"
-            android:enabled="false"
+            android:enabled="true"
             android:onClick="buttonItemAddOnClick" />
 
         <Button
@@ -93,7 +93,7 @@
             android:text="update"
             android:id="@+id/buttonItemUpdate"
             android:layout_centerHorizontal="true"
-            android:enabled="false"
+            android:enabled="true"
             android:onClick="buttonItemUpdateOnClick" />
     </RelativeLayout>
 

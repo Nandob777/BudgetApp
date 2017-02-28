@@ -24,6 +24,7 @@ public class WishlistActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wishlist);
+        this.accessWishListItems = new AccessWishListItems();
     }
 
     public void buttonItemAddOnClick(View v)

@@ -10,6 +10,7 @@ import comp3350.budgetapp.persistence.DBMSstub.DBManSys;
  // Created by mardelmaduro on 2017-02-27.
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.budgetapp.application.Main;
@@ -22,11 +23,12 @@ public class AccessWishListItems
     private DBManSys dataAccess;
     private List<WishListItem> wishlist;
     private WishListItem wishlistItem;
+
     private int currentItem;
 
     public AccessWishListItems()
     {
-        dataAccess = (DBManSys) Services.getDataAccess(Main.dbName);
+        dataAccess = (DBManSys) Services.getDataAccess();
         wishlist = null;
         wishlistItem = null;
         currentItem = 0;
@@ -37,8 +39,6 @@ public class AccessWishListItems
         wishlist.clear();
         return dataAccess.toString();
     }
-
-
 
     public String insertWishListItem(WishListItem currentItem)
     {

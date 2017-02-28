@@ -1,5 +1,8 @@
 package comp3350.budgetapp.persistence.DBMSstub;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import comp3350.budgetapp.objects.WishListItem;
 
 /**
@@ -13,14 +16,13 @@ public class DBManSys{
     }
 
     public void loadDB(){
-        //gonna put stuuufff here
+
         //Placeholder values, when we want to test but don't want to load it ourselves
 
         WishListItem item;
 
         item = new WishListItem("laptop",600.00);
         db.put(item.getItemName(),item);
-
         item = new WishListItem("phone",400.00);
         db.put(item.getItemName(),item);
 

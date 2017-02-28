@@ -8,7 +8,7 @@ import comp3350.budgetapp.persistence.DBMSstub.DBManSys;
 public class Services {
     private static DBManSys dataAccessService = null;
 
-    public static DBManSys createDataAccess(String dbName)
+    public static DBManSys createDataAccess()
     {
         if (dataAccessService == null)
         {
@@ -18,7 +18,7 @@ public class Services {
         return dataAccessService;
     }
 
-    public static DBManSys getDataAccess(String dbName)
+    public static DBManSys getDataAccess()
     {
         if (dataAccessService == null)
         {

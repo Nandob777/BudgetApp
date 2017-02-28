@@ -7,6 +7,14 @@ public class WishListItem
     private int priority = 0;
     private int discount = 0;
 
+    public WishListItem(String itemName)
+    {
+        this.itemName = itemName;
+        this.price = 0.0;
+        this.priority = 0;
+        this.discount = 0;
+    }
+
     public WishListItem(String itemName , double price)
     {
         this.itemName = itemName;

@@ -6,6 +6,8 @@ import junit.framework.TestCase;
 import org.junit.*;
 import java.util.ArrayList;
 
+import comp3350.budgetapp.application.Main;
+import comp3350.budgetapp.application.Services;
 import comp3350.budgetapp.business.AccessWishListItems;
 import comp3350.budgetapp.objects.WishListItem;
 
@@ -36,7 +38,19 @@ public class AccessWishListItemsTest extends TestCase
     {
         list = new ArrayList<>();
         item = new WishListItem("iPhone", 500.0);
+        list.add(item);
+        assertTrue(list.contains(item));
+    }
 
+    @Test
+    public void testValid2List()
+    {
+        list = new ArrayList<>();
+        item = new WishListItem("iPhone", 500.0);
+        list.add(item);
+        item = new WishListItem("iPad", 400.0);
+        list.add(item);
+        assertTrue(list.get(1).equals(item));
 
     }
 }

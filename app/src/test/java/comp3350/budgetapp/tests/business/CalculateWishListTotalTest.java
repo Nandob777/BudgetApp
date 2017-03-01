@@ -106,6 +106,84 @@ public class CalculateWishListTotalTest extends TestCase
     }
 
     @Test
+    public void testBlankPrices()
+    {
+        list = new ArrayList<>();
+
+        item = new WishListItem("iPhone");
+        list.add(item);
+
+        item = new WishListItem("TV");
+        list.add(item);
+
+        item = new WishListItem("Laptop");
+        list.add(item);
+
+        item = new WishListItem("Backpack");
+        list.add(item);
+
+        item = new WishListItem("Desk Chair");
+        list.add(item);
+
+        resultTotal = Calculate.wishlistTotal(list);
+
+        assertNotNull(resultTotal);
+        assertTrue(resultTotal.equals(""));
+    }
+
+    @Test
+    public void testSomeBlankPrices()
+    {
+        list = new ArrayList<>();
+
+        item = new WishListItem("iPhone", 500.0);
+        list.add(item);
+
+        item = new WishListItem("TV", 7000.0);
+        list.add(item);
+
+        item = new WishListItem("Laptop", 2000.0);
+        list.add(item);
+
+        item = new WishListItem("Backpack");
+        list.add(item);
+
+        item = new WishListItem("Desk Chair");
+        list.add(item);
+
+        resultTotal = Calculate.wishlistTotal(list);
+
+        assertNotNull(resultTotal);
+        assertTrue(resultTotal.equals("9500.00"));
+    }
+
+    @Test
+    public void testMixedBlankPrices()
+    {
+        list = new ArrayList<>();
+
+        item = new WishListItem("iPhone", 500.0);
+        list.add(item);
+
+        item = new WishListItem("Backpack");
+        list.add(item);
+
+        item = new WishListItem("TV", 7000.0);
+        list.add(item);
+
+        item = new WishListItem("Desk Chair");
+        list.add(item);
+
+        item = new WishListItem("Laptop", 2000.0);
+        list.add(item);
+
+        resultTotal = Calculate.wishlistTotal(list);
+
+        assertNotNull(resultTotal);
+        assertTrue(resultTotal.equals("9500.00"));
+    }
+
+    @Test
     public void testNullItem()
     {
         list = new ArrayList<>();

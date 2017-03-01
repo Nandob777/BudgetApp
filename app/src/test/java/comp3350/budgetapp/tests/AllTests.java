@@ -10,13 +10,17 @@ import comp3350.budgetapp.tests.objects.WishListItemTest;
 public class AllTests extends TestSuite
 {
     public static TestSuite suite;
+    public static TesterMain main;
 
     public static Test suite()
     {
+        main.startUp();
         suite = new TestSuite("All tests");
         testObjects();
         testBusiness();
+        //main.shutDown();
         return suite;
+
     }
 
     private static void testObjects()

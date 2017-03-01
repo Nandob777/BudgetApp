@@ -33,7 +33,7 @@ public class CalculateWishListTotalTest extends TestCase
         resultTotal = Calculate.wishlistTotal(list);
 
         assertNotNull(list);
-        assertTrue(resultTotal.equals(""));
+        assertEquals(resultTotal,"");
     }
 
     @Test

@@ -196,8 +196,16 @@ public class WishlistActivity extends Activity {
     {
         EditText editItemName = (EditText) findViewById(R.id.editItemName);
         EditText editPrice = (EditText) findViewById(R.id.editPrice);
+        String itemName = editItemName.getText().toString();
+        String priceString = editPrice.getText().toString();
 
-        WishListItem item = new WishListItem(editItemName.getText().toString(), Double.parseDouble(editPrice.getText().toString()));
+        if(priceString.length() == 0){
+            priceString = "0";
+        }
+
+        Double price = Double.parseDouble(priceString);
+
+        WishListItem item = new WishListItem(itemName, price);
 
         return item;
     }

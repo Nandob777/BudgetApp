@@ -14,15 +14,18 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import comp3350.budgetapp.R;
+import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.business.AccessWishListItems;
 
 public class WishlistActivity extends Activity {
 
+    private Calculate totalPrice;
     private AccessWishListItems accessWishListItems;
     private ArrayList<WishListItem> itemList;
     private ArrayAdapter<WishListItem> itemArrayAdapter;
     private int selectedItemPosition = -1;
+    private TextView viewTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +33,7 @@ public class WishlistActivity extends Activity {
         setContentView(R.layout.activity_wishlist);
 
         accessWishListItems = new AccessWishListItems();
+        totalPrice = new Calculate();
 
         itemList = new ArrayList<WishListItem>();
         String result = accessWishListItems.getWishListItems(itemList);
@@ -79,8 +83,11 @@ public class WishlistActivity extends Activity {
                 }
             });
 
-            TextView viewTotal = (TextView)findViewById(R.id.viewTotal);
-            viewTotal.setText(accessWishListItems.getTotal());
+            //TextView viewTotal = (TextView)findViewById(R.id.viewTotal);
+            viewTotal = (TextView)findViewById(R.id.viewTotal);
+            //Fix Total Display
+            //viewTotal.setText(accessWishListItems.getTotal());
+            viewTotal.setText(totalPrice.wishlistTotal(itemList));
         }
     }
 
@@ -125,6 +132,7 @@ public class WishlistActivity extends Activity {
             Messages.warning(this, result);
         }
 
+        viewTotal.setText(totalPrice.wishlistTotal(itemList));
     }
 
     public void buttonItemDeleteOnClick(View v)
@@ -149,6 +157,7 @@ public class WishlistActivity extends Activity {
         {
             Messages.warning(this, result);
         }
+        viewTotal.setText(totalPrice.wishlistTotal(itemList));
     }
 
     public void buttonItemUpdateOnClick(View v)
@@ -180,6 +189,7 @@ public class WishlistActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
+        viewTotal.setText(totalPrice.wishlistTotal(itemList));
     }
 
     private WishListItem createItemFromEditText()

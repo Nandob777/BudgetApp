@@ -13,6 +13,7 @@ public class AccessWishListItemsTest extends TestCase
 {
     public static ArrayList<WishListItem> list;
     WishListItem item;
+    AccessWishListItems accessItems;
 
 
     @Test
@@ -26,7 +27,8 @@ public class AccessWishListItemsTest extends TestCase
     public void testEmptyList()
     {
         list = new ArrayList<>();
-        //assertNull(AccessWishListItems.getWishListItems(list));
+        accessItems = new AccessWishListItems();
+        assertNull(accessItems.getWishListItems(list));
     }
 
     @Test

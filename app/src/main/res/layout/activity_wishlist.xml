@@ -85,7 +85,7 @@
             android:id="@+id/buttonItemAdd"
             android:layout_alignParentLeft="true"
             android:enabled="true"
-            android:onClick="buttonItemAddOnClick" />
+            android:onClick="buttonItemAddOnClick (WishlistActivity)" />
 
         <Button
             android:layout_width="wrap_content"

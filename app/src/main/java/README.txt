@@ -1,11 +1,11 @@
 Personal Budgeting App
+Group B
 
 By: Mardel Maduro
     Neil Marzo
     Tina Hernando
     Wynand Badenhorst
     Hui Jin
-
 
 CONTENTS OF SUBMISSION:
 ----------------------
@@ -15,14 +15,14 @@ Manifest:
 Packages:
     - comp3350.budgetapp
         ~ application: Main
-        ~ business: AccessWishListItems
+        ~ business: AccessWishListItems, Calculate
         ~ objects: WishListItems, IncomeSource
-        ~ persistence: * ADD PERSISTENCE CONTENTS *
+        ~ persistence: DataAccessStub
         ~ presentation: MainActivity, WishlistActivity
 
     - comp3350.budgetapp (test)
-        ~ * ADD TESTS *
-        ~ AllTests.java
+        ~ tests: WishListItemTest (object)
+        ~ AllTests
 
 Resource Files
 

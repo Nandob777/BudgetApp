@@ -77,7 +77,7 @@ public class WishListItem
         if (object instanceof WishListItem)
         {
             item = (WishListItem) object;
-            if (((item.itemName == null) && (itemName == null)) || (item.itemName.equals(itemName)))
+            if( ((item.itemName == null) && (itemName == null)) || (item.itemName.equals(itemName)) )
             {
                 result = true;
             }

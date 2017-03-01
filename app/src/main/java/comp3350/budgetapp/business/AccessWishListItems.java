@@ -1,8 +1,5 @@
 package comp3350.budgetapp.business;
 
- // Created by mardelmaduro on 2017-02-27.
-
-
 import java.util.List;
 
 import comp3350.budgetapp.application.Main;

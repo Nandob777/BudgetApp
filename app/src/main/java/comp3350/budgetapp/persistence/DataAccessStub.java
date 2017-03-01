@@ -6,10 +6,6 @@ import java.util.List;
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.objects.WishListItem;
 
-/**
- * Created by zack on 28/02/17.
- */
-
 public class DataAccessStub
 {
     private String dbName;

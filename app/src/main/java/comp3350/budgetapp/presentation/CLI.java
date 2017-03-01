@@ -8,10 +8,6 @@ import java.util.Locale;
 import comp3350.budgetapp.business.AccessWishListItems;
 import comp3350.budgetapp.objects.WishListItem;
 
-/**
- * Created by zack on 28/02/17.
- */
-
 public class CLI  // command-line interface
 {
     public static BufferedReader console;

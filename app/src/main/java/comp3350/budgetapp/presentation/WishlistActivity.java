@@ -120,7 +120,7 @@ public class WishlistActivity extends Activity {
         }
         else
         {
-            Messages.fatalError(this, result);
+            Messages.warning(this, result);
         }
 
     }

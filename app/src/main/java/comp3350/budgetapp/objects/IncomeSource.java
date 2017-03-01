@@ -1,9 +1,5 @@
 package comp3350.budgetapp.objects;
 
-/**
- * Created by mardelmaduro on 2017-02-26.
- */
-
 public class IncomeSource
 {
     private String sourceName = "";

@@ -1,9 +1,5 @@
 package comp3350.budgetapp.tests.objects;
 
-/**
- * Created by tinahernando on 2017-02-28.
- */
-
 import junit.framework.TestCase;
 
 import comp3350.budgetapp.objects.WishListItem;

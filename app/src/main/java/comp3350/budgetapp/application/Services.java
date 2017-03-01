@@ -1,8 +1,5 @@
 package comp3350.budgetapp.application;
 
-/**
- * Created by mardelmaduro on 2017-02-27.
- */
 import comp3350.budgetapp.persistence.DataAccessStub;
 
 public class Services {

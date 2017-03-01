@@ -14,11 +14,11 @@ Manifest:
 
 Packages:
     - comp3350.budgetapp
-        ~ application: Main
+        ~ application: Main, Services
         ~ business: AccessWishListItems, Calculate
         ~ objects: WishListItems, IncomeSource
         ~ persistence: DataAccessStub
-        ~ presentation: MainActivity, WishlistActivity
+        ~ presentation: MainActivity, WishlistActivity, CLI, Messages
 
     - comp3350.budgetapp (test)
         ~ tests: WishListItemTest (object)

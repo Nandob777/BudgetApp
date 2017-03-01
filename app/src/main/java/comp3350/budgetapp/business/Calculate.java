@@ -3,10 +3,6 @@ package comp3350.budgetapp.business;
 import java.util.List;
 import comp3350.budgetapp.objects.WishListItem;
 
-/**
- * Created by tinahernando on 2017-02-28.
- */
-
 public class Calculate {
 
     public static String wishlistTotal(List<WishListItem> elements)

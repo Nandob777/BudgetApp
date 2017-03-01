@@ -16,6 +16,7 @@ public class AccessWishListItemsTest extends TestCase
     public static ArrayList<WishListItem> list;
     WishListItem item;
     AccessWishListItems accessItems;
+    String result;
 
 
     @Test
@@ -37,20 +38,23 @@ public class AccessWishListItemsTest extends TestCase
     public void testValidList()
     {
         list = new ArrayList<>();
+        accessItems = new AccessWishListItems();
         item = new WishListItem("iPhone", 500.0);
         list.add(item);
-        assertTrue(list.contains(item));
+        accessItems.addWishListItem(item);
+        accessItems.getWishListItems(list);
+        assertSame(accessItems.getRandom(item.getItemName()) , item);
     }
 
-    @Test
-    public void testValidListof2()
+
+    public void testDelete()
     {
-        list = new ArrayList<>();
+        accessItems = new AccessWishListItems();
         item = new WishListItem("iPhone", 500.0);
         list.add(item);
-        item = new WishListItem("iPad", 400.0);
-        list.add(item);
-        assertTrue(list.get(1).equals(item));
-
+        accessItems.addWishListItem(item);
+        accessItems.deleteWishListItem(item);
+        assertNull(accessItems.getWishListItems(list));
     }
+
 }

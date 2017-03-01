@@ -1,18 +1,14 @@
 package comp3350.budgetapp.tests.business;
 
 import junit.framework.TestCase;
-
 import org.junit.*;
-
-import java.util.List;
 import java.util.ArrayList;
-
 import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.WishListItem;
 
 public class CalculateWishListTotalTest extends TestCase
 {
-    public static List <WishListItem> list;
+    public static ArrayList <WishListItem> list;
     WishListItem item;
     String resultTotal;
     double total;
@@ -21,7 +17,7 @@ public class CalculateWishListTotalTest extends TestCase
     @Before
     public void testCreateWishList()
     {
-        list = new ArrayList <WishListItem>();
+        list = new ArrayList <>();
     }
 
     @Test

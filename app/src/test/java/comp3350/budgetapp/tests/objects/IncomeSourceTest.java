@@ -17,16 +17,21 @@ public class IncomeSourceTest extends TestCase
 
     public void testSingleNull()
     {
+        System.out.println("\nStarting testSingleNull");
         assertNull(nullSrc);
+        System.out.println("Finished testSingleNull");
     }
 
     public void testSingleInitialized()
     {
         IncomeSource newSrc;
+        System.out.println("\nStarting testSingleInitialized");
 
         newSrc = createIncomeSource("Part-time Sales Associate",11);
         assertNotNull(newSrc);
         assertTrue("Part-time Sales Associate".equals(newSrc.getSourceName()));
         assertTrue(11 == newSrc.getAmount());
+        System.out.println("Finished testSingleInitialized");
+
     }
 }

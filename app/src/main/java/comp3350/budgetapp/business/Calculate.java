@@ -53,7 +53,7 @@ public class Calculate {
 
             if( (missingPrices+validPrices) == elements.size() && validPrices > 0)
             {
-                wishlistTotal = ""+(total/validPrices);
+                wishlistTotal = String.format("%.2f", (total));
             }
             else if( missingPrices != elements.size())
             {

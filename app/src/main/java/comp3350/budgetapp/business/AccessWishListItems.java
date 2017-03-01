@@ -13,6 +13,7 @@ public class AccessWishListItems
     private List<WishListItem> wishList;
     private WishListItem wishListItem;
 
+    private String total;
     private int currentItem;
 
     public AccessWishListItems()
@@ -35,6 +36,7 @@ public class AccessWishListItems
         if (wishList == null)
         {
             result = dataAccess.getWishListItemSequential(wishList);
+            total = Calculate.wishlistTotal(wishList);
             currentItem = 0;
         }
         if (currentItem < wishList.size())
@@ -58,6 +60,7 @@ public class AccessWishListItems
         if (currentItem < wishList.size())
         {
             wishListItem = wishList.get(currentItem);
+            total = Calculate.wishlistTotal(wishList);
             currentItem++;
         }
         else
@@ -84,4 +87,8 @@ public class AccessWishListItems
         return dataAccess.deleteWishListItem(currentItem);
     }
 
+    public String getTotal()
+    {
+        return total;
+    }
 }

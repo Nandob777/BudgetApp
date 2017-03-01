@@ -79,6 +79,8 @@ public class WishlistActivity extends Activity {
                 }
             });
 
+            TextView viewTotal = (TextView)findViewById(R.id.viewTotal);
+            viewTotal.setText(accessWishListItems.getTotal());
         }
     }
 

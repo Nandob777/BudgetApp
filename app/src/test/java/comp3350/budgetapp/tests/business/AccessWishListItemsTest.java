@@ -43,7 +43,7 @@ public class AccessWishListItemsTest extends TestCase
     }
 
     @Test
-    public void testValid2List()
+    public void testValidListof2()
     {
         list = new ArrayList<>();
         item = new WishListItem("iPhone", 500.0);

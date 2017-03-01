@@ -3,7 +3,6 @@ package comp3350.budgetapp.presentation;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 
 import comp3350.budgetapp.R;

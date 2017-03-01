@@ -1,6 +1,5 @@
 package comp3350.budgetapp.persistence;
 
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 

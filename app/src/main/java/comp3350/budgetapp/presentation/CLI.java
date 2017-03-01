@@ -103,49 +103,6 @@ public class CLI  // command-line interface
         }
     }
 
-//    public static void processGetStudent()
-//    {
-//        AccessStudents accessStudents;
-//        AccessSC accessSC;
-//
-//        accessStudents = new AccessStudents();
-//
-//        if (inputTokens.length > 2)
-//        {
-//            if (inputTokens[2].equalsIgnoreCase("orphan"))
-//            {
-//                accessSC = new AccessSC();
-//                currentStudent = accessStudents.getSequential();
-//                while (currentStudent != null)
-//                {
-//                    studentNumber = currentStudent.getStudentID();
-//                    accessSC = new AccessSC();
-//                    currentSC = accessSC.getSC(studentNumber);
-//                    if (currentSC == null)
-//                    {
-//                        System.out.println(indent +currentStudent);
-//                    }
-//                    currentStudent = accessStudents.getSequential();
-//                }
-//            }
-//            else
-//            {
-//                studentNumber = inputTokens[2];
-//                currentStudent = accessStudents.getRandom(studentNumber);
-//                System.out.println(indent +currentStudent);
-//            }
-//        }
-//        else
-//        {
-//            currentStudent = accessStudents.getSequential();
-//            while (currentStudent != null)
-//            {
-//                studentNumber = currentStudent.getStudentID();
-//                System.out.println(indent +currentStudent);
-//                currentStudent = accessStudents.getSequential();
-//            }
-//        }
-//    }
 
     public static void processGetWishListItem()
     {
@@ -161,11 +118,7 @@ public class CLI  // command-line interface
                 while (currentWishListItem != null)
                 {
                     wishListItemName = currentWishListItem.getItemName();
-//                    currentCS = accessSC.getCS(courseNumber);
-//                    if (currentCS == null)
-//                    {
-//                        System.out.println(indent +currentCourse);
-//                    }
+
                     currentWishListItem = accessWishListItems.getSequential();
                 }
             }
@@ -188,29 +141,4 @@ public class CLI  // command-line interface
         }
     }
 
-//    public static void processGetSC()
-//    {
-//        AccessSC accessSC;
-//
-//        accessSC = new AccessSC();
-//        currentSC = accessSC.getSC(studentNumber);
-//        while (currentSC != null)
-//        {
-//            System.out.println(indent +currentSC);
-//            currentSC = accessSC.getSC(studentNumber);
-//        }
-//    }
-//
-//    public static void processGetCS()
-//    {
-//        AccessSC accessSC;
-//
-//        accessSC = new AccessSC();
-//        currentCS = accessSC.getCS(courseNumber);
-//        while (currentCS != null)
-//        {
-//            System.out.println(indent +currentCS);
-//            currentCS = accessSC.getCS(courseNumber);
-//        }
-//    }
 }

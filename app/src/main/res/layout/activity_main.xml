@@ -10,7 +10,7 @@
         android:id="@+id/textTitle"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="Personal Budgeting App"
+        android:text="@string/app_title"
         android:textAppearance="@android:style/TextAppearance.Material.Headline"
         android:layout_alignParentEnd="true"
         android:textAlignment="center" />
@@ -26,14 +26,14 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Wish List"
+            android:text="@string/button_wishlist"
             android:id="@+id/buttonWishlist"
             android:onClick="addWishlist" />
 
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Income Sources"
+            android:text="@string/button_income_source"
             android:enabled="false"
             android:id="@+id/buttonIncome"
             android:layout_marginTop="60dp"
@@ -43,7 +43,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Expenses"
+            android:text="@string/button_expenses"
             android:enabled="false"
             android:id="@+id/buttonExpense"
             android:layout_marginBottom="60dp"
@@ -52,7 +52,7 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Financial Summary"
+            android:text="@string/button_financial_summary"
             android:enabled="false"
             android:id="@+id/buttonSummary" />
     </LinearLayout>

@@ -1,8 +1,18 @@
 <resources>
     <string name="app_name">BudgetApp</string>
-    <string name="add_item">Add an item to your WishList</string>
+    <string name="app_title">Personal Budgeting App</string>
+
+    <string name="button_wishlist">Wish List</string>
+    <string name="button_income_source">Income Source</string>
+    <string name="button_expenses">Expenses</string>
+    <string name="button_financial_summary">Financial Summary</string>
+
+    <string name="text_item_name">Item Name</string>
+    <string name="text_price">Price</string>
     <string name="button_add">Add</string>
-    <string name="manage_wishlist">Manage Wishlist</string>
+    <string name="button_delete">Delete</string>
+    <string name="button_update">Update</string>
+
     <string name="fatalError">Fatal error</string>
     <string name="warning">Warning</string>
 </resources>

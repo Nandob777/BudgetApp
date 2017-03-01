@@ -79,19 +79,6 @@ public class WishlistActivity extends Activity {
                 }
             });
 
-//            final EditText editItemName = (EditText)findViewById(R.id.editItemName);
-//            //final Button buttonCourseStudents = (Button)findViewById(R.id.buttonCourseStudents);
-//            editItemName.addTextChangedListener(new TextWatcher() {
-//                @Override
-//                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-//                @Override
-//                public void onTextChanged(CharSequence s, int start, int before, int count) {}
-//
-//                @Override
-//                public void afterTextChanged(Editable s) {
-//                    buttonCourseStudents.setEnabled(editCourseID.getText().toString().length() > 0);
-//                }
-//            });
         }
     }
 
@@ -103,7 +90,7 @@ public class WishlistActivity extends Activity {
         EditText editPrice = (EditText)findViewById(R.id.editPrice);
 
         editName.setText(selected.getItemName());
-        editPrice.setText((int) selected.getPrice());
+        editPrice.setText(String.valueOf(selected.getPrice()));
     }
 
     public void buttonItemAddOnClick(View v)

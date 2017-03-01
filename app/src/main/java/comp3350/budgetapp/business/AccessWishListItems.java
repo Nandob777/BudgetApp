@@ -1,10 +1,8 @@
-
 package comp3350.budgetapp.business;
 
  // Created by mardelmaduro on 2017-02-27.
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.budgetapp.application.Main;
@@ -88,10 +86,5 @@ public class AccessWishListItems
     {
         return dataAccess.deleteWishListItem(currentItem);
     }
-
-//    public boolean contains(WishListItem item)
-//    {
-//        return dataAccess.contains(item);
-//    }
 
 }

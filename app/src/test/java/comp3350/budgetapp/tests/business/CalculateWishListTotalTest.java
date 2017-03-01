@@ -13,7 +13,6 @@ public class CalculateWishListTotalTest extends TestCase
     String resultTotal;
     double total;
 
-
     @Before
     public void testCreateWishList()
     {
@@ -195,6 +194,44 @@ public class CalculateWishListTotalTest extends TestCase
 
         resultTotal = Calculate.wishlistTotal(list);
 
-        assertEquals(resultTotal,"?");//invalid total
+        assertEquals("?",resultTotal);//invalid total
+    }
+
+    @Test
+    public void testNegativePrices()
+    {
+        list = new ArrayList<>();
+
+        item = new WishListItem("iPhone", -(500.0));
+        list.add(item);
+
+        item = new WishListItem("TV", -(7000.0));
+        list.add(item);
+
+        item = new WishListItem("Laptop", -(2000.0));
+        list.add(item);
+
+        resultTotal = Calculate.wishlistTotal(list);
+
+        assertEquals("",resultTotal);
+    }
+
+    @Test
+    public void testSomeNegativePrices()
+    {
+        list = new ArrayList<>();
+
+        item = new WishListItem("iPhone", -(500.0));
+        list.add(item);
+
+        item = new WishListItem("TV", 7000.0);
+        list.add(item);
+
+        item = new WishListItem("Laptop", -(2000.0));
+        list.add(item);
+
+        resultTotal = Calculate.wishlistTotal(list);
+
+        assertEquals("7000.00",resultTotal);
     }
 }

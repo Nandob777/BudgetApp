@@ -39,7 +39,7 @@ public class Calculate {
                     element = (WishListItem) elements.get(elementCount);
                     price = ((WishListItem) element).getPrice();
                     found = false;
-                    if (price == 0.0)
+                    if (price <= 0.0)
                     {
                         missingPrices++;
                     }

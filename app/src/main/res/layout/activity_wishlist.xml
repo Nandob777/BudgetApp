@@ -34,10 +34,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Item Name"
+            android:text="@string/text_item_name"
             android:id="@+id/textItemName"
             android:layout_marginBottom="60dp"
-            android:layout_marginRight="60dp" />
+            android:layout_marginEnd="60dp" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Price"
+            android:text="@string/text_price"
             android:id="@+id/textPrice"
             android:layout_marginBottom="64dp" />
 
@@ -72,28 +72,28 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="delete"
+            android:text="@string/button_delete"
             android:id="@+id/buttonItemDelete"
-            android:layout_alignParentRight="true"
-            android:enabled="false"
+            android:layout_alignParentEnd="true"
+            android:enabled="true"
             android:onClick="buttonItemDeleteOnClick" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="add"
+            android:text="@string/button_add"
             android:id="@+id/buttonItemAdd"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:enabled="true"
-            android:onClick="buttonItemAddOnClick (WishlistActivity)" />
+            android:onClick="buttonItemAddOnClick" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="update"
+            android:text="@string/button_update"
             android:id="@+id/buttonItemUpdate"
             android:layout_centerHorizontal="true"
-            android:enabled="false"
+            android:enabled="true"
             android:onClick="buttonItemUpdateOnClick" />
     </RelativeLayout>
 

@@ -6,6 +6,7 @@ import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.persistence.DataAccessStub;
+import comp3350.budgetapp.business.Calculate;
 
 public class AccessWishListItems
 {
@@ -89,6 +90,8 @@ public class AccessWishListItems
 
     public String getTotal()
     {
-        return total;
+        System.out.println("TOTAL: " + Calculate.wishlistTotal(wishList
+        ));
+        return Calculate.wishlistTotal(wishList);
     }
 }

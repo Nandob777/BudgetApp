@@ -199,6 +199,11 @@ public class WishlistActivity extends Activity {
         String itemName = editItemName.getText().toString();
         String priceString = editPrice.getText().toString();
 
+        if(itemName == null || itemName.equals(""))
+        {
+            itemName = "Misc";
+        }
+
         if(priceString.length() == 0){
             priceString = "0";
         }

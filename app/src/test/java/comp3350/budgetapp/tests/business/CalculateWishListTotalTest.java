@@ -23,8 +23,8 @@ public class CalculateWishListTotalTest extends TestCase
     @Test
     public void testNullList()
     {
-        list = null;
-        assertNull(list);
+        resultTotal = Calculate.wishlistTotal(null);
+        assertEquals("",resultTotal);
     }
 
     @Test
@@ -117,6 +117,6 @@ public class CalculateWishListTotalTest extends TestCase
 
         resultTotal = Calculate.wishlistTotal(list);
 
-        assertEquals(resultTotal,"?");//invalidTotal
+        assertEquals(resultTotal,"?");//invalid total
     }
 }

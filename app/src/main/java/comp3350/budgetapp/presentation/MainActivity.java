@@ -31,4 +31,16 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WishlistActivity.class);
         startActivity(intent);
     }
+
+    public void addIncomeSource(View view)
+    {
+        Intent intent = new Intent(this, IncomeActivity.class);
+        startActivity(intent);
+    }
+
+    public void addExpense(View view)
+    {
+        Intent intent = new Intent(this, ExpenseActivity.class);
+        startActivity(intent);
+    }
 }

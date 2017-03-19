@@ -1,23 +1,26 @@
 package comp3350.budgetapp.objects;
 
-public class WishListItem extends FinancialObjects
-{
-    private int priority = 0;
-    private int discount = 0;
+import java.util.Locale;
 
+public class WishListItem
+{
+    private String itemName;
+    private double price;
+    private int priority;
+    private int discount;
 
     public WishListItem(String itemName)
     {
-        this.name = itemName;
-        this.amount = 0.0;
+        this.itemName = itemName;
+        this.price = 0.0;
         this.priority = 0;
         this.discount = 0;
     }
 
     public WishListItem(String itemName , double price)
     {
-        this.name = itemName;
-        this.amount = price;
+        this.itemName = itemName;
+        this.price = price;
         this.priority = 0;
         this.discount = 0;
 
@@ -25,50 +28,64 @@ public class WishListItem extends FinancialObjects
 
     public WishListItem(String itemName , double price ,int discount)
     {
-        this.name = itemName;
-
-        double discountAmount = (discount*0.01)*this.amount;
-        this.amount = price - discountAmount;
+        this.itemName = itemName;
+        this.price = price * (1-(discount*0.01));
         this.priority = 0;
         this.discount = discount;
     }
 
     public String getItemName()
     {
-        return super.getName();
+        return itemName;
     }
-    public double getPrice() {
 
-        return super.getAmount();
+    public double getPrice()
+    {
+
+        return price;
     }
 
     public void setPrice(double price)
     {
-        this.amount = price;
+        this.price = price * (1-(discount*0.01));
     }
 
-    public void setDiscount(int discount) {
+    public void setDiscount(int discount)
+    {
         this.discount = discount;
-
-        double discountAmount = (discount*0.01)*this.amount;
-        this.amount = this.amount - discountAmount;
+        this.price = this.price * (1-(discount*0.01));
     }
 
-    public int getPriority() {
+    public int getPriority()
+    {
         return priority;
     }
 
-    public void setPriority(int priority) {
+    public void setPriority(int priority)
+    {
         this.priority = priority;
     }
 
     public String toString()
     {
-        return "Item Name: " +name +", Price: " +amount +", Current Discount: " +discount+" % .";
+        return String.format(Locale.getDefault(), "Item Name: %s, Current Price with %d%% discount: $%.2f", itemName, discount, price);
     }
 
     public boolean equals(Object object)
     {
-        return super.equals(object);
+        boolean result;
+        WishListItem item;
+
+        result = false;
+
+        if (object instanceof WishListItem)
+        {
+            item = (WishListItem) object;
+            if( ((item.itemName == null) && (itemName == null)) || (item.itemName.equals(itemName)) )
+            {
+                result = true;
+            }
+        }
+        return result;
     }
 }

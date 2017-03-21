@@ -7,6 +7,7 @@ import comp3350.budgetapp.tests.business.AccessWishListItemsTest;
 import comp3350.budgetapp.tests.business.CalculateWishListTotalTest;
 import comp3350.budgetapp.tests.objects.IncomeSourceTest;
 import comp3350.budgetapp.tests.objects.WishListItemTest;
+import comp3350.budgetapp.tests.persistence.*;
 
 public class AllTests extends TestSuite
 {
@@ -19,6 +20,7 @@ public class AllTests extends TestSuite
         suite = new TestSuite("All tests");
         testObjects();
         testBusiness();
+        testPersistence();
         //main.shutDown();
         return suite;
 
@@ -34,5 +36,12 @@ public class AllTests extends TestSuite
     {
         suite.addTestSuite(CalculateWishListTotalTest.class);
         suite.addTestSuite(AccessWishListItemsTest.class);
+    }
+
+    private static void testPersistence()
+    {
+        suite.addTestSuite(DataAccessTest.class);
+        suite.addTestSuite(DataAccessStubTest.class);
+        suite.addTestSuite(DataAccessFactoryTest.class);
     }
 }

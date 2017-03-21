@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.budgetapp.application.Main;
+import comp3350.budgetapp.objects.Expense;
+import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.objects.WishListItem;
 
 public class DataAccessStub
@@ -12,6 +14,9 @@ public class DataAccessStub
     private String dbType = "stub";
 
     private ArrayList<WishListItem> wishList;
+    private ArrayList<IncomeSource> incomes;
+    private ArrayList<Expense> expenses;
+
 
     public DataAccessStub(String dbName)
     {
@@ -26,8 +31,13 @@ public class DataAccessStub
     public void open(String dbName)
     {
         WishListItem wishListItem;
+        Expense expense;
+        IncomeSource incomeSource;
 
         wishList = new ArrayList<WishListItem>();
+        expenses = new ArrayList<Expense>();
+        incomes = new ArrayList<IncomeSource>();
+
         wishListItem = new WishListItem("Google Pixel", 899.00);
         wishList.add(wishListItem);
         wishListItem = new WishListItem("Google Home", 130.00);
@@ -36,6 +46,17 @@ public class DataAccessStub
         wishList.add(wishListItem);
         wishListItem = new WishListItem("ChromeCast", 35.00);
         wishList.add(wishListItem);
+
+
+        expense = new Expense("Rent",500.00);
+        expenses.add(expense);
+        expense = new Expense("Internet",120.00);
+        expenses.add(expense);
+
+        incomeSource = new IncomeSource("Starbucks",800.00);
+        incomes.add(incomeSource);
+
+
 
         System.out.println("Opened " + dbType + " database " + dbName);
     }
@@ -94,4 +115,163 @@ public class DataAccessStub
         }
         return null;
     }
+    public String getIncomeSourceSequential(List<IncomeSource> incomeItemsResult)
+    {
+        incomeItemsResult.addAll(incomes);
+        return null;
+    }
+
+    public ArrayList<IncomeSource> getIncomeSourceRandom(IncomeSource currentItem)
+    {
+        ArrayList<IncomeSource> newIncomes;
+
+        int index = 0;
+
+        newIncomes = new ArrayList<IncomeSource>();
+
+        for(index=0;index<incomes.size();index++)
+        {
+            if(incomes.get(index).getName().equals(currentItem.getName()))
+            {
+                // break;
+                newIncomes.add(incomes.get(index));
+            }
+
+        }
+        return newIncomes;
+    }
+
+    public String addIncomeSource(IncomeSource currentItem)
+    {
+        incomes.add(currentItem);
+        return null;
+    }
+
+    public String updateIncomeSource(IncomeSource currentItem)
+    {
+        int index = 0;
+
+        //index = incomes.indexOf(currentItem);
+
+        for(index=0;index<incomes.size();index++)
+        {
+            if(incomes.get(index).getName().equals(currentItem.getName()))
+            {
+               // break;
+                incomes.set(index, currentItem);
+            }
+
+        }
+
+       // if (index >=0)
+        //{
+
+        //}
+        return null;
+    }
+
+    public String deleteIncomeSource(IncomeSource currentItem)
+    {
+        int index = 0;
+
+        //index = incomes.indexOf(currentItem);
+
+        for(index=0;index<incomes.size();index++)
+        {
+            if(incomes.get(index).getName().equals(currentItem.getName()))
+            {
+                //break;
+                incomes.remove(index);
+            }
+
+        }
+
+        //if (index >=0)
+        //{
+
+        //}
+        return null;
+    }
+
+    public String getExpenseSequential(List<Expense> expenseItemsResult)
+    {
+        expenseItemsResult.addAll(expenses);
+        return null;
+    }
+
+    public ArrayList<Expense> getExpenseRandom(Expense currentItem)
+    {
+        ArrayList<Expense> newExpenses;
+        int index = 0;
+
+        newExpenses = new ArrayList<Expense>();
+        index = expenses.indexOf(currentItem);
+
+        for(index=0;index<expenses.size();index++)
+        {
+            if(expenses.get(index).getName().equals(currentItem.getName()))
+            {
+               // break;
+                newExpenses.add(expenses.get(index));
+            }
+
+        }
+
+       // if (index >= 0)
+        //{
+
+        //}
+        return newExpenses;
+    }
+
+    public String addExpense(Expense currentItem)
+    {
+        expenses.add(currentItem);
+        return null;
+    }
+
+    public String updateExpense(Expense currentItem)
+    {
+        int index = 0;
+
+        for(index=0;index<expenses.size();index++)
+        {
+            if(expenses.get(index).getName().equals(currentItem.getName()))
+            {
+                break;
+            }
+
+        }
+
+        //index = expenses.indexOf(currentItem);
+        if (index >=0)
+        {
+            expenses.set(index, currentItem);
+        }
+        return null;
+    }
+
+    public String deleteExpense(Expense currentItem)
+    {
+        int index = 0;
+
+        //index = expenses.indexOf(currentItem);
+
+        for(index=0;index<expenses.size();index++)
+        {
+            if(expenses.get(index).getName().equals(currentItem.getName()))
+            {
+                break;
+            }
+
+        }
+
+        if (index >=0)
+        {
+            expenses.remove(index);
+        }
+        return null;
+
+    }
+
 }

@@ -1,21 +1,34 @@
 package comp3350.budgetapp.application;
 
+import comp3350.budgetapp.persistence.DataAccessObject;
 import comp3350.budgetapp.persistence.DataAccessStub;
+import comp3350.budgetapp.persistence.DataAccess;
 
-public class Services {
-    private static DataAccessStub dataAccessService = null;
+public class Services
+{
+    private static DataAccess dataAccessService = null;
 
-    public static DataAccessStub createDataAccess(String dbName)
+    public static DataAccess createDataAccess(String dbName)
     {
         if (dataAccessService == null)
         {
-            dataAccessService = new DataAccessStub(dbName);
-            dataAccessService.open(Main.dbName);
+            dataAccessService = new DataAccessObject(dbName);
+            dataAccessService.open(Main.getDBPathName());
         }
         return dataAccessService;
     }
 
-    public static DataAccessStub getDataAccess(String dbName)
+    public static DataAccess createDataAccess(DataAccess alternateDataAccessService)
+    {
+        if (dataAccessService == null)
+        {
+            dataAccessService = alternateDataAccessService;
+            dataAccessService.open(Main.getDBPathName());
+        }
+        return dataAccessService;
+    }
+
+    public static DataAccess getDataAccess(String dbName)
     {
         if (dataAccessService == null)
         {

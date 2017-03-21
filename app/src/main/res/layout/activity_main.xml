@@ -24,30 +24,30 @@
         android:layout_centerHorizontal="true">
 
         <Button
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/button_wishlist"
             android:id="@+id/buttonWishlist"
-            android:onClick="addWishlist" />
-
-        <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_income_source"
-            android:enabled="false"
+            android:onClick="addWishlist"
+            android:text="@string/button_wishlist" />
+
+        <Button
             android:id="@+id/buttonIncome"
-            android:layout_marginTop="60dp"
-            android:layout_marginBottom="60dp"
-            android:onClick="" />
-
-        <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_expenses"
-            android:enabled="false"
-            android:id="@+id/buttonExpense"
             android:layout_marginBottom="60dp"
-            android:onClick="" />
+            android:layout_marginTop="60dp"
+            android:enabled="true"
+            android:onClick="addIncomeSource"
+            android:text="@string/button_income_source" />
+
+        <Button
+            android:id="@+id/buttonExpense"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:enabled="true"
+            android:onClick="addExpense"
+            android:text="@string/button_expenses" />
 
         <Button
             android:layout_width="fill_parent"

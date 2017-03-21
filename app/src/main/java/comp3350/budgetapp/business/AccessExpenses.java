@@ -5,13 +5,15 @@ import java.util.List;
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
 import comp3350.budgetapp.objects.Expense;
-import comp3350.budgetapp.objects.Expense;
+import comp3350.budgetapp.persistence.DataAccessObject;
 import comp3350.budgetapp.persistence.DataAccessStub;
+import comp3350.budgetapp.persistence.DataAccess;
 import comp3350.budgetapp.business.Calculate;
 
 public class AccessExpenses
 {
-    private DataAccessStub dataAccess;
+    private DataAccess dataAccess;
+    //private DataAccessStub dataAccess;
     private List<Expense> expenses;
     private Expense expense;
     private Calculate cal;
@@ -81,14 +83,14 @@ public class AccessExpenses
         return dataAccess.addExpense(currentExpense);
     }
 
-    public String updateExpense(Expense currentItem)
+    public String updateExpense(Expense currentExpense)
     {
-        return dataAccess.updateExpense(currentItem);
+        return dataAccess.updateExpense(currentExpense);
     }
 
-    public String deleteExpense(Expense currentItem)
+    public String deleteExpense(Expense currentExpense)
     {
-        return dataAccess.deleteExpense(currentItem);
+        return dataAccess.deleteExpense(currentExpense);
     }
 
     public String getTotal()

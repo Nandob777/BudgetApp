@@ -2,6 +2,7 @@ package comp3350.budgetapp.presentation;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -205,7 +206,7 @@ public class WishlistActivity extends Activity {
         }
 
         if(priceString.length() == 0){
-            priceString = "0";
+            priceString = "0.0";
         }
 
         Double price = Double.parseDouble(priceString);

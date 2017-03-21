@@ -17,9 +17,28 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".presentation.WishlistActivity"
             android:label="BudgetApp: Wish List" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.MainActivity" />
+
+        </activity>
+
+        <activity
+            android:name=".presentation.ExpenseActivity"
+            android:label="BudgetApp: Expenses" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.MainActivity" />
+
+        </activity>
+
+        <activity
+            android:name=".presentation.IncomeActivity"
+            android:label="BudgetApp: Income Sources" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />

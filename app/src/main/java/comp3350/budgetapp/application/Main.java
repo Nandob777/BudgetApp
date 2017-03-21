@@ -4,7 +4,8 @@ import comp3350.budgetapp.presentation.CLI;
 
 public class Main
 {
-    public static final String dbName="Budget";
+    public static final String dbName = "Budget";
+    private static String dbPathName = "database/Budget";
 
     public static void main(String[] args)
     {
@@ -26,4 +27,15 @@ public class Main
         Services.closeDataAccess();
     }
 
+    public static String getDBPathName() {
+        if (dbPathName == null)
+            return dbName;
+        else
+            return dbPathName;
+    }
+
+    public static void setDBPathName(String pathName) {
+        System.out.println("Setting DB path to: " + pathName);
+        dbPathName = pathName;
+    }
 }

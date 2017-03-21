@@ -38,7 +38,7 @@ public class FinancialObjects {
         this.name = name;
     }
 
-    @Override
+
     public boolean equals(Object object) {
         boolean result;
         FinancialObjects obj;
@@ -54,6 +54,10 @@ public class FinancialObjects {
             }
         }
         return result;
+    }
+
+    public String toString() {
+        return name+" : "+amount;
     }
 }
 

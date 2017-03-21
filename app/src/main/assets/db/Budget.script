@@ -1,0 +1,29 @@
+CREATE SCHEMA PUBLIC AUTHORIZATION DBA
+
+CREATE MEMORY TABLE WishListItems(ItemName varchar(50) DEFAULT NULL,ItemPrice numeric(15,2) DEFAULT 0.00))
+CREATE MEMORY TABLE Expenses(ItemName varchar(50) DEFAULT NULL,ItemPrice numeric(15,2) DEFAULT 0.00))
+CREATE MEMORY TABLE IncomeSources(SourceName varchar(50) DEFAULT NULL,Amount numeric(15,2) DEFAULT 0.00))
+CREATE USER SA PASSWORD ""
+GRANT DBA TO SA
+SET WRITE_DELAY 20
+SET SCHEMA PUBLIC
+
+
+
+INSERT INTO WishListItems (ItemName,ItemPrice)
+VALUES ('IPhone',700.0);
+
+INSERT INTO WishListItems (ItemName,ItemPrice)
+VALUES ('Laptop',1700.0);
+
+INSERT INTO Expenses (ItemName,ItemPrice)
+VALUES ('Rent',700.0);
+
+INSERT INTO Expenses (ItemName,ItemPrice)
+VALUES ('Cable',100.0);
+
+INSERT INTO IncomeSources (SourceName,Amount)
+VALUES ('Starbucks',1600.0);
+
+INSERT INTO IncomeSources (SourceName,Amount)
+VALUES ('Bartending',900.0);

@@ -46,10 +46,18 @@ public class DataAccessObject implements DataAccess
 		try
 		{
 			// Setup for HSQL
-			dbType = "HSQL";
+			dbType = "HSQL Database Engine In-Memory";
 			Class.forName("org.hsqldb.jdbcDriver").newInstance();
-			url = "jdbc:hsqldb:file:" + dbPath; // stored on disk mode
+			//url = "jdbc:hsqldb:file:" + dbPath; // stored on disk mode
+			url = "jdbc:hsqldb:file:database/Budget/";
 			c1 = DriverManager.getConnection(url, "SA", "");
+
+			if(c1 == null)
+			{
+				System.out.println("Issue with Connecting to Database");
+			}else{
+				System.out.println("Connecting to Database");
+			}
 			st1 = c1.createStatement();
 			st2 = c1.createStatement();
 			st3 = c1.createStatement();
@@ -124,13 +132,16 @@ public class DataAccessObject implements DataAccess
 			cmdString = "Select * from WishListItems";
 			rs2 = st1.executeQuery(cmdString);
 			//ResultSetMetaData md2 = rs2.getMetaData();
+
 		}
 		catch (Exception e)
 		{
-			processSQLError(e);
+			processSQLError
+					(e);
 		}
 		try
 		{
+
 			while (rs2.next())
 			{
 				itemName = rs2.getString("ItemName");
@@ -160,6 +171,7 @@ public class DataAccessObject implements DataAccess
 			cmdString = "Select * from WishListItems where ItemName=" + newWishListItem.getItemName();
 			rs3 = st1.executeQuery(cmdString);
 			// ResultSetMetaData md2 = rs3.getMetaData();
+			rs3.next();
 			while (rs3.next())
 			{
 				itemName = rs2.getString("ItemName");
@@ -175,7 +187,7 @@ public class DataAccessObject implements DataAccess
 		return WishListItems;
 	}
 
-	public String insertWishListItem(WishListItem currentWishListItem)
+	public String addWishListItem(WishListItem currentWishListItem)
 	{
 		String values;
 
@@ -231,7 +243,7 @@ public class DataAccessObject implements DataAccess
 		result = null;
 		try
 		{
-			values = currentWishListItem.getName();
+			values = currentWishListItem.getItemName();
 			cmdString = "Delete from WishListItems where WishListItemID=" +values;
 			//System.out.println(cmdString);
 			updateCount = st1.executeUpdate(cmdString);
@@ -301,7 +313,7 @@ public class DataAccessObject implements DataAccess
 		return IncomeSources;
 	}
 
-	public String insertIncomeSource(IncomeSource currentIncomeSource)
+	public String addIncomeSource(IncomeSource currentIncomeSource)
 	{
 		String values;
 
@@ -332,9 +344,9 @@ public class DataAccessObject implements DataAccess
 		try
 		{
 			// Should check for empty values and not update them
-			values = "Name='" +currentIncomeSource.getSourceName()
+			values = "SourceName='" +currentIncomeSource.getSourceName()
 			         +"'";
-			where = "where IncomeSourceName='" +currentIncomeSource.getSourceName() +"'";
+			where = "where SourceName='" +currentIncomeSource.getSourceName() +"'";
 			cmdString = "Update IncomeSources " +" Set " +values +" " +where;
 			//System.out.println(cmdString);
 			updateCount = st1.executeUpdate(cmdString);
@@ -355,7 +367,7 @@ public class DataAccessObject implements DataAccess
 		try
 		{
 			values = currentIncomeSource.getSourceName();
-			cmdString = "Delete from IncomeSources where IncomeSourceID='" +values +"'";
+			cmdString = "Delete from IncomeSources where SourceName='" +values +"'";
 			//System.out.println(cmdString);
 			updateCount = st1.executeUpdate(cmdString);
 			result = checkWarning(st1, updateCount);
@@ -370,10 +382,9 @@ public class DataAccessObject implements DataAccess
 	public String getExpenseSequential(List<Expense> ExpenseResult)
         {
             Expense Expense;
-            String name, amount , frequency;
+            String name, amount;
             name = EOF;
             amount = EOF;
-            frequency = EOF;
 
             result = null;
             try
@@ -390,10 +401,9 @@ public class DataAccessObject implements DataAccess
             {
                 while (rs2.next())
                 {
-                    name = rs2.getString("Name");
-                    amount = rs2.getString("Amount");
-                    frequency  = rs2.getString("Frequency");
-                    Expense = new Expense(name,Double.parseDouble(amount),Integer.parseInt(frequency));
+                    name = rs2.getString("ItemName");
+                    amount = rs2.getString("ItemPrice");
+                    Expense = new Expense(name,Double.parseDouble(amount));
                     ExpenseResult.add(Expense);
                 }
                 rs2.close();
@@ -414,7 +424,7 @@ public class DataAccessObject implements DataAccess
             Expenses = new ArrayList<Expense>();
             try
             {
-                cmdString = "Select * from WishListItems where ItemName=" + newExpense.getName();
+                cmdString = "Select * from Expenses where ItemName=" + newExpense.getName();
                 rs3 = st1.executeQuery(cmdString);
                 // ResultSetMetaData md2 = rs3.getMetaData();
                 while (rs3.next())
@@ -432,7 +442,7 @@ public class DataAccessObject implements DataAccess
             return Expenses;
         }
 
-    public String insertExpense(Expense currentExpense)
+    public String addExpense(Expense currentExpense)
     {
         String values;
 
@@ -443,7 +453,7 @@ public class DataAccessObject implements DataAccess
                     +", '" +currentExpense.getAmount()
                     +"', '" +currentExpense.getFrequency()
                     +"'";
-            cmdString = "Insert into WishListItems " +" Values(" +values +")";
+            cmdString = "Insert into Expenses " +" Values(" +values +")";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -464,10 +474,10 @@ public class DataAccessObject implements DataAccess
         try
         {
             // Should check for empty values and not update them
-            values = "Name='" +currentExpense.getName()
-                    +"', Address='" +currentExpense.getAmount()
+            values = "ItemName='" +currentExpense.getName()
+                    +"', ItemPrice='" +currentExpense.getAmount()
                     +"'";
-            where = "where ExpenseName=" +currentExpense.getName()
+            where = "where ItemName=" +currentExpense.getName()
             ;
             cmdString = "Update Expenses " +" Set " +values +" " +where;
             //System.out.println(cmdString);
@@ -489,7 +499,7 @@ public class DataAccessObject implements DataAccess
         try
         {
             values = currentExpense.getName();
-            cmdString = "Delete from Expenses where ExpenseName=" +values;
+            cmdString = "Delete from Expenses where ItemName=" +values;
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);
@@ -500,6 +510,7 @@ public class DataAccessObject implements DataAccess
         }
         return result;
     }
+
 
 	public String checkWarning(Statement st, int updateCount)
 	{

@@ -5,14 +5,18 @@ import java.util.List;
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
 import comp3350.budgetapp.objects.WishListItem;
+import comp3350.budgetapp.persistence.DataAccessObject;
 import comp3350.budgetapp.persistence.DataAccessStub;
+import comp3350.budgetapp.persistence.DataAccess;
 import comp3350.budgetapp.business.Calculate;
 
 public class AccessWishListItems
 {
-    private DataAccessStub dataAccess;
+    private DataAccess dataAccess;
+    //private DataAccessStub dataAccess;
     private List<WishListItem> wishList;
     private WishListItem wishListItem;
+    private Calculate cal;
 
     private String total;
     private int currentItem;
@@ -23,6 +27,7 @@ public class AccessWishListItems
         wishList = null;
         wishListItem = null;
         currentItem = 0;
+        cal = new Calculate();
     }
 
     public String getWishListItems(List<WishListItem> wishList)
@@ -90,8 +95,8 @@ public class AccessWishListItems
 
     public String getTotal()
     {
-        System.out.println("TOTAL: " + Calculate.wishlistTotal(wishList
-        ));
-        return Calculate.wishlistTotal(wishList);
+        //System.out.println("TOTAL: " + Calculate.wishlistTotal(wishList));
+        return cal.wishlistTotal(wishList);
     }
+
 }

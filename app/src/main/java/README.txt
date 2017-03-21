@@ -28,6 +28,6 @@ Resource Files
 
 Gradle Scripts
 
-LOG LOCATION: https://drive.google.com/open?id=1FOgym3m3bu_0ZaRyJC7z_sKb-8YI0XKB8KkeWX0BSCs
+LOG LOCATION: https://goo.gl/sLz51X
 REPOSITORY LOCATION: svn+ssh://aviary.cs.umanitoba.ca/home/student/marzonr/groupB/repo
 

@@ -5,7 +5,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Locale;
 
+import comp3350.budgetapp.business.AccessExpenses;
+import comp3350.budgetapp.business.AccessIncomeSource;
 import comp3350.budgetapp.business.AccessWishListItems;
+import comp3350.budgetapp.objects.Expense;
+import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.objects.WishListItem;
 
 public class CLI  // command-line interface
@@ -15,8 +19,12 @@ public class CLI  // command-line interface
     public static String[] inputTokens;
 
     public static WishListItem currentWishListItem;
+    public static Expense currentExpense;
+    public static IncomeSource currentIncomeSource;
 
     public static String wishListItemName;
+    public static String expenseName;
+    public static String incomeSourceName;
 
     public static String indent = "  ";
 
@@ -77,13 +85,17 @@ public class CLI  // command-line interface
 
     public static void processGet()
     {
-        if (inputTokens[1].equalsIgnoreCase("IncomeSource"))
+        if (inputTokens[1].equalsIgnoreCase("Expense"))
         {
-            //processGetIncomeSource();
+            processGetExpense();
         }
         else if (inputTokens[1].equalsIgnoreCase("WishListItem"))
         {
             processGetWishListItem();
+        }
+        else if (inputTokens[1].equalsIgnoreCase("IncomeSource"))
+        {
+            processGetIncomeSource();
         }
 //        else if (inputTokens[1].equalsIgnoreCase("something here"))
 //        {
@@ -133,6 +145,80 @@ public class CLI  // command-line interface
                 wishListItemName = currentWishListItem.getItemName();
                 System.out.println(indent +currentWishListItem);
                 currentWishListItem = accessWishListItems.getSequential();
+            }
+        }
+    }
+
+    public static void processGetExpense()
+    {
+        AccessExpenses accessExpenses;
+
+        accessExpenses = new AccessExpenses();
+
+        if (inputTokens.length > 2)
+        {
+            if (inputTokens[2].equalsIgnoreCase("orphan"))
+            {
+                currentExpense= accessExpenses.getSequential();
+                while (currentExpense != null)
+                {
+                    expenseName = currentExpense.getName();
+
+                    currentExpense = accessExpenses.getSequential();
+                }
+            }
+            else
+            {
+                expenseName = (inputTokens[2]).toUpperCase(Locale.getDefault());
+                currentExpense = accessExpenses.getRandom(expenseName);
+                System.out.println(indent +currentExpense);
+            }
+        }
+        else
+        {
+            currentExpense = accessExpenses.getSequential();
+            while (currentExpense != null)
+            {
+                expenseName = currentExpense.getName();
+                System.out.println(indent +currentExpense);
+                currentExpense = accessExpenses.getSequential();
+            }
+        }
+    }
+
+    public static void processGetIncomeSource()
+    {
+        AccessIncomeSource accessIncomeSource;
+
+        accessIncomeSource = new AccessIncomeSource();
+
+        if (inputTokens.length > 2)
+        {
+            if (inputTokens[2].equalsIgnoreCase("orphan"))
+            {
+                currentIncomeSource= accessIncomeSource.getSequential();
+                while (currentIncomeSource != null)
+                {
+                    incomeSourceName = currentIncomeSource.getName();
+
+                    currentIncomeSource = accessIncomeSource.getSequential();
+                }
+            }
+            else
+            {
+                incomeSourceName = (inputTokens[2]).toUpperCase(Locale.getDefault());
+                currentIncomeSource = accessIncomeSource.getRandom(incomeSourceName);
+                System.out.println(indent +currentIncomeSource);
+            }
+        }
+        else
+        {
+            currentIncomeSource = accessIncomeSource.getSequential();
+            while (currentIncomeSource != null)
+            {
+                incomeSourceName = currentIncomeSource.getName();
+                System.out.println(indent +currentIncomeSource);
+                currentIncomeSource = accessIncomeSource.getSequential();
             }
         }
     }

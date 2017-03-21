@@ -43,10 +43,11 @@ public class AccessWishListItemsTest extends TestCase
         list.add(item);
         accessItems.addWishListItem(item);
         accessItems.getWishListItems(list);
-        assertSame(accessItems.getRandom(item.getItemName()) , item);
+        //assertSame(accessItems.getRandom(item.getItemName()) , item);
+        assertSame("500.00",accessItems.getTotal());
     }
 
-
+    @Test
     public void testDelete()
     {
         accessItems = new AccessWishListItems();

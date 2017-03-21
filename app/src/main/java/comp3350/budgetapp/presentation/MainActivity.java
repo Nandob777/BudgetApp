@@ -3,6 +3,7 @@ package comp3350.budgetapp.presentation;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import comp3350.budgetapp.R;
@@ -34,13 +35,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void addIncomeSource(View view)
     {
-        Intent intent = new Intent(this, IncomeActivity.class);
-        startActivity(intent);
+        Intent intent2 = new Intent(this, IncomeActivity.class);
+        startActivity(intent2);
     }
 
     public void addExpense(View view)
     {
-        Intent intent = new Intent(this, ExpenseActivity.class);
-        startActivity(intent);
+        Intent intent3 = new Intent(this, ExpenseActivity.class);
+        startActivity(intent3);
     }
 }

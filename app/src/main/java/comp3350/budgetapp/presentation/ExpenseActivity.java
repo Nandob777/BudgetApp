@@ -16,35 +16,34 @@ import java.util.ArrayList;
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.Expense;
-import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.business.AccessExpenses;
 
 public class ExpenseActivity extends Activity {
 
     private Calculate totalPrice;
     private AccessExpenses accessExpenses;
-    private ArrayList<Expense> itemList;
+    private ArrayList<Expense> expenseList;
     private ArrayAdapter<Expense> itemArrayAdapter;
-    private int selectedItemPosition = -1;
+    private int selectedExpensePosition = -1;
     private TextView viewTotal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wishlist);
+        setContentView(R.layout.activity_expense);
 
         accessExpenses = new AccessExpenses();
         totalPrice = new Calculate();
 
-        itemList = new ArrayList<Expense>();
-        String result = accessExpenses.getExpenses(itemList);
+        expenseList = new ArrayList<Expense>();
+        String result = accessExpenses.getExpenses(expenseList);
         if (result != null)
         {
             Messages.fatalError(this, result);
         }
         else
         {
-            itemArrayAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, itemList)
+            itemArrayAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, expenseList)
             {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -53,42 +52,42 @@ public class ExpenseActivity extends Activity {
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
-                    text1.setText(itemList.get(position).getName());
-                    text2.setText(String.format("%.2f", itemList.get(position).getAmount()));
+                    text1.setText(expenseList.get(position).getName());
+                    text2.setText(String.format("%.2f", expenseList.get(position).getAmount()));
 
                     return view;
                 }
             };
 
-            final ListView listView = (ListView)findViewById(R.id.listWishes);
+            final ListView listView = (ListView)findViewById(R.id.expenses);
             listView.setAdapter(itemArrayAdapter);
 
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Button updateButton = (Button)findViewById(R.id.buttonItemUpdate);
-                    Button deleteButton = (Button)findViewById(R.id.buttonItemDelete);
+                    Button updateButton = (Button)findViewById(R.id.buttonExpenseUpdate);
+                    Button deleteButton = (Button)findViewById(R.id.buttonExpenseDelete);
 
-                    if (position == selectedItemPosition) {
+                    if (position == selectedExpensePosition) {
                         listView.setItemChecked(position, false);
                         updateButton.setEnabled(false);
                         deleteButton.setEnabled(false);
-                        selectedItemPosition = -1;
+                        selectedExpensePosition = -1;
                     } else {
                         listView.setItemChecked(position, true);
                         updateButton.setEnabled(true);
                         deleteButton.setEnabled(true);
-                        selectedItemPosition = position;
+                        selectedExpensePosition = position;
                         selectItemAtPosition(position);
                     }
                 }
             });
 
             //TextView viewTotal = (TextView)findViewById(R.id.viewTotal);
-            viewTotal = (TextView)findViewById(R.id.viewTotal);
+            viewTotal = (TextView)findViewById(R.id.viewExpenseTotal);
             //Fix Total Display
             //viewTotal.setText(accessWishListItems.getTotal());
-            viewTotal.setText(totalPrice.expenseTotal(itemList));
+            viewTotal.setText(totalPrice.expenseTotal(expenseList));
         }
     }
 
@@ -96,30 +95,30 @@ public class ExpenseActivity extends Activity {
     {
         Expense selected = itemArrayAdapter.getItem(position);
 
-        EditText editName = (EditText)findViewById(R.id.editItemName);
-        EditText editPrice = (EditText)findViewById(R.id.editPrice);
+        EditText editName = (EditText)findViewById(R.id.editExpenseName);
+        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
 
         editName.setText(selected.getName());
         editPrice.setText(String.valueOf(selected.getAmount()));
     }
 
-    public void buttonItemAddOnClick(View v)
+    public void buttonExpenseAddOnClick(View v)
     {
-        Expense item = createItemFromEditText();
+        Expense item = createExpenseFromEditText();
         String result;
 
-        result = validateItemData(item, true);
+        result = validateExpenseData(item, true);
         if (result == null)
         {
             result = accessExpenses.addExpense(item);
             if (result == null)
             {
-                accessExpenses.getExpenses(itemList);
+                accessExpenses.getExpenses(expenseList);
                 itemArrayAdapter.notifyDataSetChanged();
-                int pos = itemList.indexOf(item);
+                int pos = expenseList.indexOf(item);
                 if (pos >= 0)
                 {
-                    ListView listView = (ListView) findViewById(R.id.listWishes);
+                    ListView listView = (ListView) findViewById(R.id.expenses);
                     listView.setSelection(pos);
                 }
             }
@@ -133,51 +132,51 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewTotal.setText(totalPrice.expenseTotal(itemList));
+        viewTotal.setText(totalPrice.expenseTotal(expenseList));
     }
 
-    public void buttonItemDeleteOnClick(View v)
+    public void buttonExpenseDeleteOnClick(View v)
     {
-        Expense item = createItemFromEditText();
+        Expense item = createExpenseFromEditText();
         String result;
 
         result = accessExpenses.deleteExpense(item);
 
         if(result == null)
         {
-            int pos = itemList.indexOf(item);
+            int pos = expenseList.indexOf(item);
             if(pos >=0)
             {
-                ListView listView = (ListView) findViewById(R.id.listWishes);
+                ListView listView = (ListView) findViewById(R.id.expenses);
                 listView.setSelection(pos);
             }
-            accessExpenses.getExpenses(itemList);
+            accessExpenses.getExpenses(expenseList);
             itemArrayAdapter.notifyDataSetChanged();
         }
         else
         {
             Messages.warning(this, result);
         }
-        viewTotal.setText(totalPrice.expenseTotal(itemList));
+        viewTotal.setText(totalPrice.expenseTotal(expenseList));
     }
 
-    public void buttonItemUpdateOnClick(View v)
+    public void buttonExpenseUpdateOnClick(View v)
     {
-        Expense item = createItemFromEditText();
+        Expense item = createExpenseFromEditText();
         String result;
 
-        result = validateItemData(item, false);
+        result = validateExpenseData(item, false);
         if(result == null)
         {
             result = accessExpenses.updateExpense(item);
             if(result == null)
             {
-                accessExpenses.getExpenses(itemList);
+                accessExpenses.getExpenses(expenseList);
                 itemArrayAdapter.notifyDataSetChanged();
-                int pos = itemList.indexOf(item);
+                int pos = expenseList.indexOf(item);
                 if(pos >= 0)
                 {
-                    ListView listView = (ListView) findViewById(R.id.listWishes);
+                    ListView listView = (ListView) findViewById(R.id.expenses);
                     listView.setSelection(pos);
                 }
             }
@@ -190,13 +189,14 @@ public class ExpenseActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
-        viewTotal.setText(totalPrice.expenseTotal(itemList));
+        viewTotal.setText(totalPrice.expenseTotal(expenseList));
     }
 
-    private Expense createItemFromEditText()
+    private Expense createExpenseFromEditText()
     {
-        EditText editItemName = (EditText) findViewById(R.id.editItemName);
-        EditText editPrice = (EditText) findViewById(R.id.editPrice);
+        Double price = 0.0;
+        EditText editItemName = (EditText) findViewById(R.id.editExpenseName);
+        EditText editPrice = (EditText) findViewById(R.id.editExpenseAmount);
         String itemName = editItemName.getText().toString();
         String priceString = editPrice.getText().toString();
 
@@ -206,24 +206,29 @@ public class ExpenseActivity extends Activity {
         }
 
         if(priceString.length() == 0){
-            priceString = "0";
+            priceString = "0.00";
         }
 
-        Double price = Double.parseDouble(priceString);
+
+
+        price = Double.parseDouble(priceString);
 
         Expense item = new Expense(itemName, price);
 
         return item;
     }
 
-    private String validateItemData(Expense item, boolean isNewItem)
+    private String validateExpenseData(Expense item, boolean isNewItem)
     {
+
         if (item.getName().length() == 0)
         {
             return "Item Name required!";
         }
 
-        if (isNewItem && accessExpenses.getRandom(item.getName()) != null)
+
+
+        if ((isNewItem) && (accessExpenses.getRandom(item.getName()) != null))
         {
             return "Item " + item.getName() + " already exists";
         }

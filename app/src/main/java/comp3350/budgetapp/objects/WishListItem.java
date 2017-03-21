@@ -56,6 +56,10 @@ public class WishListItem
         this.price = this.price * (1-(discount*0.01));
     }
 
+    public int getDiscount() {
+        return discount;
+    }
+
     public int getPriority()
     {
         return priority;

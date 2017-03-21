@@ -17,7 +17,7 @@ public interface DataAccess
 
 	ArrayList<WishListItem> getWishListItemRandom(WishListItem WishListItem);
 
-	String insertWishListItem(WishListItem WishListItem);
+	String addWishListItem(WishListItem WishListItem);
 
 	String updateWishListItem(WishListItem WishListItem);
 
@@ -27,7 +27,7 @@ public interface DataAccess
 
 	ArrayList<IncomeSource> getIncomeSourceRandom(IncomeSource IncomeSource);
 
-	String insertIncomeSource(IncomeSource IncomeSource);
+	String addIncomeSource(IncomeSource IncomeSource);
 
 	String updateIncomeSource(IncomeSource IncomeSource);
 
@@ -37,7 +37,7 @@ public interface DataAccess
 
 	ArrayList<Expense> getExpenseRandom(Expense Expense);
 
-	String insertExpense(Expense Expense);
+	String addExpense(Expense Expense);
 
 	String updateExpense(Expense Expense);
 

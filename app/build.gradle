@@ -26,5 +26,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.2.0'
     testCompile 'junit:junit:4.12'
-    compile files('src/main/java/comp3350/budgetapp/persistence/hsqldb.jar')
+    //compile files('src/main/java/comp3350/budgetapp/persistence/hsqldb.jar')
+    compile files('libs/hsqldb.jar')
 }

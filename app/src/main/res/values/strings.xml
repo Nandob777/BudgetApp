@@ -13,6 +13,7 @@
     <string name="button_delete">Delete</string>
     <string name="button_update">Update</string>
 
+
     <string name="fatalError">Fatal error</string>
     <string name="warning">Warning</string>
 </resources>

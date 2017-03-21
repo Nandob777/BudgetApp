@@ -4,8 +4,8 @@ import comp3350.budgetapp.presentation.CLI;
 
 public class Main
 {
-    public static final String dbName = "Budget";
-    private static String dbPathName = "database/Budget";
+    public static final String dbName = "BUDGET";
+    private static String dbPathName = "database/BUDGET";
 
     public static void main(String[] args)
     {

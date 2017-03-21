@@ -8,7 +8,7 @@ import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.objects.WishListItem;
 
-public class DataAccessStub
+public class DataAccessStub implements DataAccess
 {
     private String dbName;
     private String dbType = "stub";

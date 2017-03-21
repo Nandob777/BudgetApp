@@ -1,5 +1,6 @@
 package comp3350.budgetapp.application;
 
+import comp3350.budgetapp.persistence.DataAccessFactory;
 import comp3350.budgetapp.persistence.DataAccessObject;
 import comp3350.budgetapp.persistence.DataAccessStub;
 import comp3350.budgetapp.persistence.DataAccess;
@@ -12,7 +13,7 @@ public class Services
     {
         if (dataAccessService == null)
         {
-            dataAccessService = new DataAccessObject(dbName);
+            dataAccessService = DataAccessFactory.getDataAccess(dbName, true);
             dataAccessService.open(Main.getDBPathName());
         }
         return dataAccessService;

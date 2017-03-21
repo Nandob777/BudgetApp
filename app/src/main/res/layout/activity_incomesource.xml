@@ -84,7 +84,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="Cost Per Month"
+            android:text="Amount Per Month"
             android:id="@+id/textIncomeAmount"
             android:layout_marginBottom="64dp" />
 

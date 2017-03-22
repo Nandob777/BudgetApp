@@ -442,9 +442,9 @@ public class DataAccessObject implements DataAccess
         result = null;
         try
         {
-            values = "'"+currentExpense.getName()
-                    +"'," +currentExpense.getAmount();
-            cmdString = "INSERT INTO EXPENSES " +" Values(" +values +")";
+            values = currentExpense.getName()
+                    +", '" +currentExpense.getAmount();
+            cmdString = "Insert into Expenses " +" Values(" +values +")";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
             result = checkWarning(st1, updateCount);

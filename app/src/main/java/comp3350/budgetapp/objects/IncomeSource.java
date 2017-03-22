@@ -1,32 +1,38 @@
 package comp3350.budgetapp.objects;
 
+import java.util.Locale;
+
 public class IncomeSource extends FinancialObjects
 {
     private String type = "";
     private int frequency;
+    private final String DEFAULT_TYPE = "misc";
+    private final int DEFAULT_FREQ = 1;
 
+    private final String TYPE_MONTHLY = "monthly";
+    private final String TYPE_BWEEKLY = "bi-weekly";
+    private final String TYPE_WEEKLY = "weekly";
+
+    private final int FREQ_MONTHLY = 1;
+    private final int FREQ_BWEEKLY = 2;
+    private final int FREQ_WEEKLY = 4;
 
     public IncomeSource (String name)
     {
-        this.name = name;
-        this.amount = 0.00;
-        this.type = "Misc";
-        this.frequency = 1;
+        super(name,0.0);
+        setType(DEFAULT_TYPE);
     }
 
     public IncomeSource (String name, double amount)
     {
-        this.name = name;
-        this.amount = amount;
-        this.type = "Misc";
-        this.frequency = 1;
+        super(name,amount);
+        setType(DEFAULT_TYPE);
     }
 
-    public IncomeSource (String name, int amount, String type)
+    public IncomeSource (String name, double amount, String type)
     {
-        this.name = name;
-        this.amount = amount;
-        this.type = type;
+        super(name,amount);
+        setType(type);
     }
 
     public double getAmount() {
@@ -41,20 +47,42 @@ public class IncomeSource extends FinancialObjects
         return type;
     }
 
-    public void setType(String type) {
-        this.type = type;
-        if(type.equals("monthly")){this.frequency = 1;}
-        if(type.equals("bi-weekly")){this.frequency = 2;}
-        if(type.equals("weekly")){this.frequency = 4;}
+    public int getFrequency()
+    {
+        return frequency;
     }
 
+    public void setType(String type) {
+        /*type is the string shown in the app, frequency is how income amount is calculated
+         * frequency should not be allowed to change independently --> can only change when
+         * type is changed */
+
+        this.type = type;
+        if(type.equalsIgnoreCase(TYPE_MONTHLY)){this.frequency = FREQ_MONTHLY;}
+        else if(type.equalsIgnoreCase(TYPE_BWEEKLY)){this.frequency = FREQ_BWEEKLY;}
+        else if(type.equalsIgnoreCase(TYPE_WEEKLY)){this.frequency = FREQ_WEEKLY;}
+        else{ this.frequency = DEFAULT_FREQ;}
+    }
+
+    @Override
     public String toString()
     {
-        return "Income Source Name: " +this.name +"With Amount " +amount;
+        return String.format(Locale.getDefault(), "Income Source Name: %s, Amount: $%.2f, Type: %s, Frequency: %d",
+                getSourceName(), getAmount(), type, frequency);
     }
 
-    public void setFrequency(int frequency)
+    @Override
+    public boolean equals(Object object)
     {
-        this.frequency = frequency;
+        boolean result;
+
+        result = false;
+
+        if (object instanceof IncomeSource && super.equals(object))
+        {
+            result = true;
+        }
+        return result;
     }
+
 }

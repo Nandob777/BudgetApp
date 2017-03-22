@@ -1,8 +1,6 @@
 package comp3350.budgetapp.objects;
 
-/**
- * Created by mardelmaduro on 2017-03-03.
- */
+import java.util.Locale;
 
 public class FinancialObjects {
     protected String name = "";
@@ -38,14 +36,18 @@ public class FinancialObjects {
         this.name = name;
     }
 
+    public String toString() {
+        return String.format(Locale.getDefault(),"%s : $%.2f", name, amount);
+    }
 
-    public boolean equals(Object object) {
+    public boolean equals(Object object)
+    {
         boolean result;
         FinancialObjects obj;
 
         result = false;
 
-        if (object instanceof WishListItem)
+        if (object instanceof FinancialObjects)
         {
             obj = (FinancialObjects) object;
             if( ((obj.name == null) && (name == null)) || (obj.name.equals(name)) )
@@ -54,10 +56,6 @@ public class FinancialObjects {
             }
         }
         return result;
-    }
-
-    public String toString() {
-        return name+" : "+amount;
     }
 }
 

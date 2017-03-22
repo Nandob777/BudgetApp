@@ -2,58 +2,52 @@ package comp3350.budgetapp.objects;
 
 import java.util.Locale;
 
-public class WishListItem
+public class WishListItem extends FinancialObjects
 {
-    private String itemName;
-    private double price;
     private int priority;
     private int discount;
 
     public WishListItem(String itemName)
     {
-        this.itemName = itemName;
-        this.price = 0.0;
+        super(itemName,0.0);
         this.priority = 0;
         this.discount = 0;
     }
 
     public WishListItem(String itemName , double price)
     {
-        this.itemName = itemName;
-        this.price = price;
+        super(itemName,price);
         this.priority = 0;
         this.discount = 0;
-
     }
 
     public WishListItem(String itemName , double price ,int discount)
     {
-        this.itemName = itemName;
-        this.price = price * (1-(discount*0.01));
+        super(itemName,price);
         this.priority = 0;
         this.discount = discount;
+        setPrice(super.getAmount());
     }
 
     public String getItemName()
     {
-        return itemName;
+        return super.getName();
     }
 
     public double getPrice()
     {
-
-        return price;
+        return super.getAmount();
     }
 
     public void setPrice(double price)
     {
-        this.price = price * (1-(discount*0.01));
+        super.setAmount( price * (1-((this.discount)*0.01)) );
     }
 
     public void setDiscount(int discount)
     {
         this.discount = discount;
-        this.price = this.price * (1-(discount*0.01));
+        setPrice(super.getAmount());
     }
 
     public int getDiscount() {
@@ -70,25 +64,21 @@ public class WishListItem
         this.priority = priority;
     }
 
+    @Override
     public String toString()
     {
-        return String.format(Locale.getDefault(), "Item Name: %s, Current Price with %d%% discount: $%.2f", itemName, discount, price);
+        return String.format(Locale.getDefault(), "Item Name: %s, Current Price with %d%% discount: $%.2f", getItemName(), discount, getAmount());
     }
 
+    @Override
     public boolean equals(Object object)
     {
         boolean result;
-        WishListItem item;
 
         result = false;
 
-        if (object instanceof WishListItem)
-        {
-            item = (WishListItem) object;
-            if( ((item.itemName == null) && (itemName == null)) || (item.itemName.equals(itemName)) )
-            {
-                result = true;
-            }
+        if (object instanceof WishListItem && super.equals(object)) {
+            result = true;
         }
         return result;
     }

@@ -22,6 +22,7 @@ import comp3350.budgetapp.business.AccessWishListItems;
 public class WishlistActivity extends Activity {
 
     private Calculate totalPrice;
+    static String total = "Updates on opening Wish List";
     private AccessWishListItems accessWishListItems;
     private ArrayList<WishListItem> itemList;
     private ArrayAdapter<WishListItem> itemArrayAdapter;
@@ -89,6 +90,7 @@ public class WishlistActivity extends Activity {
             //Fix Total Display
             //viewTotal.setText(accessWishListItems.getTotal());
             viewTotal.setText(totalPrice.wishlistTotal(itemList));
+            total = totalPrice.wishlistTotal(itemList);
         }
     }
 
@@ -134,6 +136,7 @@ public class WishlistActivity extends Activity {
         }
 
         viewTotal.setText(totalPrice.wishlistTotal(itemList));
+        total = totalPrice.wishlistTotal(itemList);
     }
 
     public void buttonItemDeleteOnClick(View v)
@@ -159,6 +162,7 @@ public class WishlistActivity extends Activity {
             Messages.warning(this, result);
         }
         viewTotal.setText(totalPrice.wishlistTotal(itemList));
+        total = totalPrice.wishlistTotal(itemList);
     }
 
     public void buttonItemUpdateOnClick(View v)
@@ -191,6 +195,7 @@ public class WishlistActivity extends Activity {
             Messages.fatalError(this, result);
         }
         viewTotal.setText(totalPrice.wishlistTotal(itemList));
+        total = totalPrice.wishlistTotal(itemList);
     }
 
     private WishListItem createItemFromEditText()
@@ -230,6 +235,7 @@ public class WishlistActivity extends Activity {
 
         return null;
     }
+
 }
 
 

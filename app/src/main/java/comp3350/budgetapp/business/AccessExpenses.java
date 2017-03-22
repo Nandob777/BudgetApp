@@ -12,7 +12,6 @@ public class AccessExpenses
     private DataAccess dataAccess;
     private List<Expense> expenses;
     private Expense expense;
-    private Calculate cal;
 
     private String total;
     private int currentItem;
@@ -23,7 +22,6 @@ public class AccessExpenses
         expenses = null;
         expense = null;
         currentItem = 0;
-        cal = new Calculate();
     }
 
     public String getExpenses(List<Expense> expenses)
@@ -91,7 +89,7 @@ public class AccessExpenses
 
     public String getTotal()
     {
-        return cal.expenseTotal(expenses);
+        return Calculate.expenseTotal(expenses);
     }
 
 }

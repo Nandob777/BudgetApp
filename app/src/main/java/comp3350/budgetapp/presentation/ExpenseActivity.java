@@ -21,6 +21,7 @@ import comp3350.budgetapp.business.AccessExpenses;
 public class ExpenseActivity extends Activity {
 
     private Calculate totalPrice;
+    static String total = "Updates on opening Expenses";
     private AccessExpenses accessExpenses;
     private ArrayList<Expense> expenseList;
     private ArrayAdapter<Expense> itemArrayAdapter;
@@ -88,6 +89,7 @@ public class ExpenseActivity extends Activity {
             //Fix Total Display
             //viewTotal.setText(accessWishListItems.getTotal());
             viewTotal.setText(totalPrice.expenseTotal(expenseList));
+            total = totalPrice.expenseTotal(expenseList);
         }
     }
 
@@ -133,6 +135,7 @@ public class ExpenseActivity extends Activity {
         }
 
         viewTotal.setText(totalPrice.expenseTotal(expenseList));
+        total = totalPrice.expenseTotal(expenseList);
     }
 
     public void buttonExpenseDeleteOnClick(View v)
@@ -158,6 +161,7 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
         viewTotal.setText(totalPrice.expenseTotal(expenseList));
+        total = totalPrice.expenseTotal(expenseList);
     }
 
     public void buttonExpenseUpdateOnClick(View v)
@@ -190,6 +194,7 @@ public class ExpenseActivity extends Activity {
             Messages.fatalError(this, result);
         }
         viewTotal.setText(totalPrice.expenseTotal(expenseList));
+        total = totalPrice.expenseTotal(expenseList);
     }
 
     private Expense createExpenseFromEditText()

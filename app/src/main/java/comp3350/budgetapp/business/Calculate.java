@@ -8,9 +8,13 @@ import comp3350.budgetapp.objects.WishListItem;
 
 public class Calculate {
 
+    static String wishlistTotal;
+    static String incomeTotal;
+    static String expenseTotal;
+
     public static String wishlistTotal(List<WishListItem> elements)
     {
-        String wishlistTotal;
+
         String invalidTotal;
         WishListItem element;
         boolean found;
@@ -69,7 +73,7 @@ public class Calculate {
 
     public static String incomeTotal(List<IncomeSource> elements)
     {
-        String incomeTotal;
+       // String incomeTotal;
         String invalidTotal;
         IncomeSource element;
         boolean found;
@@ -129,7 +133,7 @@ public class Calculate {
 
     public static String expenseTotal(List<Expense> elements)
     {
-        String expenseTotal;
+       // String expenseTotal;
         String invalidTotal;
         Expense element;
         boolean found;

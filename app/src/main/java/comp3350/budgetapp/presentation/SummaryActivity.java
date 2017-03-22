@@ -19,6 +19,7 @@ import comp3350.budgetapp.business.AccessWishListItems;
 import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.business.AccessExpenses;
+import comp3350.budgetapp.objects.WishListItem;
 
 public class SummaryActivity extends Activity{
 
@@ -29,6 +30,12 @@ public class SummaryActivity extends Activity{
     private AccessExpenses accessExpenses;
     private AccessWishListItems accessWishList;
     private AccessIncomeSource accessIncome;
+    private Calculate totalPrice;
+
+
+    private ArrayList<WishListItem> itemList;
+    private WishListItem currentItem;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,14 +46,19 @@ public class SummaryActivity extends Activity{
         accessWishList = new AccessWishListItems();
         accessIncome = new AccessIncomeSource();
 
+
+
         viewExpenses = (TextView)findViewById(R.id.viewExpenseTotal);
-        viewExpenses.setText(accessExpenses.getTotal());
+        //viewExpenses.setText(accessExpenses.getTotal());
+        viewExpenses.setText(ExpenseActivity.total);
 
         viewWishTotal = (TextView)findViewById(R.id.viewTotal);
-        viewWishTotal.setText(accessWishList.getTotal());
+        //viewWishTotal.setText(accessWishList.getTotal());
+        viewWishTotal.setText(WishlistActivity.total);
 
         viewIncome = (TextView)findViewById(R.id.viewIncomeTotal);
-        viewIncome.setText(accessIncome.getTotal());
+        //viewIncome.setText(accessIncome.getTotal());
+        viewIncome.setText(IncomeActivity.total);
     }
 
 }

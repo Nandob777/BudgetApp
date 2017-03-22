@@ -22,6 +22,7 @@ import comp3350.budgetapp.business.AccessIncomeSource;
 public class IncomeActivity extends Activity {
 
     private Calculate totalPrice;
+    static String total = "Updates on opening Income Source";
     private AccessIncomeSource accessIncomeSources;
     private ArrayList<IncomeSource> incomeList;
     private ArrayAdapter<IncomeSource> itemArrayAdapter;
@@ -89,6 +90,7 @@ public class IncomeActivity extends Activity {
             //Fix Total Display
             //viewIncomeTotal.setText(accessIncomeSources.getTotal());
             viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
+            total = totalPrice.incomeTotal(incomeList);
         }
     }
 
@@ -134,6 +136,7 @@ public class IncomeActivity extends Activity {
         }
 
         viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
+        total = totalPrice.incomeTotal(incomeList);
     }
 
     public void buttonIncomeDeleteOnClick(View v)
@@ -159,6 +162,7 @@ public class IncomeActivity extends Activity {
             Messages.warning(this, result);
         }
         viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
+        total = totalPrice.incomeTotal(incomeList);
     }
 
     public void buttonIncomeUpdateOnClick(View v)
@@ -191,6 +195,7 @@ public class IncomeActivity extends Activity {
             Messages.fatalError(this, result);
         }
         viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
+        total = totalPrice.incomeTotal(incomeList);
     }
 
     private IncomeSource createIncomeFromEditText()

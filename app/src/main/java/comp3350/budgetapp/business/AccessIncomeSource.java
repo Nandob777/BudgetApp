@@ -12,7 +12,6 @@ public class AccessIncomeSource
     private DataAccess dataAccess;
     private List<IncomeSource> Incomes;
     private IncomeSource IncomeSource;
-    private Calculate cal;
 
     private String total;
     private int currentItem;
@@ -23,7 +22,6 @@ public class AccessIncomeSource
         Incomes = null;
         IncomeSource = null;
         currentItem = 0;
-        cal = new Calculate();
     }
 
     public String getIncomeSources(List<IncomeSource> Incomes)
@@ -91,7 +89,7 @@ public class AccessIncomeSource
 
     public String getTotal()
     {
-        return cal.incomeTotal(Incomes);
+        return Calculate.incomeTotal(Incomes);
     }
 
 }

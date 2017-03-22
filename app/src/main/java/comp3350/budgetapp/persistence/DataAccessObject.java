@@ -48,15 +48,11 @@ public class DataAccessObject implements DataAccess
 			// Setup for HSQL
 			dbType = "HSQL";
 			Class.forName("org.hsqldb.jdbcDriver").newInstance();
-			url = "jdbc:hsqldb:file:" + dbPath +";hsqldb.write_delay=false"; // stored on disk mode
-			c1 = DriverManager.getConnection(url, "SA", "");
+			url = "jdbc:hsqldb:file:" + dbPath; // stored on disk mode
+			c1 = DriverManager.getConnection(url,"SA","");
 			st1 = c1.createStatement();
 			st2 = c1.createStatement();
 			st3 = c1.createStatement();
-
-			WishListItems = new ArrayList<WishListItem>();
-			IncomeSources = new ArrayList<>(IncomeSources);
-			Expenses = new ArrayList<Expense>();
 
 			/*** Alternate setups for different DB engines, just given as examples. Don't use them. ***/
 			
@@ -104,7 +100,7 @@ public class DataAccessObject implements DataAccess
 	{
 		try
 		{	// commit all changes to the database
-			cmdString = "shutdown compact";
+			cmdString = "SHUTDOWN COMPACT";
 			rs2 = st1.executeQuery(cmdString);
 			c1.close();
 		}

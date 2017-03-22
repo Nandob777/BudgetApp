@@ -12,7 +12,6 @@ public class AccessWishListItems
     private DataAccess dataAccess;
     private List<WishListItem> wishList;
     private WishListItem wishListItem;
-    private Calculate cal;
 
     private String total;
     private int currentItem;
@@ -23,7 +22,6 @@ public class AccessWishListItems
         wishList = null;
         wishListItem = null;
         currentItem = 0;
-        cal = new Calculate();
     }
 
     public String getWishListItems(List<WishListItem> wishList)
@@ -91,7 +89,7 @@ public class AccessWishListItems
 
     public String getTotal()
     {
-        return cal.wishlistTotal(wishList);
+        return Calculate.wishlistTotal(this.wishList);
     }
 
 }

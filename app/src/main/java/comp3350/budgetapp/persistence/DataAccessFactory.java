@@ -7,6 +7,6 @@ public class DataAccessFactory {
     }
 
     public static DataAccess getDataAccess(String dbName, boolean useless){
-        return new DataAccessStub(dbName);
+        return new DataAccessObject(dbName);
     }
 }

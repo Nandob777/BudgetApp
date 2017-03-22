@@ -19,7 +19,7 @@ public class AllTests extends TestSuite
         testObjects();
         testBusiness();
         testPersistence();
-        //main.shutDown();
+        main.shutDown();
         return suite;
 
     }

@@ -17,8 +17,6 @@ public class AccessWishListItemsTest extends TestCase
     private AccessWishListItems accessItems;
     private String result;
 
-
-
     public void testNullList()
     {
         list = null;

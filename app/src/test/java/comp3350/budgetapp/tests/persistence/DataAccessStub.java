@@ -1,4 +1,4 @@
-package comp3350.budgetapp.persistence;
+package comp3350.budgetapp.tests.persistence;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.objects.WishListItem;
+import comp3350.budgetapp.persistence.DataAccess;
 
 public class DataAccessStub implements DataAccess
 {
@@ -16,7 +17,6 @@ public class DataAccessStub implements DataAccess
     private ArrayList<WishListItem> wishList;
     private ArrayList<IncomeSource> incomes;
     private ArrayList<Expense> expenses;
-
 
     public DataAccessStub(String dbName)
     {
@@ -47,7 +47,6 @@ public class DataAccessStub implements DataAccess
         wishListItem = new WishListItem("ChromeCast", 35.00);
         wishList.add(wishListItem);
 
-
         expense = new Expense("Rent",500.00);
         expenses.add(expense);
         expense = new Expense("Internet",120.00);
@@ -68,6 +67,7 @@ public class DataAccessStub implements DataAccess
 
     public String getWishListItemSequential(List<WishListItem> wishListItemsResult)
     {
+        wishListItemsResult.clear();
         wishListItemsResult.addAll(wishList);
         return null;
     }
@@ -117,6 +117,7 @@ public class DataAccessStub implements DataAccess
     }
     public String getIncomeSourceSequential(List<IncomeSource> incomeItemsResult)
     {
+        incomeItemsResult.clear();
         incomeItemsResult.addAll(incomes);
         return null;
     }
@@ -181,6 +182,7 @@ public class DataAccessStub implements DataAccess
 
     public String getExpenseSequential(List<Expense> expenseItemsResult)
     {
+        expenseItemsResult.clear();
         expenseItemsResult.addAll(expenses);
         return null;
     }

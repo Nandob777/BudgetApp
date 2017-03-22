@@ -1,0 +1,71 @@
+People                          Date (MM/DD)             Description                                            Other Notes                                                 Total Time
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+All                             01/27                   Discussed app ideas, ultimately                                                                                     50mins
+                                                        settled on a personal budgeting app
+
+All                             02/01                   Revised and finalized Iteration 0 hand-in                                                                           50mins
+                                                        material (vision statement, big user stories,
+                                                        detailed user stories)
+
+Wynand, Neil, Tina              02/03                   Discussed Iteration 1 requirements,                     Currently unable to connect to repository                   50mins
+                                                        created repository, discussed development of            (/home/student/badenhow/groupB/budgetAppRepo)
+                                                        high priority stories                                   --> access is denied
+
+Wynand, Hui                     02/03                   Updated Hui on missed meeting                                                                                       50mins
+
+All                             02/06                   Created working repository, downloaded                  Working repository:                                         50mins
+                                                        Android Studio, got sample project to work              (/home/student/marzonr/groupB/repo)
+
+Mardel, Hui, Tina, Wynand       02/08                   Decided on using sample project as foundation           Waiting to divide tasks when all members                    30mins
+                                                        for app, creating wishlist object as priority           are present
+                                                        (add & remove wishlist --> edit wishlist can
+                                                        be done through add & remove for now), split
+                                                        up work (implement add/remove, stub db, testing,
+                                                        display wishlist to user, setting up the
+                                                        framework, main objects)
+
+Neil, Tina, Mardel, Wynand      02/10                   Split up developer tasks for each group member,         Tasks found on it1_notes, deadlines are:                    25mins
+                                                        created deadlines for tasks                             Feb. 15 -> be ready to start, Feb. 22 -> be ready
+                                                                                                                to tweak code and have it ready for it1 hand-in
+
+Wynand                          02/27                   uploaded stub database code to slack (android                                                                       1.5hrs
+                                                        studio not interfacing properly with svn)
+
+Hui                             02/26                   set up framework                                    based off sample                                                6hrs
+
+Mardel                          02/26                   created domain objects                                                                                              4hrs
+
+Hui, Mardel                     02/27                   created accesswishlist                                                                                              12hrs
+
+Hui                             02/28                   fixed database, add/remove/update functions,        database now works similar to sample project                    6hrs
+                                                        added messages and CLI files
+
+Mardel, Wynand                  02/28                   fixed add/remove/update functions, added
+                                                        service file                                                                                                        4hrs
+
+Tina                            02/28                   created test files                                                                                                  6hrs
+
+Neil                            02/28                   created business tests                                                                                              5hrs
+
+Tina                            03/01                   created and edited hand in files                                                                                    2hrs
+
+Mardel, Tina, Neil, Wynand      03/01                   Looking for and fixing last minute errors
+                                                        and preparing the code for hand-in                                                                                  5hrs
+
+Mardel, Tina, Neil, Wynand      03/03                   Decided on developer tasks to work on for           all developer tasks found on it_2.doc                           50 mins
+                                                        iteration 2, split up tasks, and discussed
+                                                        bugs/errors found on iteration 1 project
+
+Tina                            03/13                   Created hand-in files                                                                                               15 mins
+
+All                             03/17                   Went over the Iteration 1 marks and goals for
+                                                        future for Iterations                                                                                               1hr
+
+Neil                            03/18                   WishListItem: changed toString() & discount                                                                         3hrs
+                                                        calculations; Completely changed testing and
+                                                        more thorough testing
+
+Mardel                          03/18                   Added the rest of the domain objects, along         Got the system up to where it should                            4hrs
+                                                        with their accessObjects and activities             have been for iteration1
+
+Tina                            03/21                   Finished object tests                                                                                               4hrs

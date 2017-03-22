@@ -108,6 +108,12 @@ public class IncomeActivity extends Activity {
     public void buttonIncomeAddOnClick(View v)
     {
         IncomeSource item = createIncomeFromEditText();
+
+        if(incomeList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = validateIncomeData(item, true);
@@ -142,6 +148,12 @@ public class IncomeActivity extends Activity {
     public void buttonIncomeDeleteOnClick(View v)
     {
         IncomeSource item = createIncomeFromEditText();
+
+        if(!incomeList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = accessIncomeSources.deleteIncomeSource(item);
@@ -168,6 +180,12 @@ public class IncomeActivity extends Activity {
     public void buttonIncomeUpdateOnClick(View v)
     {
         IncomeSource item = createIncomeFromEditText();
+
+        if(!incomeList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = validateIncomeData(item, false);

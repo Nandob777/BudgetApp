@@ -107,6 +107,12 @@ public class ExpenseActivity extends Activity {
     public void buttonExpenseAddOnClick(View v)
     {
         Expense item = createExpenseFromEditText();
+
+        if(expenseList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = validateExpenseData(item, true);
@@ -141,6 +147,12 @@ public class ExpenseActivity extends Activity {
     public void buttonExpenseDeleteOnClick(View v)
     {
         Expense item = createExpenseFromEditText();
+
+        if(!expenseList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = accessExpenses.deleteExpense(item);
@@ -167,13 +179,20 @@ public class ExpenseActivity extends Activity {
     public void buttonExpenseUpdateOnClick(View v)
     {
         Expense item = createExpenseFromEditText();
+
+        if(!expenseList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = validateExpenseData(item, false);
+
         if(result == null)
         {
             result = accessExpenses.updateExpense(item);
-            if(result == null)
+            if(result == null )
             {
                 accessExpenses.getExpenses(expenseList);
                 itemArrayAdapter.notifyDataSetChanged();

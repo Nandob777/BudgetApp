@@ -108,6 +108,12 @@ public class WishlistActivity extends Activity {
     public void buttonItemAddOnClick(View v)
     {
         WishListItem item = createItemFromEditText();
+
+        if(itemList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = validateItemData(item, true);
@@ -142,6 +148,12 @@ public class WishlistActivity extends Activity {
     public void buttonItemDeleteOnClick(View v)
     {
         WishListItem item = createItemFromEditText();
+
+        if(!itemList.contains(item))
+        {
+            return;
+        }
+
         String result;
 
         result = accessWishListItems.deleteWishListItem(item);
@@ -168,6 +180,14 @@ public class WishlistActivity extends Activity {
     public void buttonItemUpdateOnClick(View v)
     {
         WishListItem item = createItemFromEditText();
+
+        if(!itemList.contains(item))
+        {
+            return;
+        }
+
+
+
         String result;
 
         result = validateItemData(item, false);

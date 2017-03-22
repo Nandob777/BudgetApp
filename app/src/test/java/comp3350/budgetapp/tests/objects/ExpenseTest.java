@@ -6,7 +6,6 @@ import comp3350.budgetapp.objects.Expense;
 public class ExpenseTest extends TestCase
 {
     public static Expense exp1, exp2, exp3;
-    public static final double delta = 0.001;
 
     public void testExpenseNameOnly()
     {

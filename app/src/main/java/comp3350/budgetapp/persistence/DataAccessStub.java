@@ -133,7 +133,6 @@ public class DataAccessStub implements DataAccess
         {
             if(incomes.get(index).getName().equals(currentItem.getName()))
             {
-                // break;
                 newIncomes.add(incomes.get(index));
             }
 
@@ -151,30 +150,21 @@ public class DataAccessStub implements DataAccess
     {
         int index = 0;
 
-        //index = incomes.indexOf(currentItem);
-
         for(index=0;index<incomes.size();index++)
         {
             if(incomes.get(index).getName().equals(currentItem.getName()))
             {
-               // break;
                 incomes.set(index, currentItem);
             }
 
         }
 
-       // if (index >=0)
-        //{
-
-        //}
         return null;
     }
 
     public String deleteIncomeSource(IncomeSource currentItem)
     {
         int index = 0;
-
-        //index = incomes.indexOf(currentItem);
 
         for(index=0;index<incomes.size();index++)
         {
@@ -186,10 +176,6 @@ public class DataAccessStub implements DataAccess
 
         }
 
-        //if (index >=0)
-        //{
-
-        //}
         return null;
     }
 
@@ -211,16 +197,11 @@ public class DataAccessStub implements DataAccess
         {
             if(expenses.get(index).getName().equals(currentItem.getName()))
             {
-               // break;
                 newExpenses.add(expenses.get(index));
             }
 
         }
 
-       // if (index >= 0)
-        //{
-
-        //}
         return newExpenses;
     }
 
@@ -243,7 +224,6 @@ public class DataAccessStub implements DataAccess
 
         }
 
-        //index = expenses.indexOf(currentItem);
         if (index >=0)
         {
             expenses.set(index, currentItem);
@@ -254,8 +234,6 @@ public class DataAccessStub implements DataAccess
     public String deleteExpense(Expense currentItem)
     {
         int index = 0;
-
-        //index = expenses.indexOf(currentItem);
 
         for(index=0;index<expenses.size();index++)
         {

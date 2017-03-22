@@ -5,15 +5,11 @@ import java.util.List;
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
 import comp3350.budgetapp.objects.Expense;
-import comp3350.budgetapp.persistence.DataAccessObject;
-import comp3350.budgetapp.persistence.DataAccessStub;
 import comp3350.budgetapp.persistence.DataAccess;
-import comp3350.budgetapp.business.Calculate;
 
 public class AccessExpenses
 {
     private DataAccess dataAccess;
-    //private DataAccessStub dataAccess;
     private List<Expense> expenses;
     private Expense expense;
     private Calculate cal;
@@ -95,7 +91,6 @@ public class AccessExpenses
 
     public String getTotal()
     {
-        //System.out.println("TOTAL: " + Calculate.expensesTotal(expenses));
         return cal.expenseTotal(expenses);
     }
 

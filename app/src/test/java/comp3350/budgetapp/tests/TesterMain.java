@@ -1,14 +1,7 @@
 package comp3350.budgetapp.tests;
 
-/**
- * Created by mardelmaduro on 2017-03-01.
- */
 
 import comp3350.budgetapp.application.Services;
-import comp3350.budgetapp.presentation.CLI;
-
-
-import comp3350.budgetapp.presentation.CLI;
 
 public class TesterMain
 {

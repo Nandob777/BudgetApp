@@ -6,7 +6,6 @@ import comp3350.budgetapp.objects.IncomeSource;
 public class IncomeSourceTest extends TestCase
 {
     public static IncomeSource src1, src2, src3;
-    public static final double delta = 0.001;
 
     public void testIncomeSourceItemNameOnly()
     {
@@ -183,7 +182,6 @@ public class IncomeSourceTest extends TestCase
         src2 = new IncomeSource("Sales Associate",11.0);
         src3 = new IncomeSource("Sales Associate",11.50,"bi-weekly");
 
-       // assertTrue(src1.equals(src2));
         assertTrue(src2.equals(src3));
         assertTrue(src3.equals(src1));
 

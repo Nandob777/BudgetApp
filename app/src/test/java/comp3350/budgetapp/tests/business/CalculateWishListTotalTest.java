@@ -1,113 +1,111 @@
 package comp3350.budgetapp.tests.business;
 
 import junit.framework.TestCase;
-import org.junit.*;
 import java.util.ArrayList;
 import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.WishListItem;
 
 public class CalculateWishListTotalTest extends TestCase
 {
-    public static ArrayList <WishListItem> list;
-    WishListItem item;
-    String resultTotal;
-    double total;
+    private static ArrayList <WishListItem> list;
+    private WishListItem item;
 
-    @Before
-    public void testCreateWishList()
+    public void setUp()
     {
         list = new ArrayList <>();
     }
 
-    @Test
+
     public void testNullList()
     {
-        resultTotal = Calculate.wishlistTotal(null);
-        assertEquals("",resultTotal);
+        System.out.println("\nStarting testNullList");
+
+        assertEquals("", Calculate.wishlistTotal(null));
+
+        System.out.println("Finished testNullList");
     }
 
-    @Test
+
     public void testEmptyList()
     {
-        list = new ArrayList<>();
-        resultTotal = Calculate.wishlistTotal(list);
+        System.out.println("\nStarting testEmptyList");
 
         assertNotNull(list);
-        assertEquals(resultTotal,"");
+        assertEquals("", Calculate.wishlistTotal(list));
+
+        System.out.println("Finished testEmptyList");
     }
 
-    @Test
+
     public void testValidList()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testValidList");
+
         item = new WishListItem("iPhone", 500.0);
         list.add(item);
         item = new WishListItem("TV", 600.0);
         list.add(item);
         item = new WishListItem("Laptop", 2000.0);
         list.add(item);
-        resultTotal = Calculate.wishlistTotal(list);
 
-        assertNotNull(resultTotal);
-        assertTrue(resultTotal.equals("3100.00"));
+        assertEquals("3100.00", Calculate.wishlistTotal(list));
+
+        System.out.println("Finished testValidList");
     }
 
-    @Test
+
     public void testOneItem()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testOneItem");
 
         item = new WishListItem("iPhone", 500.0);
         list.add(item);
-        resultTotal = Calculate.wishlistTotal(list);
-        assertEquals(resultTotal,"500.00");
+        assertEquals("500.00", Calculate.wishlistTotal(list));
 
         item = new WishListItem("TV", 7000.0);
         list.set(0,item);
-        resultTotal = Calculate.wishlistTotal(list);
-        assertEquals(resultTotal,"7000.00");
+        assertEquals("7000.00", Calculate.wishlistTotal(list));
 
         item = new WishListItem("Laptop", 2000.0);
         list.set(0,item);
-        resultTotal = Calculate.wishlistTotal(list);
-        assertEquals(resultTotal,"2000.00");
+        assertEquals("2000.00", Calculate.wishlistTotal(list));
 
         item = new WishListItem("MP3 Player", 200.0);
         list.set(0,item);
-        resultTotal = Calculate.wishlistTotal(list);
-        assertEquals(resultTotal,"200.00");
+        assertEquals("200.00", Calculate.wishlistTotal(list));
 
         item = new WishListItem("Chromebook", 400.0);
         list.set(0,item);
-        resultTotal = Calculate.wishlistTotal(list);
-        assertEquals(resultTotal,"400.00");
+        assertEquals("400.00", Calculate.wishlistTotal(list));
 
         item = new WishListItem("Backpack", 100.0);
         list.set(0,item);
-        resultTotal = Calculate.wishlistTotal(list);
-        assertEquals(resultTotal,"100.00");
+        assertEquals("100.00", Calculate.wishlistTotal(list));
+
+        System.out.println("Finished testOneItem");
     }
 
-    @Test
+
     public void testOddList()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testOddList");
+
         item = new WishListItem("iPhone", 500.9999999);
         list.add(item);
         item = new WishListItem("TV", 600.9999999);
         list.add(item);
         item = new WishListItem("Laptop", 2000.9999999);
         list.add(item);
-        resultTotal = Calculate.wishlistTotal(list);
 
-        assertNotNull(resultTotal);
-        assertFalse(resultTotal.equals("3100.00"));
+        assertEquals("3103.00", Calculate.wishlistTotal(list));
+
+        System.out.println("Finished testOddList");
     }
 
-    @Test
+
     public void testBlankPrices()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testBlankPrices");
 
         item = new WishListItem("iPhone");
         list.add(item);
@@ -124,16 +122,15 @@ public class CalculateWishListTotalTest extends TestCase
         item = new WishListItem("Desk Chair");
         list.add(item);
 
-        resultTotal = Calculate.wishlistTotal(list);
+        assertEquals("", Calculate.wishlistTotal(list));
 
-        assertNotNull(resultTotal);
-        assertTrue(resultTotal.equals(""));
+        System.out.println("Finished testBlankPrices");
     }
 
-    @Test
+
     public void testSomeBlankPrices()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testSomeBlankPrices");
 
         item = new WishListItem("iPhone", 500.0);
         list.add(item);
@@ -150,16 +147,15 @@ public class CalculateWishListTotalTest extends TestCase
         item = new WishListItem("Desk Chair");
         list.add(item);
 
-        resultTotal = Calculate.wishlistTotal(list);
+        assertEquals("9500.00", Calculate.wishlistTotal(list));
 
-        assertNotNull(resultTotal);
-        assertTrue(resultTotal.equals("9500.00"));
+        System.out.println("Finished testSomeBlankPrices");
     }
 
-    @Test
+
     public void testMixedBlankPrices()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testMixedBlankPrices");
 
         item = new WishListItem("iPhone", 500.0);
         list.add(item);
@@ -176,31 +172,31 @@ public class CalculateWishListTotalTest extends TestCase
         item = new WishListItem("Laptop", 2000.0);
         list.add(item);
 
-        resultTotal = Calculate.wishlistTotal(list);
+        assertEquals("9500.00", Calculate.wishlistTotal(list));
 
-        assertNotNull(resultTotal);
-        assertTrue(resultTotal.equals("9500.00"));
+        System.out.println("Finished testMixedBlankPrices");
     }
 
-    @Test
+
     public void testNullItem()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testNullItem");
+
         item = new WishListItem("iPhone", 500.0);
         list.add(item);
         list.add(null);
         item = new WishListItem("Laptop", 2000.0);
         list.add(item);
 
-        resultTotal = Calculate.wishlistTotal(list);
+        assertEquals("?", Calculate.wishlistTotal(list));//invalid total
 
-        assertEquals("?",resultTotal);//invalid total
+        System.out.println("Finished testNullItem");
     }
 
-    @Test
+
     public void testNegativePrices()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testNegativePrices");
 
         item = new WishListItem("iPhone", -(500.0));
         list.add(item);
@@ -211,15 +207,15 @@ public class CalculateWishListTotalTest extends TestCase
         item = new WishListItem("Laptop", -(2000.0));
         list.add(item);
 
-        resultTotal = Calculate.wishlistTotal(list);
+        assertEquals("",Calculate.wishlistTotal(list));
 
-        assertEquals("",resultTotal);
+        System.out.println("Finished testNegativePrices");
     }
 
-    @Test
+
     public void testSomeNegativePrices()
     {
-        list = new ArrayList<>();
+        System.out.println("\nStarting testSomeNegativePrices");
 
         item = new WishListItem("iPhone", -(500.0));
         list.add(item);
@@ -230,8 +226,8 @@ public class CalculateWishListTotalTest extends TestCase
         item = new WishListItem("Laptop", -(2000.0));
         list.add(item);
 
-        resultTotal = Calculate.wishlistTotal(list);
+        assertEquals("7000.00",Calculate.wishlistTotal(list));
 
-        assertEquals("7000.00",resultTotal);
+        System.out.println("Finished testSomeNegativePrices");
     }
 }

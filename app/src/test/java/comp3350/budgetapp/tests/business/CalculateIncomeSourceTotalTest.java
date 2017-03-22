@@ -1,87 +1,81 @@
 package comp3350.budgetapp.tests.business;
 
 import junit.framework.TestCase;
-import org.junit.*;
 import java.util.ArrayList;
 import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.IncomeSource;
 
-public class CalculateIncomeSourceTotalTest extends TestCase
-{
-    public static ArrayList <IncomeSource> list;
-    IncomeSource item;
-    String resultTotal;
-    double total;
+public class CalculateIncomeSourceTotalTest extends TestCase {
+    private static ArrayList<IncomeSource> list;
+    private IncomeSource item;
 
-    @Before
-    public void testCreateWishList()
-    {
-        list = new ArrayList <>();
-    }
 
-    @Test
-    public void testNullList()
-    {
-        resultTotal = Calculate.incomeTotal(null);
-        assertEquals("",resultTotal);
-    }
-
-    @Test
-    public void testEmptyList()
-    {
+    public void setUp() {
         list = new ArrayList<>();
-        resultTotal = Calculate.incomeTotal(list);
+    }
+
+
+    public void testNullList() {
+        System.out.println("\nStarting testNullList");
+
+        assertEquals("", Calculate.incomeTotal(null));
+
+        System.out.println("Finished testNullList");
+    }
+
+
+    public void testEmptyList() {
+        System.out.println("\nStarting testEmptyList");
 
         assertNotNull(list);
-        assertEquals(resultTotal,"");
+        assertEquals("", Calculate.incomeTotal(list));
+
+        System.out.println("Finished testEmptyList");
     }
 
-    @Test
-    public void testValidList()
-    {
-        list = new ArrayList<>();
+
+    public void testValidList() {
+        System.out.println("\nStarting testValidList");
+
         item = new IncomeSource("Starbucks", 500.0);
         list.add(item);
         item = new IncomeSource("Application Developer", 1000.0);
         list.add(item);
         item = new IncomeSource("Allowance", 20.0);
         list.add(item);
-        resultTotal = Calculate.incomeTotal(list);
 
-        assertNotNull(resultTotal);
-        assertEquals("1520.00",resultTotal);
+        assertEquals("1520.00", Calculate.incomeTotal(list));
+
+        System.out.println("Finished testValidList");
     }
 
-    @Test
-    public void testOneItem()
-    {
-        list = new ArrayList<>();
+
+    public void testOneItem() {
+        System.out.println("\nStarting testOneItem");
 
         item = new IncomeSource("Starbucks", 500.0);
         list.add(item);
-
-        resultTotal = Calculate.incomeTotal(list);
-        assertEquals(resultTotal,"500.00");
+        assertEquals("500.00", Calculate.incomeTotal(list));
 
         item = new IncomeSource("Application Developer", 1000.0);
-        list.set(0,item);
-        resultTotal = Calculate.incomeTotal(list);
-        assertEquals(resultTotal,"1000.00");
+        list.set(0, item);
+        assertEquals("1000.00", Calculate.incomeTotal(list));
 
         item = new IncomeSource("Contractor", 5000.0);
-        list.set(0,item);
-        resultTotal = Calculate.incomeTotal(list);
-        assertEquals(resultTotal,"5000.00");
+        list.set(0, item);
+        assertEquals("5000.00", Calculate.incomeTotal(list));
 
         item = new IncomeSource("Sales Associate", 400.0);
-        list.set(0,item);
-        resultTotal = Calculate.incomeTotal(list);
-        assertEquals(resultTotal,"400.00");
+        list.set(0, item);
+        assertEquals("400.00", Calculate.incomeTotal(list));
+
+        System.out.println("Finished testOneItem");
     }
 
-    @Test
-    public void testOddList()
-    {
+
+    public void testOddList() {
+        System.out.println("\nStarting testOddList");
+
         list = new ArrayList<>();
         item = new IncomeSource("Starbucks", 399.9999999);
         list.add(item);
@@ -89,15 +83,16 @@ public class CalculateIncomeSourceTotalTest extends TestCase
         list.add(item);
         item = new IncomeSource("Allowance", 19.9999999);
         list.add(item);
-        resultTotal = Calculate.incomeTotal(list);
 
-        assertNotNull(resultTotal);
-        assertEquals("6420.00",resultTotal);
+        assertEquals("6420.00", Calculate.incomeTotal(list));
+
+        System.out.println("Finished testOddList");
     }
 
-    @Test
-    public void testBlankPrices()
-    {
+
+    public void testBlankIncomes() {
+        System.out.println("\nStarting testBlankIncomes");
+
         list = new ArrayList<>();
 
         item = new IncomeSource("Starbucks");
@@ -115,15 +110,16 @@ public class CalculateIncomeSourceTotalTest extends TestCase
         item = new IncomeSource("Allowance");
         list.add(item);
 
-        resultTotal = Calculate.incomeTotal(list);
 
-        assertNotNull(resultTotal);
-        assertTrue(resultTotal.equals(""));
+        assertEquals("", Calculate.incomeTotal(list));
+
+        System.out.println("Finished testBlankIncomes");
     }
 
-    @Test
-    public void testSomeBlankPrices()
-    {
+
+    public void testSomeBlankIncomes() {
+        System.out.println("\nStarting testSomeBlankIncomes");
+
         list = new ArrayList<>();
 
         item = new IncomeSource("Starbucks", 500.00);
@@ -141,16 +137,14 @@ public class CalculateIncomeSourceTotalTest extends TestCase
         item = new IncomeSource("IBM");
         list.add(item);
 
-        resultTotal = Calculate.incomeTotal(list);
+        assertEquals("4520.00", Calculate.incomeTotal(list));
 
-        assertNotNull(resultTotal);
-        assertEquals("4520.00",resultTotal);
+        System.out.println("Finished testSomeBlankIncomes");
     }
 
-    @Test
-    public void testMixedBlankPrices()
-    {
-        list = new ArrayList<>();
+
+    public void testMixedBlankIncomes() {
+        System.out.println("\nStarting testMixedBlankIncomes");
 
         item = new IncomeSource("Starbucks", 500.00);
         list.add(item);
@@ -167,16 +161,14 @@ public class CalculateIncomeSourceTotalTest extends TestCase
         item = new IncomeSource("Allowance", 20.00);
         list.add(item);
 
-        resultTotal = Calculate.incomeTotal(list);
+        assertEquals("4520.00", Calculate.incomeTotal(list));
 
-        assertNotNull(resultTotal);
-        assertEquals("4520.00",resultTotal);
+        System.out.println("Finished testMixedBlankIncomes");
     }
 
-    @Test
-    public void testNullItem()
-    {
-        list = new ArrayList<>();
+
+    public void testNullItem() {
+        System.out.println("\nStarting testNullItem");
 
         item = new IncomeSource("Starbucks", 500.00);
         list.add(item);
@@ -186,15 +178,14 @@ public class CalculateIncomeSourceTotalTest extends TestCase
 
         list.add(null);
 
-        resultTotal = Calculate.incomeTotal(list);
+        assertEquals("?", Calculate.incomeTotal(list));//invalid total
 
-        assertEquals("?",resultTotal);//invalid total
+        System.out.println("Finished testNullItem");
     }
 
-    @Test
-    public void testNegativeAmounts()
-    {
-        list = new ArrayList<>();
+
+    public void testNegativeIncomes() {
+        System.out.println("\nStarting testNegativeIncomes");
 
         item = new IncomeSource("Starbucks", -(500.00));
         list.add(item);
@@ -205,15 +196,14 @@ public class CalculateIncomeSourceTotalTest extends TestCase
         item = new IncomeSource("Blackberry", -(4000.00));
         list.add(item);
 
-        resultTotal = Calculate.incomeTotal(list);
+        assertEquals("", Calculate.incomeTotal(list));
 
-        assertEquals("",resultTotal);
+        System.out.println("Finished testNegativeIncomes");
     }
 
-    @Test
-    public void testSomeNegativePrices()
-    {
-        list = new ArrayList<>();
+
+    public void testSomeNegativeIncomes() {
+        System.out.println("\nStarting testSomeNegativeIncomes");
 
         item = new IncomeSource("Starbucks", -(500.00));
         list.add(item);
@@ -230,37 +220,36 @@ public class CalculateIncomeSourceTotalTest extends TestCase
         item = new IncomeSource("Blackberry", -(4000.00));
         list.add(item);
 
-        resultTotal = Calculate.incomeTotal(list);
+        assertEquals("2600.00", Calculate.incomeTotal(list));
 
-        assertEquals("2600.00",resultTotal);
+        System.out.println("Finished testSomeNegativeIncomes");
     }
 
-    @Test
-    public void testDifferentFrequencies()
-    {
-        list = new ArrayList<>();
 
-        item = new IncomeSource("Starbucks", 500.00,"monthly");
+    public void testDifferentFrequencies() {
+        System.out.println("\nStarting testDifferentFrequencies");
+
+        item = new IncomeSource("Starbucks", 500.00, "monthly");
         list.add(item);
 
-        item = new IncomeSource("Allowance", 20.00,"bi-weekly");
+        item = new IncomeSource("Allowance", 20.00, "bi-weekly");
         list.add(item);
 
-        item = new IncomeSource("Blackberry", 4000.00,"misc");
+        item = new IncomeSource("Blackberry", 4000.00, "misc");
         list.add(item);
 
-        item = new IncomeSource("H&M", 600.00,"once");
+        item = new IncomeSource("H&M", 600.00, "once");
         list.add(item);
 
-        item = new IncomeSource("IBM", 1000.00,"weekly");
+        item = new IncomeSource("IBM", 1000.00, "weekly");
         list.add(item);
 
         item = new IncomeSource("McDonalds", 300.00);
         list.add(item);
 
-        resultTotal = Calculate.incomeTotal(list);
+        assertEquals("9440.00", Calculate.incomeTotal(list));
 
-        assertEquals("9440.00",resultTotal);
+        System.out.println("Finished testDifferentFrequencies");
     }
-}
 
+}

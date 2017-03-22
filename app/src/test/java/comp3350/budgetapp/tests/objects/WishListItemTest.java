@@ -6,8 +6,6 @@ import comp3350.budgetapp.objects.WishListItem;
 public class WishListItemTest extends TestCase
 {
     public static WishListItem wish1, wish2, wish3;
-    public static final double delta = 0.001;
-
 
     public void testWishListWithItemNameOnly()
     {
@@ -44,6 +42,9 @@ public class WishListItemTest extends TestCase
         assertEquals(1050.65, wish1.getPrice());
         assertEquals(0, wish1.getPriority());
         assertEquals("Item Name: iPhone 10, Current Price with 0% discount: $1050.65", wish1.toString());
+
+        wish1.setPriority(5);
+        assertEquals(5, wish1.getPriority());
 
         wish1.setPrice(1029.99);
         assertEquals(1029.99, wish1.getPrice());
@@ -138,8 +139,10 @@ public class WishListItemTest extends TestCase
         assertTrue(wish1.equals(wish2));
         assertFalse(wish1.equals(wish3));
 
-        System.out.println("Finished testEquals");
+        wish2 = new WishListItem(null, 100);
+        assertFalse(wish2.equals(wish1));
 
+        System.out.println("Finished testEquals");
     }
 
 

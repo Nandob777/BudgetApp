@@ -6,27 +6,26 @@ import junit.framework.TestCase;
 import org.junit.*;
 import java.util.ArrayList;
 
-import comp3350.budgetapp.application.Main;
-import comp3350.budgetapp.application.Services;
+
 import comp3350.budgetapp.business.AccessWishListItems;
 import comp3350.budgetapp.objects.WishListItem;
 
 public class AccessWishListItemsTest extends TestCase
 {
-    public static ArrayList<WishListItem> list;
-    WishListItem item;
-    AccessWishListItems accessItems;
-    String result;
+    private static ArrayList<WishListItem> list;
+    private WishListItem item;
+    private AccessWishListItems accessItems;
+    private String result;
 
 
-    @Test
+
     public void testNullList()
     {
         list = null;
         assertNull(list);
     }
 
-    @Test
+
     public void testEmptyList()
     {
         list = new ArrayList<>();
@@ -34,7 +33,7 @@ public class AccessWishListItemsTest extends TestCase
         assertNull(accessItems.getWishListItems(list));
     }
 
-    @Test
+
     public void testValidList()
     {
         list = new ArrayList<>();
@@ -43,11 +42,10 @@ public class AccessWishListItemsTest extends TestCase
         list.add(item);
         accessItems.addWishListItem(item);
         accessItems.getWishListItems(list);
-        //assertSame(accessItems.getRandom(item.getItemName()) , item);
         assertSame("500.00",accessItems.getTotal());
     }
 
-    @Test
+
     public void testDelete()
     {
         accessItems = new AccessWishListItems();

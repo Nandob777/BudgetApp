@@ -36,7 +36,7 @@ public class AllTests extends TestSuite
         suite.addTestSuite(AccessWishListItemsTest.class);
         suite.addTestSuite(CalculateWishListTotalTest.class);
         suite.addTestSuite(CalculateIncomeSourceTotalTest.class);
-        suite.addTestSuite(AccessWishListItemsTest.class);
+        suite.addTestSuite(CalculateExpenseTotalTest.class);
     }
 
     private static void testPersistence()

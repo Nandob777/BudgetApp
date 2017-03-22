@@ -153,31 +153,6 @@ public class CalculateWishListTotalTest extends TestCase
     }
 
 
-    public void testMixedBlankPrices()
-    {
-        System.out.println("\nStarting testMixedBlankPrices");
-
-        item = new WishListItem("iPhone", 500.0);
-        list.add(item);
-
-        item = new WishListItem("Backpack");
-        list.add(item);
-
-        item = new WishListItem("TV", 7000.0);
-        list.add(item);
-
-        item = new WishListItem("Desk Chair");
-        list.add(item);
-
-        item = new WishListItem("Laptop", 2000.0);
-        list.add(item);
-
-        assertEquals("9500.00", Calculate.wishlistTotal(list));
-
-        System.out.println("Finished testMixedBlankPrices");
-    }
-
-
     public void testNullItem()
     {
         System.out.println("\nStarting testNullItem");

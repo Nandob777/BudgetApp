@@ -1,9 +1,12 @@
 package comp3350.budgetapp.tests.persistence;
 
+import org.junit.Test;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import comp3350.budgetapp.application.Main;
+//import comp3350.budgetapp.application.Main;
+import comp3350.budgetapp.tests.TesterMain;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.objects.WishListItem;
@@ -25,7 +28,7 @@ public class DataAccessStub implements DataAccess
 
     public DataAccessStub()
     {
-        this(Main.dbName);
+        this(TesterMain.dbName);
     }
 
     public void open(String dbName)

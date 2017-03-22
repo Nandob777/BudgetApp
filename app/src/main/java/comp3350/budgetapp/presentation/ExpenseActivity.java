@@ -108,7 +108,7 @@ public class ExpenseActivity extends Activity {
     {
         Expense item = createExpenseFromEditText();
 
-        if(expenseList.contains(item))
+        if(expenseList.contains(item) || item.getName().contains("'"))
         {
             return;
         }

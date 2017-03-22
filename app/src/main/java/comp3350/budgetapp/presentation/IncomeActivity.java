@@ -109,7 +109,7 @@ public class IncomeActivity extends Activity {
     {
         IncomeSource item = createIncomeFromEditText();
 
-        if(incomeList.contains(item))
+        if(incomeList.contains(item) || item.getName().contains("'"))
         {
             return;
         }

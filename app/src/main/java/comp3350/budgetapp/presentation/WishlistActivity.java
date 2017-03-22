@@ -109,7 +109,7 @@ public class WishlistActivity extends Activity {
     {
         WishListItem item = createItemFromEditText();
 
-        if(itemList.contains(item))
+        if(itemList.contains(item) || item.getItemName().contains("'"))
         {
             return;
         }

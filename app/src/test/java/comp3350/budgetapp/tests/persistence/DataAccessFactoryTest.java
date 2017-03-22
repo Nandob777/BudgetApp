@@ -5,7 +5,7 @@ import junit.framework.TestCase;
 import comp3350.budgetapp.persistence.*;
 
 public class DataAccessFactoryTest extends TestCase {
-
+/*
     public void testStubCreation(){
 
         System.out.println("\nStarting testStubCreation for data access factory");
@@ -15,7 +15,7 @@ public class DataAccessFactoryTest extends TestCase {
 
         System.out.println("finished testStubCreation for data access factory");
     }
-
+*/
     public void testDBCreation(){
         System.out.println("\nStarting testDBCreation for data access factory");
 

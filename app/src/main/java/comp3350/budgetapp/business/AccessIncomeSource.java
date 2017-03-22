@@ -48,6 +48,7 @@ public class AccessIncomeSource
         {
             Incomes = null;
             IncomeSource = null;
+
             currentItem = 0;
         }
         return IncomeSource;

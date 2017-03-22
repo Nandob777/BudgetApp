@@ -11,7 +11,7 @@
 
         <activity
             android:name=".presentation.MainActivity"
-            android:label="BudgetApp">
+            android:label="BudgIt">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -20,7 +20,7 @@
 
         <activity
             android:name=".presentation.WishlistActivity"
-            android:label="BudgetApp: Wish List" >
+            android:label="BudgIt: Wish List" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />
@@ -29,7 +29,7 @@
 
         <activity
             android:name=".presentation.ExpenseActivity"
-            android:label="BudgetApp: Expenses" >
+            android:label="BudgIt: Expenses" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />
@@ -38,7 +38,7 @@
 
         <activity
             android:name=".presentation.IncomeActivity"
-            android:label="BudgetApp: Income Sources" >
+            android:label="BudgIt: Income Sources" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />
@@ -47,7 +47,7 @@
 
         <activity
             android:name=".presentation.SummaryActivity"
-            android:label="BudgetApp: Summary" >
+            android:label="BudgIt: Summary" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />

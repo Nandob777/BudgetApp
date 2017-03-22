@@ -42,7 +42,7 @@ public class AccessWishListItemsTest extends TestCase
         list.add(item);
         accessItems.addWishListItem(item);
         accessItems.getWishListItems(list);
-        assertSame("500.00",accessItems.getTotal());
+        assertSame("iPhone",accessItems.getRandom("iPhone").getItemName());
     }
 
 

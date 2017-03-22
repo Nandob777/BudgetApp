@@ -5,7 +5,7 @@ import comp3350.budgetapp.application.Services;
 
 public class TesterMain
 {
-    public static final String dbName="Budget";
+    public static final String dbName="stub";
 
     public static void main()
     {

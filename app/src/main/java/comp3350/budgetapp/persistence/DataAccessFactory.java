@@ -7,6 +7,9 @@ public class DataAccessFactory {
     }
 
     public static DataAccess getDataAccess(String dbName, boolean useless){
-        return new DataAccessObject(dbName);
+        if (dbName.equals("stub"))
+            return new DataAccessStub();
+        else
+            return new DataAccessObject(dbName);
     }
 }

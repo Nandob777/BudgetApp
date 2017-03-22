@@ -395,7 +395,7 @@ public class DataAccessObject implements DataAccess
                 while (rs2.next())
                 {
                     name = rs2.getString("ITEMNAME");
-                    amount = rs2.getString("ITEMPRICE");
+                    amount = rs2.getString("ITEMPPRICE");
                     Expense = new Expense(name,Double.parseDouble(amount));
                     ExpenseResult.add(Expense);
                 }
@@ -423,7 +423,7 @@ public class DataAccessObject implements DataAccess
                 while (rs3.next())
                 {
                     itemName = rs2.getString("ITEMNAME");
-                    itemPrice = rs2.getString("ITEMPRICE");
+                    itemPrice = rs2.getString("ITEMPPRICE");
                     WishListItem = new WishListItem(itemName,Double.parseDouble(itemPrice));
                     WishListItems.add(WishListItem);
                 }
@@ -443,7 +443,7 @@ public class DataAccessObject implements DataAccess
         try
         {
             values = "'"+currentExpense.getName()
-                    +", '" +currentExpense.getAmount();
+                    +"'," +currentExpense.getAmount();
             cmdString = "INSERT INTO EXPENSES " +" Values(" +values +")";
             //System.out.println(cmdString);
             updateCount = st1.executeUpdate(cmdString);
@@ -466,7 +466,7 @@ public class DataAccessObject implements DataAccess
         {
             // Should check for empty values and not update them
             values = "ITEMNAME='" +currentExpense.getName()
-                    +"', ITEMPRICE='" +currentExpense.getAmount();
+                    +"', ITEMPPRICE=" +currentExpense.getAmount();
             where = "where ItemName= '" +currentExpense.getName()+"'"
             ;
             cmdString = "UPDATE EXPENSES " +" SET " +values +" " +where;

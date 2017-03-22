@@ -10,7 +10,7 @@ public class DataAccessFactoryTest extends TestCase {
 
         System.out.println("\nStarting testStubCreation for data access factory");
 
-        DataAccess stub = DataAccessFactory.getDataAccess("test",true);
+        DataAccess stub = DataAccessFactory.getDataAccess("stub",true);
         assertTrue(stub instanceof DataAccessStub);
 
         System.out.println("finished testStubCreation for data access factory");

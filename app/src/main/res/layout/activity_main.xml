@@ -50,11 +50,13 @@
             android:text="@string/button_expenses" />
 
         <Button
+            android:id="@+id/buttonSummary"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="@string/button_financial_summary"
-            android:enabled="false"
-            android:id="@+id/buttonSummary" />
+            android:layout_marginBottom="60dp"
+            android:enabled="true"
+            android:onClick="addSummary"
+            android:text="@string/button_financial_summary" />
     </LinearLayout>
 
 </RelativeLayout>

@@ -45,6 +45,15 @@
 
         </activity>
 
+        <activity
+            android:name=".presentation.SummaryActivity"
+            android:label="BudgetApp: Summary" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".presentation.MainActivity" />
+
+        </activity>
+
     </application>
 
 </manifest>

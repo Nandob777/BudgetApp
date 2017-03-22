@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BudgetApp</string>
+    <string name="app_name">BudgIt</string>
     <string name="app_title">Personal Budgeting App</string>
 
     <string name="button_wishlist">Wish List</string>

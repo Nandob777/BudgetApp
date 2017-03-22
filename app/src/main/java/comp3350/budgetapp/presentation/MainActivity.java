@@ -117,4 +117,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent3 = new Intent(this, ExpenseActivity.class);
         startActivity(intent3);
     }
+
+    public void addSummary(View view)
+    {
+        Intent intent4 = new Intent(this, SummaryActivity.class);
+        startActivity(intent4);
+    }
 }

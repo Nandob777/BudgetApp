@@ -3,8 +3,7 @@ package comp3350.budgetapp.tests;
 import junit.framework.Test;
 import junit.framework.TestSuite;
 
-import comp3350.budgetapp.tests.business.AccessWishListItemsTest;
-import comp3350.budgetapp.tests.business.CalculateWishListTotalTest;
+import comp3350.budgetapp.tests.business.*;
 import comp3350.budgetapp.tests.objects.*;
 import comp3350.budgetapp.tests.persistence.*;
 
@@ -35,6 +34,7 @@ public class AllTests extends TestSuite
     private static void testBusiness()
     {
         suite.addTestSuite(CalculateWishListTotalTest.class);
+        suite.addTestSuite(CalculateIncomeSourceTotalTest.class);
         suite.addTestSuite(AccessWishListItemsTest.class);
     }
 

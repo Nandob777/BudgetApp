@@ -99,7 +99,7 @@ public class Calculate {
                 else
                 {
                     element = (IncomeSource) elements.get(elementCount);
-                    price = ((IncomeSource) element).getAmount();
+                    price = ( ((IncomeSource) element).getAmount() ) * ( ((IncomeSource) element).getFrequency() );
                     found = false;
                     if (price <= 0.0)
                     {

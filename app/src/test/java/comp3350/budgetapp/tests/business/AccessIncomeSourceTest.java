@@ -2,19 +2,21 @@ package comp3350.budgetapp.tests.business;
 
 import junit.framework.TestCase;
 
-import comp3350.budgetapp.application.Main;
+//import comp3350.budgetapp.application.Main;
+import comp3350.budgetapp.tests.TesterMain;
 import comp3350.budgetapp.application.Services;
 import comp3350.budgetapp.business.AccessIncomeSource;
 import comp3350.budgetapp.objects.IncomeSource;
-import comp3350.budgetapp.persistence.DataAccessStub;
+import comp3350.budgetapp.tests.persistence.DataAccessStub;
 
 public class AccessIncomeSourceTest extends TestCase
 {
-    private static String dbName = Main.dbName;
+    private static String dbName = TesterMain.dbName;
 
     public AccessIncomeSourceTest(String arg0)
     {
         super(arg0);
+        Services.createDataAccess(dbName);
     }
 
     public void test1()
@@ -22,7 +24,7 @@ public class AccessIncomeSourceTest extends TestCase
         AccessIncomeSource ais;
         IncomeSource incomeSrc;
 
-        Services.closeDataAccess();
+        //Services.closeDataAccess();
 
         System.out.println("\nStarting test AccessIncomeSourceTest");
 
@@ -31,6 +33,7 @@ public class AccessIncomeSourceTest extends TestCase
         incomeSrc = new IncomeSource("Starbucks", 800.0);
 
         ais = new AccessIncomeSource();
+
 
         incomeSrc = ais.getSequential();
         assertNotNull(incomeSrc);

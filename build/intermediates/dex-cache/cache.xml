@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
+        <dex dex="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_f83e97c4a97f201d789ee3e14f54dda6b78e4d06/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/libs/hsqldb.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5ee175911824a9913e650246f0759eb30691ca00">
+        <dex dex="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/transforms/dex/debug/folders/1000/2/hsqldb_8af2d2dd3e057e416020c7df5dd4eff5e4705860/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.2"
+        sha1="f2ba0aaab1d9d44fad59a7751a2e8feee565103f">
+        <dex dex="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1bcb5698906e8c3e7a123b3d2056315a6f9db4b9/classes.dex" />
+    </item>
+
+</items>

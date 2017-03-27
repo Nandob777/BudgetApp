@@ -14,7 +14,7 @@ import comp3350.budgetapp.tests.persistence.DataAccessStub;
 
 public class DataAccessTest extends TestCase {
 
-    private static String dbName = Main.dbName;
+    private static String dbName = "stub";
 
     public static WishListItem wish1, wish2;
     public static Expense expense1, expense2;

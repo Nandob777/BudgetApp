@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.budgetapp.objects.WishListItem;
-import comp3350.budgetapp.persistence.DataAccessStub;
+import comp3350.budgetapp.tests.persistence.DataAccessStub;
 
 public class DataAccessStubTest extends TestCase {
     DataAccessStub db;

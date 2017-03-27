@@ -110,6 +110,12 @@ public class ExpenseActivity extends Activity {
 
         if(expenseList.contains(item) || item.getName().contains("'"))
         {
+            Messages.warning(this,"Can't add duplicates of Expenses");
+            return;
+        }
+        if(item.getAmount() > 1000000)
+        {
+            Messages.warning(this,"WITH EXPENSES LIKE THAT I DON'T THINK WE CAN HELP YOU");
             return;
         }
 
@@ -150,6 +156,7 @@ public class ExpenseActivity extends Activity {
 
         if(!expenseList.contains(item))
         {
+            Messages.warning(this,"Can't delete Expense that isn't in system");
             return;
         }
 
@@ -182,6 +189,12 @@ public class ExpenseActivity extends Activity {
 
         if(!expenseList.contains(item))
         {
+            Messages.warning(this,"Must Add Expense Before Updating It");
+            return;
+        }
+        if(item.getAmount() > 1000000)
+        {
+            Messages.warning(this,"WITH EXPENSES LIKE THAT I DON'T THINK WE CAN HELP YOU");
             return;
         }
 

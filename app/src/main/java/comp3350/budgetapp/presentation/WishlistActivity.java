@@ -111,6 +111,13 @@ public class WishlistActivity extends Activity {
 
         if(itemList.contains(item) || item.getItemName().contains("'"))
         {
+            Messages.warning(this,"Can't add duplicates of Items");
+            return;
+        }
+
+        if(item.getPrice() > 100000)
+        {
+            Messages.warning(this,"PLEASE BE REALISTIC");
             return;
         }
 
@@ -151,6 +158,7 @@ public class WishlistActivity extends Activity {
 
         if(!itemList.contains(item))
         {
+            Messages.warning(this,"Can't delete Item that isn't in system");
             return;
         }
 
@@ -183,10 +191,15 @@ public class WishlistActivity extends Activity {
 
         if(!itemList.contains(item))
         {
+            Messages.warning(this,"Must Add Item Before Updating It");
             return;
         }
 
-
+        if(item.getPrice() > 100000)
+        {
+            Messages.warning(this,"PLEASE BE REALISTIC");
+            return;
+        }
 
         String result;
 

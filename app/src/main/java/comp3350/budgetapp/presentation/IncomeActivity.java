@@ -111,6 +111,12 @@ public class IncomeActivity extends Activity {
 
         if(incomeList.contains(item) || item.getName().contains("'"))
         {
+            Messages.warning(this,"Can't add duplicates of Income Sources");
+            return;
+        }
+        if(item.getAmount() > 1000000)
+        {
+            Messages.warning(this,"YOUR BLOOD IS TOO RICH FOR THIS APP");
             return;
         }
 
@@ -151,6 +157,12 @@ public class IncomeActivity extends Activity {
 
         if(!incomeList.contains(item))
         {
+            Messages.warning(this,"Must Add Income Source Before Updating It");
+            return;
+        }
+        if(item.getAmount() > 1000000)
+        {
+            Messages.warning(this,"YOUR BLOOD IS TOO RICH FOR THIS APP");
             return;
         }
 
@@ -183,6 +195,7 @@ public class IncomeActivity extends Activity {
 
         if(!incomeList.contains(item))
         {
+            Messages.warning(this,"Can't delete Expense that isn't in system");
             return;
         }
 

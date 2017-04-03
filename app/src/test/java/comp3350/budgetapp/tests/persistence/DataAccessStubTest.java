@@ -8,12 +8,13 @@ import org.junit.Before;
 import java.util.ArrayList;
 import java.util.List;
 
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.tests.persistence.DataAccessStub;
 
 public class DataAccessStubTest extends TestCase {
     DataAccessStub db;
-    ArrayList<WishListItem> wishList = new ArrayList<WishListItem>();
+    ArrayList<FinancialObjects> wishList = new ArrayList<FinancialObjects>();
 
     public DataAccessStubTest(String arg0)
     {

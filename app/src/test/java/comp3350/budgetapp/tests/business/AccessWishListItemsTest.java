@@ -3,16 +3,16 @@ package comp3350.budgetapp.tests.business;
 
 import junit.framework.TestCase;
 
-import org.junit.*;
 import java.util.ArrayList;
 
 
 import comp3350.budgetapp.business.AccessWishListItems;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.WishListItem;
 
 public class AccessWishListItemsTest extends TestCase
 {
-    private static ArrayList<WishListItem> list;
+    private static ArrayList<FinancialObjects> list;
     private WishListItem item;
     private AccessWishListItems accessItems;
     private String result;
@@ -40,7 +40,7 @@ public class AccessWishListItemsTest extends TestCase
         list.add(item);
         accessItems.addWishListItem(item);
         accessItems.getWishListItems(list);
-        assertSame("iPhone",accessItems.getRandom("iPhone").getItemName());
+        assertSame("iPhone",accessItems.getRandom("iPhone").getName());
     }
 
 

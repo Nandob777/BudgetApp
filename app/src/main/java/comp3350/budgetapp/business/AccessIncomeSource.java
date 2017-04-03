@@ -4,13 +4,14 @@ import java.util.List;
 
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.persistence.DataAccess;
 
 public class AccessIncomeSource
 {
     private DataAccess dataAccess;
-    private List<IncomeSource> Incomes;
+    private List<FinancialObjects> Incomes;
     private IncomeSource IncomeSource;
 
     private String total;
@@ -24,7 +25,7 @@ public class AccessIncomeSource
         currentItem = 0;
     }
 
-    public String getIncomeSources(List<IncomeSource> Incomes)
+    public String getIncomeSources(List<FinancialObjects> Incomes)
     {
         Incomes.clear();
         return dataAccess.getIncomeSourceSequential(Incomes);
@@ -36,12 +37,12 @@ public class AccessIncomeSource
         if (Incomes == null)
         {
             result = dataAccess.getIncomeSourceSequential(Incomes);
-            total = Calculate.incomeTotal(Incomes);
+            total = Calculate.calculateTotal(Incomes);
             currentItem = 0;
         }
         if (currentItem < Incomes.size())
         {
-            IncomeSource = Incomes.get(currentItem);
+            IncomeSource = (IncomeSource) Incomes.get(currentItem);
             currentItem++;
         }
         else
@@ -60,8 +61,8 @@ public class AccessIncomeSource
         currentItem = 0;
         if (currentItem < Incomes.size())
         {
-            IncomeSource = Incomes.get(currentItem);
-            total = Calculate.incomeTotal(Incomes);
+            IncomeSource = (IncomeSource) Incomes.get(currentItem);
+            total = Calculate.calculateTotal(Incomes);
             currentItem++;
         }
         else
@@ -90,7 +91,7 @@ public class AccessIncomeSource
 
     public String getTotal()
     {
-        return Calculate.incomeTotal(Incomes);
+        return Calculate.calculateTotal(Incomes);
     }
 
 }

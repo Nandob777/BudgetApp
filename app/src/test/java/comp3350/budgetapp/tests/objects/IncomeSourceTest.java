@@ -13,7 +13,7 @@ public class IncomeSourceTest extends TestCase
 
         src1 = new IncomeSource("Sales Associate");
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(0.0,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -22,7 +22,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setName("Web Developer");
         assertNotNull(src1);
-        assertEquals("Web Developer", src1.getSourceName());
+        assertEquals("Web Developer", src1.getName());
         assertEquals(0.0,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -30,7 +30,7 @@ public class IncomeSourceTest extends TestCase
                 src1.toString());
 
         src1.setName("Application Developer");
-        assertEquals("Application Developer", src1.getSourceName());
+        assertEquals("Application Developer", src1.getName());
         assertEquals(0.0,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -46,7 +46,7 @@ public class IncomeSourceTest extends TestCase
 
         src1 = new IncomeSource("Sales Associate",11.0);
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(11.0,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -55,7 +55,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setAmount(11.50);
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(11.50,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -64,7 +64,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setAmount(12.75);
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(12.75,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -80,7 +80,7 @@ public class IncomeSourceTest extends TestCase
 
         src1 = new IncomeSource("Sales Associate",11.0,"monthly");
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(11.0,src1.getAmount());
         assertEquals("monthly",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -89,7 +89,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setType("bi-weekly");
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(11.0,src1.getAmount());
         assertEquals("bi-weekly",src1.getType());
         assertEquals(2,src1.getFrequency());
@@ -98,7 +98,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setType("weekly");
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(11.0,src1.getAmount());
         assertEquals("weekly",src1.getType());
         assertEquals(4,src1.getFrequency());
@@ -114,7 +114,7 @@ public class IncomeSourceTest extends TestCase
 
         src1 = new IncomeSource("Sales Associate",12.4925000000001);
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(12.4925000000001,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -123,7 +123,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setAmount(13.0000000000001);
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(13.0000000000001,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -132,7 +132,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setAmount(13.9999999999999);
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(13.9999999999999,src1.getAmount());
         assertEquals("misc",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -148,7 +148,7 @@ public class IncomeSourceTest extends TestCase
 
         src1 = new IncomeSource("Sales Associate",11.0,"once");
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(11.0,src1.getAmount());
         assertEquals("once",src1.getType());
         assertEquals(1,src1.getFrequency());
@@ -157,7 +157,7 @@ public class IncomeSourceTest extends TestCase
 
         src1.setType("one off");
         assertNotNull(src1);
-        assertEquals("Sales Associate", src1.getSourceName());
+        assertEquals("Sales Associate", src1.getName());
         assertEquals(11.0,src1.getAmount());
         assertEquals("one off",src1.getType());
         assertEquals(1,src1.getFrequency());

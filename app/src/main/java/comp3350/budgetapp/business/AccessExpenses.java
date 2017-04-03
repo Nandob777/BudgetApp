@@ -5,12 +5,13 @@ import java.util.List;
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
 import comp3350.budgetapp.objects.Expense;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.persistence.DataAccess;
 
 public class AccessExpenses
 {
     private DataAccess dataAccess;
-    private List<Expense> expenses;
+    private List<FinancialObjects> expenses;
     private Expense expense;
 
     private String total;
@@ -24,7 +25,7 @@ public class AccessExpenses
         currentItem = 0;
     }
 
-    public String getExpenses(List<Expense> expenses)
+    public String getExpenses(List<FinancialObjects> expenses)
     {
         expenses.clear();
         return dataAccess.getExpenseSequential(expenses);
@@ -36,12 +37,12 @@ public class AccessExpenses
         if (expenses == null)
         {
             result = dataAccess.getExpenseSequential(expenses);
-            total = Calculate.expenseTotal(expenses);
+            total = Calculate.calculateTotal(expenses);
             currentItem = 0;
         }
         if (currentItem < expenses.size())
         {
-            expense = expenses.get(currentItem);
+            expense = (Expense) expenses.get(currentItem);
             currentItem++;
         }
         else
@@ -59,8 +60,8 @@ public class AccessExpenses
         currentItem = 0;
         if (currentItem < expenses.size())
         {
-            expense = expenses.get(currentItem);
-            total = Calculate.expenseTotal(expenses);
+            expense = (Expense) expenses.get(currentItem);
+            total = Calculate.calculateTotal(expenses);
             currentItem++;
         }
         else
@@ -89,7 +90,7 @@ public class AccessExpenses
 
     public String getTotal()
     {
-        return Calculate.expenseTotal(expenses);
+        return Calculate.calculateTotal(expenses);
     }
 
 }

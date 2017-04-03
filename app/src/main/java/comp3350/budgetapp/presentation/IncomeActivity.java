@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.AccessIncomeSource;
 import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.business.AccessIncomeSource;
 
@@ -24,8 +25,8 @@ public class IncomeActivity extends Activity {
     private Calculate totalPrice;
     static String total = "Updates on opening Income Source";
     private AccessIncomeSource accessIncomeSources;
-    private ArrayList<IncomeSource> incomeList;
-    private ArrayAdapter<IncomeSource> itemArrayAdapter;
+    private ArrayList<FinancialObjects> incomeList;
+    private ArrayAdapter<FinancialObjects> itemArrayAdapter;
     private int selectedItemPosition = -1;
     private TextView viewIncomeTotal;
 
@@ -37,7 +38,7 @@ public class IncomeActivity extends Activity {
         accessIncomeSources = new AccessIncomeSource();
         totalPrice = new Calculate();
 
-        incomeList = new ArrayList<IncomeSource>();
+        incomeList = new ArrayList<FinancialObjects>();
         String result = accessIncomeSources.getIncomeSources(incomeList);
         if (result != null)
         {
@@ -45,7 +46,7 @@ public class IncomeActivity extends Activity {
         }
         else
         {
-            itemArrayAdapter = new ArrayAdapter<IncomeSource>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, incomeList)
+            itemArrayAdapter = new ArrayAdapter<FinancialObjects>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, incomeList)
             {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -89,14 +90,14 @@ public class IncomeActivity extends Activity {
             viewIncomeTotal = (TextView)findViewById(R.id.viewIncomeTotal);
             //Fix Total Display
             //viewIncomeTotal.setText(accessIncomeSources.getTotal());
-            viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
-            total = totalPrice.incomeTotal(incomeList);
+            viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
+            total = totalPrice.calculateTotal(incomeList);
         }
     }
 
     public void selectItemAtPosition(int position)
     {
-        IncomeSource selected = itemArrayAdapter.getItem(position);
+        IncomeSource selected = (IncomeSource) itemArrayAdapter.getItem(position);
 
         EditText editName = (EditText)findViewById(R.id.editIncomeName);
         EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
@@ -147,8 +148,8 @@ public class IncomeActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
-        total = totalPrice.incomeTotal(incomeList);
+        viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
+        total = totalPrice.calculateTotal(incomeList);
     }
 
     public void buttonIncomeDeleteOnClick(View v)
@@ -185,8 +186,8 @@ public class IncomeActivity extends Activity {
         {
             Messages.warning(this, result);
         }
-        viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
-        total = totalPrice.incomeTotal(incomeList);
+        viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
+        total = totalPrice.calculateTotal(incomeList);
     }
 
     public void buttonIncomeUpdateOnClick(View v)
@@ -225,8 +226,8 @@ public class IncomeActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
-        viewIncomeTotal.setText(totalPrice.incomeTotal(incomeList));
-        total = totalPrice.incomeTotal(incomeList);
+        viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
+        total = totalPrice.calculateTotal(incomeList);
     }
 
     private IncomeSource createIncomeFromEditText()

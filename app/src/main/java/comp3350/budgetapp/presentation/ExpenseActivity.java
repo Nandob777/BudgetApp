@@ -17,14 +17,15 @@ import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.business.AccessExpenses;
+import comp3350.budgetapp.objects.FinancialObjects;
 
 public class ExpenseActivity extends Activity {
 
     private Calculate totalPrice;
     static String total = "Updates on opening Expenses";
     private AccessExpenses accessExpenses;
-    private ArrayList<Expense> expenseList;
-    private ArrayAdapter<Expense> itemArrayAdapter;
+    private ArrayList<FinancialObjects> expenseList;
+    private ArrayAdapter<FinancialObjects> itemArrayAdapter;
     private int selectedExpensePosition = -1;
     private TextView viewTotal;
 
@@ -36,7 +37,7 @@ public class ExpenseActivity extends Activity {
         accessExpenses = new AccessExpenses();
         totalPrice = new Calculate();
 
-        expenseList = new ArrayList<Expense>();
+        expenseList = new ArrayList<FinancialObjects>();
         String result = accessExpenses.getExpenses(expenseList);
         if (result != null)
         {
@@ -44,7 +45,7 @@ public class ExpenseActivity extends Activity {
         }
         else
         {
-            itemArrayAdapter = new ArrayAdapter<Expense>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, expenseList)
+            itemArrayAdapter = new ArrayAdapter<FinancialObjects>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, expenseList)
             {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -88,14 +89,14 @@ public class ExpenseActivity extends Activity {
             viewTotal = (TextView)findViewById(R.id.viewExpenseTotal);
             //Fix Total Display
             //viewTotal.setText(accessWishListItems.getTotal());
-            viewTotal.setText(totalPrice.expenseTotal(expenseList));
-            total = totalPrice.expenseTotal(expenseList);
+            viewTotal.setText(totalPrice.calculateTotal(expenseList));
+            total = totalPrice.calculateTotal(expenseList);
         }
     }
 
     public void selectItemAtPosition(int position)
     {
-        Expense selected = itemArrayAdapter.getItem(position);
+        Expense selected = (Expense) itemArrayAdapter.getItem(position);
 
         EditText editName = (EditText)findViewById(R.id.editExpenseName);
         EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
@@ -146,8 +147,8 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewTotal.setText(totalPrice.expenseTotal(expenseList));
-        total = totalPrice.expenseTotal(expenseList);
+        viewTotal.setText(totalPrice.calculateTotal(expenseList));
+        total = totalPrice.calculateTotal(expenseList);
     }
 
     public void buttonExpenseDeleteOnClick(View v)
@@ -179,8 +180,8 @@ public class ExpenseActivity extends Activity {
         {
             Messages.warning(this, result);
         }
-        viewTotal.setText(totalPrice.expenseTotal(expenseList));
-        total = totalPrice.expenseTotal(expenseList);
+        viewTotal.setText(totalPrice.calculateTotal(expenseList));
+        total = totalPrice.calculateTotal(expenseList);
     }
 
     public void buttonExpenseUpdateOnClick(View v)
@@ -225,8 +226,8 @@ public class ExpenseActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
-        viewTotal.setText(totalPrice.expenseTotal(expenseList));
-        total = totalPrice.expenseTotal(expenseList);
+        viewTotal.setText(totalPrice.calculateTotal(expenseList));
+        total = totalPrice.calculateTotal(expenseList);
     }
 
     private Expense createExpenseFromEditText()
@@ -245,8 +246,6 @@ public class ExpenseActivity extends Activity {
         if(priceString.length() == 0){
             priceString = "0.00";
         }
-
-
 
         price = Double.parseDouble(priceString);
 

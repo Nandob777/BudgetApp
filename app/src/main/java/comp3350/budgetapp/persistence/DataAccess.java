@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.budgetapp.objects.Expense;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.objects.WishListItem;
 
@@ -13,9 +14,9 @@ public interface DataAccess
 
 	void close();
 
-	String getWishListItemSequential(List<WishListItem> WishListItemResult);
+	String getWishListItemSequential(List<FinancialObjects> WishListItemResult);
 
-	ArrayList<WishListItem> getWishListItemRandom(WishListItem WishListItem);
+	ArrayList<FinancialObjects> getWishListItemRandom(WishListItem WishListItem);
 
 	String addWishListItem(WishListItem WishListItem);
 
@@ -23,9 +24,9 @@ public interface DataAccess
 
 	String deleteWishListItem(WishListItem WishListItem);
 
-	String getIncomeSourceSequential(List<IncomeSource> IncomeSourceResult);
+	String getIncomeSourceSequential(List<FinancialObjects> IncomeSourceResult);
 
-	ArrayList<IncomeSource> getIncomeSourceRandom(IncomeSource IncomeSource);
+	ArrayList<FinancialObjects> getIncomeSourceRandom(IncomeSource IncomeSource);
 
 	String addIncomeSource(IncomeSource IncomeSource);
 
@@ -33,9 +34,9 @@ public interface DataAccess
 
 	String deleteIncomeSource(IncomeSource IncomeSource);
 
-	String getExpenseSequential(List<Expense> ExpenseResult);
+	String getExpenseSequential(List<FinancialObjects> ExpenseResult);
 
-	ArrayList<Expense> getExpenseRandom(Expense Expense);
+	ArrayList<FinancialObjects> getExpenseRandom(Expense Expense);
 
 	String addExpense(Expense Expense);
 

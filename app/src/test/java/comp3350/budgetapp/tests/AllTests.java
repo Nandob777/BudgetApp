@@ -32,9 +32,7 @@ public class AllTests extends TestSuite
 
     private static void testBusiness()
     {
-        suite.addTestSuite(CalculateWishListTotalTest.class);
-        suite.addTestSuite(CalculateIncomeSourceTotalTest.class);
-        suite.addTestSuite(CalculateExpenseTotalTest.class);
+        suite.addTestSuite(CalculateTest.class);
         //suite.addTestSuite(AccessWishListItemsTest.class);
         //suite.addTestSuite(AccessExpensesTest.class);
         //suite.addTestSuite(AccessIncomeSourceTest.class);

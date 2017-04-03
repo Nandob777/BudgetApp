@@ -125,7 +125,7 @@ public class CLI  // command-line interface
                 currentWishListItem = accessWishListItems.getSequential();
                 while (currentWishListItem != null)
                 {
-                    wishListItemName = currentWishListItem.getItemName();
+                    wishListItemName = currentWishListItem.getName();
 
                     currentWishListItem = accessWishListItems.getSequential();
                 }
@@ -142,7 +142,7 @@ public class CLI  // command-line interface
             currentWishListItem = accessWishListItems.getSequential();
             while (currentWishListItem != null)
             {
-                wishListItemName = currentWishListItem.getItemName();
+                wishListItemName = currentWishListItem.getName();
                 System.out.println(indent +currentWishListItem);
                 currentWishListItem = accessWishListItems.getSequential();
             }

@@ -29,12 +29,14 @@ public class WishListItem extends FinancialObjects
         setPrice(super.getAmount());
     }
 
-    public String getItemName()
+    //does it make a difference if the method is commented out?? CHECK.
+    public String getName()
     {
         return super.getName();
     }
 
-    public double getPrice()
+    //does it make a difference if the method is commented out?? CHECK.
+    public double getAmount()
     {
         return super.getAmount();
     }
@@ -67,7 +69,7 @@ public class WishListItem extends FinancialObjects
     @Override
     public String toString()
     {
-        return String.format(Locale.getDefault(), "Item Name: %s, Current Price with %d%% discount: $%.2f", getItemName(), discount, getAmount());
+        return String.format(Locale.getDefault(), "Item Name: %s, Current Price with %d%% discount: $%.2f", getName(), discount, getAmount());
     }
 
     @Override

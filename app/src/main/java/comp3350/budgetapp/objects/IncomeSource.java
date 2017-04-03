@@ -39,7 +39,7 @@ public class IncomeSource extends FinancialObjects
         return super.getAmount();
     }
 
-    public String getSourceName() {
+    public String getName() {
         return super.getName();
     }
 
@@ -68,7 +68,7 @@ public class IncomeSource extends FinancialObjects
     public String toString()
     {
         return String.format(Locale.getDefault(), "Income Source Name: %s, Amount: $%.2f, Type: %s, Frequency: %d",
-                getSourceName(), getAmount(), type, frequency);
+                getName(), getAmount(), type, frequency);
     }
 
     @Override

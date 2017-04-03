@@ -4,13 +4,14 @@ import java.util.List;
 
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.persistence.DataAccess;
 
 public class AccessWishListItems
 {
     private DataAccess dataAccess;
-    private List<WishListItem> wishList;
+    private List<FinancialObjects> wishList;
     private WishListItem wishListItem;
 
     private String total;
@@ -24,7 +25,7 @@ public class AccessWishListItems
         currentItem = 0;
     }
 
-    public String getWishListItems(List<WishListItem> wishList)
+    public String getWishListItems(List<FinancialObjects> wishList)
     {
         wishList.clear();
         return dataAccess.getWishListItemSequential(wishList);
@@ -36,12 +37,12 @@ public class AccessWishListItems
         if (wishList == null)
         {
             result = dataAccess.getWishListItemSequential(wishList);
-            total = Calculate.wishlistTotal(wishList);
+            total = Calculate.calculateTotal(wishList);
             currentItem = 0;
         }
         if (currentItem < wishList.size())
         {
-            wishListItem = wishList.get(currentItem);
+            wishListItem = (WishListItem) wishList.get(currentItem);
             currentItem++;
         }
         else
@@ -59,8 +60,8 @@ public class AccessWishListItems
         currentItem = 0;
         if (currentItem < wishList.size())
         {
-            wishListItem = wishList.get(currentItem);
-            total = Calculate.wishlistTotal(wishList);
+            wishListItem = (WishListItem) wishList.get(currentItem);
+            total = Calculate.calculateTotal(wishList);
             currentItem++;
         }
         else
@@ -89,7 +90,7 @@ public class AccessWishListItems
 
     public String getTotal()
     {
-        return Calculate.wishlistTotal(this.wishList);
+        return Calculate.calculateTotal(this.wishList);
     }
 
 }

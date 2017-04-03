@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 //import comp3350.budgetapp.application.Main;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.tests.TesterMain;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.objects.IncomeSource;
@@ -17,9 +18,9 @@ public class DataAccessStub implements DataAccess
     private String dbName;
     private String dbType = "stub";
 
-    private ArrayList<WishListItem> wishList;
-    private ArrayList<IncomeSource> incomes;
-    private ArrayList<Expense> expenses;
+    private ArrayList<FinancialObjects> wishList;
+    private ArrayList<FinancialObjects> incomes;
+    private ArrayList<FinancialObjects> expenses;
 
     public DataAccessStub(String dbName)
     {
@@ -37,9 +38,9 @@ public class DataAccessStub implements DataAccess
         Expense expense;
         IncomeSource incomeSource;
 
-        wishList = new ArrayList<WishListItem>();
-        expenses = new ArrayList<Expense>();
-        incomes = new ArrayList<IncomeSource>();
+        wishList = new ArrayList<FinancialObjects>();
+        expenses = new ArrayList<FinancialObjects>();
+        incomes = new ArrayList<FinancialObjects>();
 
         wishListItem = new WishListItem("Google Pixel", 899.00);
         wishList.add(wishListItem);
@@ -68,19 +69,19 @@ public class DataAccessStub implements DataAccess
         System.out.println("Closed " + dbType + " database " + dbName);
     }
 
-    public String getWishListItemSequential(List<WishListItem> wishListItemsResult)
+    public String getWishListItemSequential(List<FinancialObjects> wishListItemsResult)
     {
         wishListItemsResult.clear();
         wishListItemsResult.addAll(wishList);
         return null;
     }
 
-    public ArrayList<WishListItem> getWishListItemRandom(WishListItem currentItem)
+    public ArrayList<FinancialObjects> getWishListItemRandom(WishListItem currentItem)
     {
-        ArrayList<WishListItem> newWishList;
+        ArrayList<FinancialObjects> newWishList;
         int index;
 
-        newWishList = new ArrayList<WishListItem>();
+        newWishList = new ArrayList<FinancialObjects>();
         index = wishList.indexOf(currentItem);
         if (index >= 0)
         {
@@ -118,20 +119,20 @@ public class DataAccessStub implements DataAccess
         }
         return null;
     }
-    public String getIncomeSourceSequential(List<IncomeSource> incomeItemsResult)
+    public String getIncomeSourceSequential(List<FinancialObjects> incomeItemsResult)
     {
         incomeItemsResult.clear();
         incomeItemsResult.addAll(incomes);
         return null;
     }
 
-    public ArrayList<IncomeSource> getIncomeSourceRandom(IncomeSource currentItem)
+    public ArrayList<FinancialObjects> getIncomeSourceRandom(IncomeSource currentItem)
     {
-        ArrayList<IncomeSource> newIncomes;
+        ArrayList<FinancialObjects> newIncomes;
 
         int index = 0;
 
-        newIncomes = new ArrayList<IncomeSource>();
+        newIncomes = new ArrayList<FinancialObjects>();
 
         for(index=0;index<incomes.size();index++)
         {
@@ -183,19 +184,19 @@ public class DataAccessStub implements DataAccess
         return null;
     }
 
-    public String getExpenseSequential(List<Expense> expenseItemsResult)
+    public String getExpenseSequential(List<FinancialObjects> expenseItemsResult)
     {
         expenseItemsResult.clear();
         expenseItemsResult.addAll(expenses);
         return null;
     }
 
-    public ArrayList<Expense> getExpenseRandom(Expense currentItem)
+    public ArrayList<FinancialObjects> getExpenseRandom(Expense currentItem)
     {
-        ArrayList<Expense> newExpenses;
+        ArrayList<FinancialObjects> newExpenses;
         int index = 0;
 
-        newExpenses = new ArrayList<Expense>();
+        newExpenses = new ArrayList<FinancialObjects>();
         index = expenses.indexOf(currentItem);
 
         for(index=0;index<expenses.size();index++)

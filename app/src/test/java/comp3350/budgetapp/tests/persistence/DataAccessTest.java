@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import comp3350.budgetapp.application.*;
 import comp3350.budgetapp.objects.*;
 import comp3350.budgetapp.persistence.DataAccess;
-import comp3350.budgetapp.tests.persistence.DataAccessStub;
 
 public class DataAccessTest extends TestCase {
 
@@ -55,29 +54,29 @@ public class DataAccessTest extends TestCase {
 
     private static void wishListItemTest(DataAccess dataAccess)
     {
-        ArrayList<WishListItem> wishlist;
+        ArrayList<FinancialObjects> wishlist;
         WishListItem wish;
 
         String result;
 
-        wishlist = new ArrayList<WishListItem>();
+        wishlist = new ArrayList<FinancialObjects>();
         result = dataAccess.getWishListItemSequential(wishlist);
         assertNull(result);
         assertNotNull(wishlist);
         assertEquals(4, wishlist.size());
 
-        wish = wishlist.get(0);
-        assertEquals(899.00, wish.getPrice());
-        assertEquals("Google Pixel",wish.getItemName());
-        wish = wishlist.get(1);
-        assertEquals(130.00, wish.getPrice());
-        assertEquals("Google Home",wish.getItemName());
-        wish = wishlist.get(2);
-        assertEquals(99.00, wish.getPrice());
-        assertEquals("Daydream View",wish.getItemName());
-        wish = wishlist.get(3);
-        assertEquals(35.00, wish.getPrice());
-        assertEquals("ChromeCast",wish.getItemName());
+        wish = (WishListItem) wishlist.get(0);
+        assertEquals(899.00, wish.getAmount());
+        assertEquals("Google Pixel",wish.getName());
+        wish = (WishListItem) wishlist.get(1);
+        assertEquals(130.00, wish.getAmount());
+        assertEquals("Google Home",wish.getName());
+        wish = (WishListItem) wishlist.get(2);
+        assertEquals(99.00, wish.getAmount());
+        assertEquals("Daydream View",wish.getName());
+        wish = (WishListItem) wishlist.get(3);
+        assertEquals(35.00, wish.getAmount());
+        assertEquals("ChromeCast",wish.getName());
 
         wish1 = new WishListItem("Samsung S9", 499.99);
         dataAccess.addWishListItem(wish1);
@@ -87,12 +86,12 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.getWishListItemSequential(wishlist);
         assertEquals(6, wishlist.size());
 
-        wish = wishlist.get(4);
-        assertEquals(499.99, wish.getPrice());
-        assertEquals("Samsung S9",wish.getItemName());
-        wish = wishlist.get(5);
-        assertEquals(200.99, wish.getPrice());
-        assertEquals("Samsung Watch",wish.getItemName());
+        wish = (WishListItem) wishlist.get(4);
+        assertEquals(499.99, wish.getAmount());
+        assertEquals("Samsung S9",wish.getName());
+        wish = (WishListItem) wishlist.get(5);
+        assertEquals(200.99, wish.getAmount());
+        assertEquals("Samsung Watch",wish.getName());
 
         dataAccess.deleteWishListItem(wish1);
         result = dataAccess.getWishListItemSequential(wishlist);
@@ -106,18 +105,18 @@ public class DataAccessTest extends TestCase {
 
     private static void incomeSourceTest(DataAccess dataAccess)
     {
-        ArrayList<IncomeSource> incomelist;
+        ArrayList<FinancialObjects> incomelist;
         IncomeSource income;
 
         String result;
 
-        incomelist = new ArrayList<IncomeSource>();
+        incomelist = new ArrayList<FinancialObjects>();
         result = dataAccess.getIncomeSourceSequential(incomelist);
         assertNull(result);
         assertNotNull(incomelist);
         assertEquals(1, incomelist.size());
 
-        income = incomelist.get(0);
+        income = (IncomeSource) incomelist.get(0);
         assertEquals("Starbucks", income.getName());
         assertEquals(800.00,income.getAmount());
 
@@ -129,10 +128,10 @@ public class DataAccessTest extends TestCase {
         dataAccess.getIncomeSourceSequential(incomelist);
         assertEquals(3,incomelist.size());
 
-        income = incomelist.get(1);
+        income = (IncomeSource) incomelist.get(1);
         assertEquals(21.0,income.getAmount());
         assertEquals("Web Developer",income.getName());
-        income = incomelist.get(2);
+        income = (IncomeSource) incomelist.get(2);
         assertEquals(13.0,income.getAmount());
         assertEquals("Teaching Assistant",income.getName());
 
@@ -148,21 +147,21 @@ public class DataAccessTest extends TestCase {
 
     private static void expenseTest(DataAccess dataAccess)
     {
-        ArrayList<Expense> expenselist;
+        ArrayList<FinancialObjects> expenselist;
         Expense expense;
 
         String result;
 
-        expenselist = new ArrayList<Expense>();
+        expenselist = new ArrayList<FinancialObjects>();
         result = dataAccess.getExpenseSequential(expenselist);
         assertNull(result);
         assertNotNull(expenselist);
         assertEquals(2, expenselist.size());
 
-        expense = expenselist.get(0);
+        expense = (Expense) expenselist.get(0);
         assertEquals("Rent", expense.getName());
         assertEquals(500.00,expense.getAmount());
-        expense = expenselist.get(1);
+        expense = (Expense) expenselist.get(1);
         assertEquals("Internet", expense.getName());
         assertEquals(120.00,expense.getAmount());
 
@@ -174,10 +173,10 @@ public class DataAccessTest extends TestCase {
         dataAccess.getExpenseSequential(expenselist);
         assertEquals(4,expenselist.size());
 
-        expense = expenselist.get(2);
+        expense = (Expense) expenselist.get(2);
         assertEquals(60.0,expense.getAmount());
         assertEquals("Cellphone Bill",expense.getName());
-        expense = expenselist.get(3);
+        expense = (Expense) expenselist.get(3);
         assertEquals(100.0,expense.getAmount());
         assertEquals("Hydro",expense.getName());
 

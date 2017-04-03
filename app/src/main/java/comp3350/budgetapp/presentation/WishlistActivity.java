@@ -2,7 +2,6 @@ package comp3350.budgetapp.presentation;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -16,6 +15,7 @@ import java.util.ArrayList;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.business.AccessWishListItems;
 
@@ -24,8 +24,8 @@ public class WishlistActivity extends Activity {
     private Calculate totalPrice;
     static String total = "Updates on opening Wish List";
     private AccessWishListItems accessWishListItems;
-    private ArrayList<WishListItem> itemList;
-    private ArrayAdapter<WishListItem> itemArrayAdapter;
+    private ArrayList<FinancialObjects> itemList;
+    private ArrayAdapter<FinancialObjects> itemArrayAdapter;
     private int selectedItemPosition = -1;
     private TextView viewTotal;
 
@@ -37,7 +37,7 @@ public class WishlistActivity extends Activity {
         accessWishListItems = new AccessWishListItems();
         totalPrice = new Calculate();
 
-        itemList = new ArrayList<WishListItem>();
+        itemList = new ArrayList<FinancialObjects>();
         String result = accessWishListItems.getWishListItems(itemList);
         if (result != null)
         {
@@ -45,7 +45,7 @@ public class WishlistActivity extends Activity {
         }
         else
         {
-            itemArrayAdapter = new ArrayAdapter<WishListItem>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, itemList)
+            itemArrayAdapter = new ArrayAdapter<FinancialObjects>(this, android.R.layout.simple_list_item_activated_2, android.R.id.text1, itemList)
             {
                 @Override
                 public View getView(int position, View convertView, ViewGroup parent) {
@@ -54,8 +54,8 @@ public class WishlistActivity extends Activity {
                     TextView text1 = (TextView) view.findViewById(android.R.id.text1);
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
-                    text1.setText(itemList.get(position).getItemName());
-                    text2.setText(String.format("%.2f", itemList.get(position).getPrice()));
+                    text1.setText(itemList.get(position).getName());
+                    text2.setText(String.format("%.2f", itemList.get(position).getAmount()));
 
                     return view;
                 }
@@ -89,33 +89,33 @@ public class WishlistActivity extends Activity {
             viewTotal = (TextView)findViewById(R.id.viewTotal);
             //Fix Total Display
             //viewTotal.setText(accessWishListItems.getTotal());
-            viewTotal.setText(totalPrice.wishlistTotal(itemList));
-            total = totalPrice.wishlistTotal(itemList);
+            viewTotal.setText(totalPrice.calculateTotal(itemList));
+            total = totalPrice.calculateTotal(itemList);
         }
     }
 
     public void selectItemAtPosition(int position)
     {
-        WishListItem selected = itemArrayAdapter.getItem(position);
+        WishListItem selected = (WishListItem) itemArrayAdapter.getItem(position);
 
         EditText editName = (EditText)findViewById(R.id.editItemName);
         EditText editPrice = (EditText)findViewById(R.id.editPrice);
 
-        editName.setText(selected.getItemName());
-        editPrice.setText(String.valueOf(selected.getPrice()));
+        editName.setText(selected.getName());
+        editPrice.setText(String.valueOf(selected.getAmount()));
     }
 
     public void buttonItemAddOnClick(View v)
     {
         WishListItem item = createItemFromEditText();
 
-        if(itemList.contains(item) || item.getItemName().contains("'"))
+        if(itemList.contains(item) || item.getName().contains("'"))
         {
             Messages.warning(this,"Can't add duplicates of Items");
             return;
         }
 
-        if(item.getPrice() > 100000)
+        if(item.getAmount() > 100000)
         {
             Messages.warning(this,"PLEASE BE REALISTIC");
             return;
@@ -148,8 +148,8 @@ public class WishlistActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewTotal.setText(totalPrice.wishlistTotal(itemList));
-        total = totalPrice.wishlistTotal(itemList);
+        viewTotal.setText(totalPrice.calculateTotal(itemList));
+        total = totalPrice.calculateTotal(itemList);
     }
 
     public void buttonItemDeleteOnClick(View v)
@@ -181,8 +181,8 @@ public class WishlistActivity extends Activity {
         {
             Messages.warning(this, result);
         }
-        viewTotal.setText(totalPrice.wishlistTotal(itemList));
-        total = totalPrice.wishlistTotal(itemList);
+        viewTotal.setText(totalPrice.calculateTotal(itemList));
+        total = totalPrice.calculateTotal(itemList);
     }
 
     public void buttonItemUpdateOnClick(View v)
@@ -195,7 +195,7 @@ public class WishlistActivity extends Activity {
             return;
         }
 
-        if(item.getPrice() > 100000)
+        if(item.getAmount() > 100000)
         {
             Messages.warning(this,"PLEASE BE REALISTIC");
             return;
@@ -227,8 +227,8 @@ public class WishlistActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
-        viewTotal.setText(totalPrice.wishlistTotal(itemList));
-        total = totalPrice.wishlistTotal(itemList);
+        viewTotal.setText(totalPrice.calculateTotal(itemList));
+        total = totalPrice.calculateTotal(itemList);
     }
 
     private WishListItem createItemFromEditText()
@@ -256,14 +256,14 @@ public class WishlistActivity extends Activity {
 
     private String validateItemData(WishListItem item, boolean isNewItem)
     {
-        if (item.getItemName().length() == 0)
+        if (item.getName().length() == 0)
         {
             return "Item Name required!";
         }
 
-        if (isNewItem && accessWishListItems.getRandom(item.getItemName()) != null)
+        if (isNewItem && accessWishListItems.getRandom(item.getName()) != null)
         {
-            return "Item " + item.getItemName() + " already exists";
+            return "Item " + item.getName() + " already exists";
         }
 
         return null;

@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.budgetapp.objects.Expense;
+import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.IncomeSource;
 import comp3350.budgetapp.objects.WishListItem;
 
@@ -26,9 +27,9 @@ public class DataAccessObject implements DataAccess
 	private String dbName;
 	private String dbType;
 
-	private ArrayList<WishListItem> WishListItems;
-	private ArrayList<IncomeSource> IncomeSources;
-	private ArrayList<Expense> Expenses;
+	private ArrayList<FinancialObjects> WishListItems;
+	private ArrayList<FinancialObjects> IncomeSources;
+	private ArrayList<FinancialObjects> Expenses;
 
 	private String cmdString;
 	private int updateCount;
@@ -111,7 +112,7 @@ public class DataAccessObject implements DataAccess
 		System.out.println("Closed " +dbType +" database " +dbName);
 	}
 
-	public String getWishListItemSequential(List<WishListItem> WishListItemResult)
+	public String getWishListItemSequential(List<FinancialObjects> WishListItemResult)
 	{
 		WishListItem WishListItem;
 		String itemName, itemPrice;
@@ -151,16 +152,16 @@ public class DataAccessObject implements DataAccess
 		return result;
 	}
 
-	public ArrayList<WishListItem> getWishListItemRandom(WishListItem newWishListItem)
+	public ArrayList<FinancialObjects> getWishListItemRandom(WishListItem newWishListItem)
 	{
 		WishListItem WishListItem;
 		String itemName, itemPrice;
 		itemName = EOF;
 		itemPrice = EOF;
-		WishListItems = new ArrayList<WishListItem>();
+		WishListItems = new ArrayList<FinancialObjects>();
 		try
 		{
-			cmdString = "Select * from WISHLISTITEMS where ITEMNAME= '" + newWishListItem.getItemName()+"'";
+			cmdString = "Select * from WISHLISTITEMS where ITEMNAME= '" + newWishListItem.getName()+"'";
 			rs3 = st1.executeQuery(cmdString);
 			// ResultSetMetaData md2 = rs3.getMetaData();
 			rs3.next();
@@ -186,8 +187,8 @@ public class DataAccessObject implements DataAccess
 		result = null;
 		try
 		{
-			values = "'"+currentWishListItem.getItemName()
-			         +"'," +currentWishListItem.getPrice();
+			values = "'"+currentWishListItem.getName()
+			         +"'," +currentWishListItem.getAmount();
 			cmdString = "INSERT INTO WISHLISTITEMS " +" VALUES(" +values +")";
 			//System.out.println(cmdString);
 			updateCount = st1.executeUpdate(cmdString);
@@ -209,9 +210,9 @@ public class DataAccessObject implements DataAccess
 		try
 		{
 			// Should check for empty values and not update them
-			values = "ITEMNAME= '" +currentWishListItem.getItemName()
-			         +"', ITEMPRICE=" +currentWishListItem.getPrice();
-			where = "where ITEMNAME = '" +currentWishListItem.getItemName()+"'";
+			values = "ITEMNAME= '" +currentWishListItem.getName()
+			         +"', ITEMPRICE=" +currentWishListItem.getAmount();
+			where = "where ITEMNAME = '" +currentWishListItem.getName()+"'";
             ;
 			cmdString = "UPDATE WISHLISTITEMS " +" SET " +values +" " +where;
 			//System.out.println(cmdString);
@@ -232,7 +233,7 @@ public class DataAccessObject implements DataAccess
 		result = null;
 		try
 		{
-			values = currentWishListItem.getItemName();
+			values = currentWishListItem.getName();
 			cmdString = "DELETE FROM WISHLISTITEMS WHERE ITEMNAME = '" +values+"'";
 			//System.out.println(cmdString);
 			updateCount = st1.executeUpdate(cmdString);
@@ -245,7 +246,7 @@ public class DataAccessObject implements DataAccess
 		return result;
 	}
 
-	public String getIncomeSourceSequential(List<IncomeSource> IncomeSourceResult)
+	public String getIncomeSourceSequential(List<FinancialObjects> IncomeSourceResult)
 	{
 		IncomeSource IncomeSource;
 		String IncomeSourceName, amount;
@@ -274,16 +275,16 @@ public class DataAccessObject implements DataAccess
 		return result;
 	}
 
-	public ArrayList<IncomeSource> getIncomeSourceRandom(IncomeSource newIncomeSource)
+	public ArrayList<FinancialObjects> getIncomeSourceRandom(IncomeSource newIncomeSource)
 	{
 		IncomeSource IncomeSource;
 		String IncomeSourceName, amount;
         IncomeSourceName = EOF;
 		amount = EOF;
-		IncomeSources = new ArrayList<IncomeSource>();
+		IncomeSources = new ArrayList<FinancialObjects>();
 		try
 		{
-			cmdString = "SELECT * FROM INCOMESOURCES WHERE SOURCENAME='" +newIncomeSource.getSourceName() +"'";
+			cmdString = "SELECT * FROM INCOMESOURCES WHERE SOURCENAME='" +newIncomeSource.getName() +"'";
 			rs5 = st3.executeQuery(cmdString);
 			// ResultSetMetaData md5 = rs5.getMetaData();
 			while (rs5.next())
@@ -309,7 +310,7 @@ public class DataAccessObject implements DataAccess
 		result = null;
 		try
 		{
-			values =  "'" +currentIncomeSource.getSourceName()
+			values =  "'" +currentIncomeSource.getName()
 			         +"'," +currentIncomeSource.getAmount();
 			cmdString = "INSERT INTO INCOMESOURCES " +" Values(" +values +")";
 			//System.out.println(cmdString);
@@ -332,10 +333,10 @@ public class DataAccessObject implements DataAccess
 		try
 		{
 			// Should check for empty values and not update them
-			values = "SOURCENAME='" +currentIncomeSource.getSourceName()
+			values = "SOURCENAME='" +currentIncomeSource.getName()
 					+"', AMOUNT=" +currentIncomeSource.getAmount();
 
-			where = "where SOURCENAME='" +currentIncomeSource.getSourceName() +"'";
+			where = "where SOURCENAME='" +currentIncomeSource.getName() +"'";
 			cmdString = "UPDATE INCOMESOURCES " +" SET " +values +" " +where;
 			//System.out.println(cmdString);
 			updateCount = st1.executeUpdate(cmdString);
@@ -355,7 +356,7 @@ public class DataAccessObject implements DataAccess
 		result = null;
 		try
 		{
-			values = currentIncomeSource.getSourceName();
+			values = currentIncomeSource.getName();
 			cmdString = "DELETE FROM INCOMESOURCES WHERE SOURCENAME='" +values +"'";
 			//System.out.println(cmdString);
 			updateCount = st1.executeUpdate(cmdString);
@@ -368,7 +369,7 @@ public class DataAccessObject implements DataAccess
 		return result;
 	}
 
-	public String getExpenseSequential(List<Expense> ExpenseResult)
+	public String getExpenseSequential(List<FinancialObjects> ExpenseResult)
         {
             Expense Expense;
             String name, amount;
@@ -404,13 +405,13 @@ public class DataAccessObject implements DataAccess
 
             return result;
 	}
-        public ArrayList<Expense> getExpenseRandom(Expense newExpense)
+        public ArrayList<FinancialObjects> getExpenseRandom(Expense newExpense)
         {
             WishListItem WishListItem;
             String itemName, itemPrice;
             itemName = EOF;
             itemPrice = EOF;
-            Expenses = new ArrayList<Expense>();
+            Expenses = new ArrayList<FinancialObjects>();
             try
             {
                 cmdString = "SELECT * FROM EXPENSES WHERE ITEMNAME= '" + newExpense.getName()+"'";

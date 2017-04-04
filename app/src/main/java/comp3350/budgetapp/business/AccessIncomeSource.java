@@ -1,5 +1,6 @@
 package comp3350.budgetapp.business;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import comp3350.budgetapp.application.Main;
@@ -36,6 +37,7 @@ public class AccessIncomeSource
         String result = null;
         if (Incomes == null)
         {
+            Incomes = new ArrayList<FinancialObjects>();
             result = dataAccess.getIncomeSourceSequential(Incomes);
             total = Calculate.calculateTotal(Incomes);
             currentItem = 0;

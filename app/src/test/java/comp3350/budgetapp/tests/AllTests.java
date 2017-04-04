@@ -33,9 +33,9 @@ public class AllTests extends TestSuite
     private static void testBusiness()
     {
         suite.addTestSuite(CalculateTest.class);
-        //suite.addTestSuite(AccessWishListItemsTest.class);
-        //suite.addTestSuite(AccessExpensesTest.class);
-        //suite.addTestSuite(AccessIncomeSourceTest.class);
+        suite.addTestSuite(AccessWishListItemsTest.class);
+        suite.addTestSuite(AccessExpensesTest.class);
+        suite.addTestSuite(AccessIncomeSourceTest.class);
     }
 
     private static void testPersistence()

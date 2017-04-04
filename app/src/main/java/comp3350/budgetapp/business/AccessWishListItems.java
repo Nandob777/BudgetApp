@@ -1,6 +1,7 @@
 package comp3350.budgetapp.business;
 
 import java.util.List;
+import java.util.ArrayList;
 
 import comp3350.budgetapp.application.Main;
 import comp3350.budgetapp.application.Services;
@@ -36,6 +37,7 @@ public class AccessWishListItems
         String result = null;
         if (wishList == null)
         {
+            wishList = new ArrayList<FinancialObjects>();
             result = dataAccess.getWishListItemSequential(wishList);
             total = Calculate.calculateTotal(wishList);
             currentItem = 0;
@@ -88,9 +90,9 @@ public class AccessWishListItems
         return dataAccess.deleteWishListItem(currentItem);
     }
 
-    public String getTotal()
+   /* public String getTotal()
     {
         return Calculate.calculateTotal(this.wishList);
-    }
+    }*/
 
 }

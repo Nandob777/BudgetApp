@@ -114,11 +114,15 @@ public class DataAccessTest extends TestCase {
         result = dataAccess.getIncomeSourceSequential(incomelist);
         assertNull(result);
         assertNotNull(incomelist);
-        assertEquals(1, incomelist.size());
+        assertEquals(2, incomelist.size());
 
         income = (IncomeSource) incomelist.get(0);
         assertEquals("Starbucks", income.getName());
         assertEquals(800.00,income.getAmount());
+
+        income = (IncomeSource) incomelist.get(1);
+        assertEquals("Bartending", income.getName());
+        assertEquals(700.00,income.getAmount());
 
         incomeSource1 = new IncomeSource("Web Developer",21.0);
         dataAccess.addIncomeSource(incomeSource1);
@@ -126,22 +130,22 @@ public class DataAccessTest extends TestCase {
         dataAccess.addIncomeSource(incomeSource2);
 
         dataAccess.getIncomeSourceSequential(incomelist);
-        assertEquals(3,incomelist.size());
+        assertEquals(4,incomelist.size());
 
-        income = (IncomeSource) incomelist.get(1);
+        income = (IncomeSource) incomelist.get(2);
         assertEquals(21.0,income.getAmount());
         assertEquals("Web Developer",income.getName());
-        income = (IncomeSource) incomelist.get(2);
+        income = (IncomeSource) incomelist.get(3);
         assertEquals(13.0,income.getAmount());
         assertEquals("Teaching Assistant",income.getName());
 
         dataAccess.deleteIncomeSource(incomeSource1);
         dataAccess.getIncomeSourceSequential(incomelist);
-        assertEquals(2,incomelist.size());
+        assertEquals(3,incomelist.size());
 
         incomeSource2 = new IncomeSource("Teaching Assistant",14.0);
         dataAccess.updateIncomeSource(incomeSource2);
-        assertTrue(incomeSource2.equals(incomelist.get(1)));
+        assertTrue(incomeSource2.equals(incomelist.get(2)));
 
     }
 

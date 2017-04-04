@@ -58,6 +58,8 @@ public class DataAccessStub implements DataAccess
 
         incomeSource = new IncomeSource("Starbucks",800.00);
         incomes.add(incomeSource);
+        incomeSource = new IncomeSource("Bartending",700.00);
+        incomes.add(incomeSource);
 
 
 
@@ -230,7 +232,7 @@ public class DataAccessStub implements DataAccess
 
         }
 
-        if (index >=0)
+        if (index >=0 && index < expenses.size())
         {
             expenses.set(index, currentItem);
         }
@@ -250,7 +252,7 @@ public class DataAccessStub implements DataAccess
 
         }
 
-        if (index >=0)
+        if (index >=0 && index<expenses.size())
         {
             expenses.remove(index);
         }

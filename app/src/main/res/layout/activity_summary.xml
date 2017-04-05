@@ -5,16 +5,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
-    tools:context="comp3350.budgetapp.presentation.SummaryActivity">
+    tools:context="comp3350.budgetapp.presentation.SummaryActivity"
+    android:orientation="vertical">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="2dp"
         android:fontFamily="monospace"
-        android:text="Your Finacial Summary"
-        android:layout_marginBottom="2dp"  />
+        android:text="Your Financial Summary"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <View
         android:layout_width="match_parent"
@@ -40,12 +41,12 @@
         android:layout_marginBottom="64dp"/>
 
     <TextView
+        android:id="@+id/textExpenseAmountSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="10dp"
         android:text="Total Expenses per month:"
-        android:id="@+id/textExpenseAmountSummary"
-        android:layout_marginBottom="10dp"  />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/viewExpenseTotal"
@@ -55,20 +56,32 @@
         android:layout_marginBottom="64dp"/>
 
     <TextView
+        android:id="@+id/textAmountSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_marginBottom="10dp"
         android:text="Wishlist total cost:"
-        android:id="@+id/textAmountSummary"
-        android:layout_marginBottom="10dp" />
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
-        android:id="@+id/viewTotal"
+        android:id="@+id/viewWishlistTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@android:style/TextAppearance.Material.Medium"
-        android:layout_marginBottom="64dp" />
+        android:layout_marginBottom="64dp"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
+    <TextView
+        android:id="@+id/textSavingsSummary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Savings: "
+        android:textAppearance="@android:style/TextAppearance.Material.Large" />
+
+    <TextView
+        android:id="@+id/viewSavingsTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
 
 </LinearLayout>

@@ -5,17 +5,16 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="comp3350.budgetapp.presentation.SummaryActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context="comp3350.budgetapp.presentation.SummaryActivity">
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="2dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:fontFamily="monospace"
         android:text="Your Financial Summary"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginBottom="2dp"  />
 
     <View
         android:layout_width="match_parent"
@@ -41,12 +40,12 @@
         android:layout_marginBottom="64dp"/>
 
     <TextView
-        android:id="@+id/textExpenseAmountSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Total Expenses per month:"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/textExpenseAmountSummary"
+        android:layout_marginBottom="10dp"  />
 
     <TextView
         android:id="@+id/viewExpenseTotal"
@@ -56,7 +55,7 @@
         android:layout_marginBottom="64dp"/>
 
     <TextView
-        android:id="@+id/textAmountSummary"
+        android:id="@+id/textWishlistAmountSummary"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
@@ -71,15 +70,15 @@
         android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 
     <TextView
-        android:id="@+id/textSavingsSummary"
-        android:layout_width="wrap_content"
+        android:id="@+id/textSavingsAmountSummary"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Total Savings: "
+        android:text="Total Savings:"
         android:textAppearance="@android:style/TextAppearance.Material.Large" />
 
     <TextView
         android:id="@+id/viewSavingsTotal"
-        android:layout_width="wrap_content"
+        android:layout_width="16dp"
         android:layout_height="wrap_content"
         android:textAppearance="@android:style/TextAppearance.Material.Medium" />
 

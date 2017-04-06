@@ -86,10 +86,8 @@ public class IncomeActivity extends Activity {
                 }
             });
 
-            //TextView viewIncomeTotal = (TextView)findViewById(R.id.viewIncomeTotal);
             viewIncomeTotal = (TextView)findViewById(R.id.viewIncomeTotal);
-            //Fix Total Display
-            //viewIncomeTotal.setText(accessIncomeSources.getTotal());
+
             viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
             total = totalPrice.calculateTotal(incomeList);
         }

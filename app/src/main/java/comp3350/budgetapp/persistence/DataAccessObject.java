@@ -120,6 +120,7 @@ public class DataAccessObject implements DataAccess
 		itemPrice = EOF;
 
 		result = null;
+		WishListItemResult.clear();
 		try
 		{
 			cmdString = "SELECT * FROM WISHLISTITEMS";
@@ -164,11 +165,11 @@ public class DataAccessObject implements DataAccess
 			cmdString = "Select * from WISHLISTITEMS where ITEMNAME= '" + newWishListItem.getName()+"'";
 			rs3 = st1.executeQuery(cmdString);
 			// ResultSetMetaData md2 = rs3.getMetaData();
-			rs3.next();
+			//rs3.next();
 			while (rs3.next())
 			{
-				itemName = rs2.getString("ITEMNAME");
-				itemPrice = rs2.getString("ITEMPRICE");
+				itemName = rs3.getString("ITEMNAME");
+				itemPrice = rs3.getString("ITEMPRICE");
 				WishListItem = new WishListItem(itemName,Double.parseDouble(itemPrice));
 				WishListItems.add(WishListItem);
 			}
@@ -254,6 +255,7 @@ public class DataAccessObject implements DataAccess
         amount = EOF;
 
 		result = null;
+		IncomeSourceResult.clear();
 		try
 		{
 			cmdString = "SELECT * FROM INCOMESOURCES";
@@ -377,6 +379,7 @@ public class DataAccessObject implements DataAccess
             amount = EOF;
 
             result = null;
+			ExpenseResult.clear();
             try
             {
                 cmdString = "SELECT * FROM EXPENSES";
@@ -407,7 +410,7 @@ public class DataAccessObject implements DataAccess
 	}
         public ArrayList<FinancialObjects> getExpenseRandom(Expense newExpense)
         {
-            WishListItem WishListItem;
+            Expense Expense;
             String itemName, itemPrice;
             itemName = EOF;
             itemPrice = EOF;
@@ -415,16 +418,16 @@ public class DataAccessObject implements DataAccess
             try
             {
                 cmdString = "SELECT * FROM EXPENSES WHERE ITEMNAME= '" + newExpense.getName()+"'";
-                rs3 = st1.executeQuery(cmdString);
+                rs4 = st2.executeQuery(cmdString);
                 // ResultSetMetaData md2 = rs3.getMetaData();
-                while (rs3.next())
+                while (rs4.next())
                 {
-                    itemName = rs2.getString("ITEMNAME");
-                    itemPrice = rs2.getString("ITEMPPRICE");
-                    WishListItem = new WishListItem(itemName,Double.parseDouble(itemPrice));
-                    WishListItems.add(WishListItem);
+                    itemName = rs4.getString("ITEMNAME");
+                    itemPrice = rs4.getString("ITEMPPRICE");
+					Expense = new Expense(itemName,Double.parseDouble(itemPrice));
+					Expenses.add(Expense);
                 }
-                rs3.close();
+                rs4.close();
             } catch (Exception e)
             {
                 processSQLError(e);

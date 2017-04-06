@@ -4,16 +4,14 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
-//import comp3350.budgetapp.tests.TesterMain;
-//import comp3350.budgetapp.application.Services;
-
 import comp3350.budgetapp.application.*;
 import comp3350.budgetapp.objects.*;
 import comp3350.budgetapp.persistence.DataAccess;
 
 public class DataAccessTest extends TestCase {
 
-    private static String dbName = "stub";
+    //private static String dbName = "stub";
+    private static String dbName = Main.dbName;
 
     public static WishListItem wish1, wish2;
     public static Expense expense1, expense2;
@@ -59,6 +57,8 @@ public class DataAccessTest extends TestCase {
 
         String result;
 
+        System.out.println("\nStarting wishListItemTest");
+
         wishlist = new ArrayList<FinancialObjects>();
         result = dataAccess.getWishListItemSequential(wishlist);
         assertNull(result);
@@ -94,12 +94,20 @@ public class DataAccessTest extends TestCase {
         assertEquals("Samsung Watch",wish.getName());
 
         dataAccess.deleteWishListItem(wish1);
+
         result = dataAccess.getWishListItemSequential(wishlist);
         assertEquals(5,wishlist.size());
 
         wish2 = new WishListItem("Samsung Watch", 150.99);
         dataAccess.updateWishListItem(wish2);
         assertTrue(wish2.equals(wishlist.get(4)));
+
+        dataAccess.deleteWishListItem(wish2);
+
+        result = dataAccess.getWishListItemSequential(wishlist);
+        assertEquals(4,wishlist.size());
+
+        System.out.println("Finished wishListItemTest");
 
     }
 
@@ -109,6 +117,8 @@ public class DataAccessTest extends TestCase {
         IncomeSource income;
 
         String result;
+
+        System.out.println("\nStarting incomeSourceTest");
 
         incomelist = new ArrayList<FinancialObjects>();
         result = dataAccess.getIncomeSourceSequential(incomelist);
@@ -147,6 +157,12 @@ public class DataAccessTest extends TestCase {
         dataAccess.updateIncomeSource(incomeSource2);
         assertTrue(incomeSource2.equals(incomelist.get(2)));
 
+        dataAccess.deleteIncomeSource(incomeSource2);
+        dataAccess.getIncomeSourceSequential(incomelist);
+        assertEquals(2,incomelist.size());
+
+        System.out.println("Finished incomeSourceTest");
+
     }
 
     private static void expenseTest(DataAccess dataAccess)
@@ -155,6 +171,8 @@ public class DataAccessTest extends TestCase {
         Expense expense;
 
         String result;
+
+        System.out.println("\nStarting expenseTest");
 
         expenselist = new ArrayList<FinancialObjects>();
         result = dataAccess.getExpenseSequential(expenselist);
@@ -191,6 +209,12 @@ public class DataAccessTest extends TestCase {
         expense2 = new Expense("Hydro",150.00);
         dataAccess.updateExpense(expense2);
         assertTrue(expense2.equals(expenselist.get(2)));
+
+        dataAccess.deleteExpense(expense2);
+        dataAccess.getExpenseSequential(expenselist);
+        assertEquals(2,expenselist.size());
+
+        System.out.println("Finished expenseTest");
 
     }
 }

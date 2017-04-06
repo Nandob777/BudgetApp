@@ -85,10 +85,8 @@ public class ExpenseActivity extends Activity {
                 }
             });
 
-            //TextView viewTotal = (TextView)findViewById(R.id.viewTotal);
             viewTotal = (TextView)findViewById(R.id.viewExpenseTotal);
-            //Fix Total Display
-            //viewTotal.setText(accessWishListItems.getTotal());
+
             viewTotal.setText(totalPrice.calculateTotal(expenseList));
             total = totalPrice.calculateTotal(expenseList);
         }

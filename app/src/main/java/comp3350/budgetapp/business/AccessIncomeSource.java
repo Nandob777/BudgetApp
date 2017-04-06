@@ -91,9 +91,4 @@ public class AccessIncomeSource
         return dataAccess.deleteIncomeSource(currentItem);
     }
 
-    public String getTotal()
-    {
-        return Calculate.calculateTotal(Incomes);
-    }
-
 }

@@ -72,7 +72,6 @@ public class CalculateTest extends TestCase {
     public void testOddIncomeSourceList() {
         System.out.println("\nStarting testOddIncomeSourceList");
 
-        list = new ArrayList<>();
         income = new IncomeSource("Starbucks", 399.9999999);
         list.add(income);
         income = new IncomeSource("Contractor", 5999.9999999);
@@ -87,8 +86,6 @@ public class CalculateTest extends TestCase {
 
     public void testBlankIncomes() {
         System.out.println("\nStarting testBlankIncomes");
-
-        list = new ArrayList<>();
 
         income = new IncomeSource("Starbucks");
         list.add(income);
@@ -113,8 +110,6 @@ public class CalculateTest extends TestCase {
 
     public void testSomeBlankIncomes() {
         System.out.println("\nStarting testSomeBlankIncomes");
-
-        list = new ArrayList<>();
 
         income = new IncomeSource("Starbucks", 500.00);
         list.add(income);
@@ -582,9 +577,9 @@ public class CalculateTest extends TestCase {
         System.out.println("Finished testListWithAllTypes");
     }
 
-    public void testListWithAllTypesAndNull()
+    public void testListWithAllTypesMixed()
     {
-        System.out.println("\nStarting testListWithAllTypesAndNull");
+        System.out.println("\nStarting testListWithAllTypesMixed");
 
         exp = new Expense("Internet", 120.0);
         list.add(exp);
@@ -597,6 +592,37 @@ public class CalculateTest extends TestCase {
 
         wish = new WishListItem("TV", 600.0);
         list.add(wish);
+
+        income = new IncomeSource("Application Developer", 1000.0);
+        list.add(income);
+
+        wish = new WishListItem("iPhone", 500.0);
+        list.add(wish);
+
+        assertEquals("?", Calculate.calculateTotal(list));
+
+        System.out.println("Finished testListWithAllTypesMixed");
+    }
+
+    public void testListWithAllTypesAndNull()
+    {
+        System.out.println("\nStarting testListWithAllTypesAndNull");
+
+        exp = new Expense("Internet", 120.0);
+        list.add(exp);
+
+        income = new IncomeSource("Starbucks", 500.0);
+        list.add(income);
+
+        list.add(null);
+
+        exp = new Expense("Rent", 500.0);
+        list.add(exp);
+
+        wish = new WishListItem("TV", 600.0);
+        list.add(wish);
+
+        list.add(null);
 
         income = new IncomeSource("Application Developer", 1000.0);
         list.add(income);
@@ -622,6 +648,5 @@ public class CalculateTest extends TestCase {
 
         System.out.println("Finished testAllNullList");
     }
-    //need to mixed testing! --> copy validate tests
 
 }

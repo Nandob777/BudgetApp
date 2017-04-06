@@ -18,7 +18,7 @@ public class WishListItemTest extends TestCase
         assertEquals(0, wish1.getPriority());
         assertEquals("Item Name: iPhone 9, Current Price with 0% discount: $0.00", wish1.toString());
 
-        wish1.setPrice(900.23);
+        wish1.setAmount(900.23);
         assertEquals(900.23, wish1.getAmount());
         assertEquals("Item Name: iPhone 9, Current Price with 0% discount: $900.23", wish1.toString());
 
@@ -46,7 +46,7 @@ public class WishListItemTest extends TestCase
         wish1.setPriority(5);
         assertEquals(5, wish1.getPriority());
 
-        wish1.setPrice(1029.99);
+        wish1.setAmount(1029.99);
         assertEquals(1029.99, wish1.getAmount());
         assertEquals("Item Name: iPhone 10, Current Price with 0% discount: $1029.99", wish1.toString());
 
@@ -69,7 +69,7 @@ public class WishListItemTest extends TestCase
         assertEquals("Item Name: iPhone 11, Current Price with 15% discount: $1699.99", wish1.toString());
         assertEquals(15,wish1.getDiscount());
 
-        wish1.setPrice(1599.99);
+        wish1.setAmount(1599.99);
         assertEquals(1359.9914999999999, wish1.getAmount());
         assertEquals("Item Name: iPhone 11, Current Price with 15% discount: $1359.99", wish1.toString());
 
@@ -115,13 +115,13 @@ public class WishListItemTest extends TestCase
         assertEquals(15,wish1.getDiscount());
 
         wish1.setDiscount(100);
-        wish1.setPrice(1999.99);
+        wish1.setAmount(1999.99);
         assertEquals(0.0, wish1.getAmount());
         assertEquals("Item Name: iPhone 11, Current Price with 100% discount: $0.00", wish1.toString());
         assertEquals(100,wish1.getDiscount());
 
         wish1.setDiscount(-100);
-        wish1.setPrice(1999.99);
+        wish1.setAmount(1999.99);
         assertEquals(3999.98, wish1.getAmount());
         assertEquals("Item Name: iPhone 11, Current Price with -100% discount: $3999.98", wish1.toString());
         assertEquals(-100,wish1.getDiscount());

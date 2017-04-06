@@ -35,14 +35,6 @@ public class IncomeSource extends FinancialObjects
         setType(type);
     }
 
-    public double getAmount() {
-        return super.getAmount();
-    }
-
-    public String getName() {
-        return super.getName();
-    }
-
     public String getType() {
         return type;
     }

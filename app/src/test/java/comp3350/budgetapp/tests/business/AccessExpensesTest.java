@@ -11,7 +11,6 @@ import comp3350.budgetapp.business.AccessExpenses;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.tests.persistence.DataAccessStub;
-import comp3350.budgetapp.tests.TesterMain;
 
 public class AccessExpensesTest extends TestCase {
 

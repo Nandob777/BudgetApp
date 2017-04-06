@@ -90,9 +90,4 @@ public class AccessWishListItems
         return dataAccess.deleteWishListItem(currentItem);
     }
 
-   /* public String getTotal()
-    {
-        return Calculate.calculateTotal(this.wishList);
-    }*/
-
 }

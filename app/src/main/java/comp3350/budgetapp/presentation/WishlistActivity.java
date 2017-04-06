@@ -85,10 +85,8 @@ public class WishlistActivity extends Activity {
                 }
             });
 
-            //TextView viewTotal = (TextView)findViewById(R.id.viewTotal);
             viewTotal = (TextView)findViewById(R.id.viewTotal);
-            //Fix Total Display
-            //viewTotal.setText(accessWishListItems.getTotal());
+
             viewTotal.setText(totalPrice.calculateTotal(itemList));
             total = totalPrice.calculateTotal(itemList);
         }

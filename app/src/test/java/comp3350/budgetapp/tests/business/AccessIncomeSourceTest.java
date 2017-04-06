@@ -149,13 +149,13 @@ public class AccessIncomeSourceTest extends TestCase
         accessIncomeSource = new AccessIncomeSource();
 
         source = accessIncomeSource.getRandom("Security Analyst");
-        assertEquals(null,source);
+        assertNull(source);
 
         source = accessIncomeSource.getRandom("Application Developer");
-        assertEquals(null,source);
+        assertNull(source);
 
         source = accessIncomeSource.getRandom("Personal Assistant");
-        assertEquals(null,source);
+        assertNull(source);
 
         Services.closeDataAccess();
 

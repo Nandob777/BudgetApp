@@ -14,22 +14,6 @@ public class Expense extends FinancialObjects {
         super(name,amount);
     }
 
-    public double getAmount() {
-        return super.getAmount();
-    }
-
-    public void setAmount(double amount) {
-        super.setAmount(amount);
-    }
-
-    public String getName() {
-        return super.getName();
-    }
-
-    public void setName(String name) {
-        super.setName(name);
-    }
-
     @Override
     public String toString() {
         return String.format(Locale.getDefault(), "Expense Name: %s, Amount: $%.2f", getName(), getAmount());

@@ -26,22 +26,10 @@ public class WishListItem extends FinancialObjects
         super(itemName,price);
         this.priority = 0;
         this.discount = discount;
-        setPrice(super.getAmount());
+        setAmount(super.getAmount());
     }
 
-    //does it make a difference if the method is commented out?? CHECK.
-    public String getName()
-    {
-        return super.getName();
-    }
-
-    //does it make a difference if the method is commented out?? CHECK.
-    public double getAmount()
-    {
-        return super.getAmount();
-    }
-
-    public void setPrice(double price)
+    public void setAmount(double price)
     {
         super.setAmount( price * (1-((this.discount)*0.01)) );
     }
@@ -49,7 +37,7 @@ public class WishListItem extends FinancialObjects
     public void setDiscount(int discount)
     {
         this.discount = discount;
-        setPrice(super.getAmount());
+        setAmount(super.getAmount());
     }
 
     public int getDiscount() {

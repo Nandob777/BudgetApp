@@ -90,9 +90,4 @@ public class AccessExpenses
         return dataAccess.deleteExpense(currentExpense);
     }
 
-    public String getTotal()
-    {
-        return Calculate.calculateTotal(expenses);
-    }
-
 }

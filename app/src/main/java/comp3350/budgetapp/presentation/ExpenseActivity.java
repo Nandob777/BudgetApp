@@ -145,7 +145,7 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewTotal.setText(totalPrice.calculateTotal(expenseList));
+        clearFields();
         total = totalPrice.calculateTotal(expenseList);
     }
 
@@ -179,6 +179,7 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
         viewTotal.setText(totalPrice.calculateTotal(expenseList));
+        clearFields();
         total = totalPrice.calculateTotal(expenseList);
     }
 
@@ -225,6 +226,7 @@ public class ExpenseActivity extends Activity {
             Messages.fatalError(this, result);
         }
         viewTotal.setText(totalPrice.calculateTotal(expenseList));
+        clearFields();
         total = totalPrice.calculateTotal(expenseList);
     }
 
@@ -268,6 +270,15 @@ public class ExpenseActivity extends Activity {
         }
 
         return null;
+    }
+
+    private void clearFields()
+    {
+        EditText editName = (EditText)findViewById(R.id.editExpenseName);
+        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
+
+        editName.setText("");
+        editPrice.setText("");
     }
 }
 

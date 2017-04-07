@@ -18,7 +18,6 @@ import comp3350.budgetapp.business.AccessIncomeSource;
 import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.IncomeSource;
-import comp3350.budgetapp.business.AccessIncomeSource;
 
 public class IncomeActivity extends Activity {
 
@@ -147,7 +146,6 @@ public class IncomeActivity extends Activity {
         }
 
         viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
-        clearFields();
         total = totalPrice.calculateTotal(incomeList);
     }
 
@@ -157,7 +155,7 @@ public class IncomeActivity extends Activity {
 
         if(!incomeList.contains(item))
         {
-            Messages.warning(this,"Must Add Income Source Before Updating It");
+            Messages.warning(this,"Can't delete Income Source that isn't in system");
             return;
         }
         if(item.getAmount() > 1000000)
@@ -186,7 +184,6 @@ public class IncomeActivity extends Activity {
             Messages.warning(this, result);
         }
         viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
-        clearFields();
         total = totalPrice.calculateTotal(incomeList);
     }
 
@@ -196,7 +193,7 @@ public class IncomeActivity extends Activity {
 
         if(!incomeList.contains(item))
         {
-            Messages.warning(this,"Can't delete Expense that isn't in system");
+            Messages.warning(this,"Must add Income Source before updating it");
             return;
         }
 
@@ -227,7 +224,6 @@ public class IncomeActivity extends Activity {
             Messages.fatalError(this, result);
         }
         viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
-        clearFields();
         total = totalPrice.calculateTotal(incomeList);
     }
 
@@ -258,24 +254,15 @@ public class IncomeActivity extends Activity {
     {
         if (item.getName().length() == 0)
         {
-            return "Item Name required!";
+            return "Income Source name required!";
         }
 
         if (isNewItem && accessIncomeSources.getRandom(item.getName()) != null)
         {
-            return "Item " + item.getName() + " already exists";
+            return "Income Source " + item.getName() + " already exists";
         }
 
         return null;
-    }
-
-    private void clearFields()
-    {
-        EditText editName = (EditText)findViewById(R.id.editExpenseName);
-        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
-
-        editName.setText("");
-        editPrice.setText("");
     }
 }
 

@@ -147,7 +147,6 @@ public class WishlistActivity extends Activity {
         }
 
         viewTotal.setText(totalPrice.calculateTotal(itemList));
-        clearFields();
         total = totalPrice.calculateTotal(itemList);
     }
 
@@ -181,7 +180,6 @@ public class WishlistActivity extends Activity {
             Messages.warning(this, result);
         }
         viewTotal.setText(totalPrice.calculateTotal(itemList));
-        clearFields();
         total = totalPrice.calculateTotal(itemList);
     }
 
@@ -191,7 +189,7 @@ public class WishlistActivity extends Activity {
 
         if(!itemList.contains(item))
         {
-            Messages.warning(this,"Must Add Item Before Updating It");
+            Messages.warning(this,"Must add Item before updating it");
             return;
         }
 
@@ -228,7 +226,6 @@ public class WishlistActivity extends Activity {
             Messages.fatalError(this, result);
         }
         viewTotal.setText(totalPrice.calculateTotal(itemList));
-        clearFields();
         total = totalPrice.calculateTotal(itemList);
     }
 
@@ -268,15 +265,6 @@ public class WishlistActivity extends Activity {
         }
 
         return null;
-    }
-
-    private void clearFields()
-    {
-        EditText editName = (EditText)findViewById(R.id.editExpenseName);
-        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
-
-        editName.setText("");
-        editPrice.setText("");
     }
 
 }

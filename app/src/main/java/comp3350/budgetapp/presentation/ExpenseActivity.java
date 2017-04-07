@@ -145,7 +145,7 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        clearFields();
+        viewTotal.setText(totalPrice.calculateTotal(expenseList));
         total = totalPrice.calculateTotal(expenseList);
     }
 
@@ -179,7 +179,6 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
         viewTotal.setText(totalPrice.calculateTotal(expenseList));
-        clearFields();
         total = totalPrice.calculateTotal(expenseList);
     }
 
@@ -189,7 +188,7 @@ public class ExpenseActivity extends Activity {
 
         if(!expenseList.contains(item))
         {
-            Messages.warning(this,"Must Add Expense Before Updating It");
+            Messages.warning(this,"Must add expense before updating it");
             return;
         }
         if(item.getAmount() > 1000000)
@@ -226,7 +225,6 @@ public class ExpenseActivity extends Activity {
             Messages.fatalError(this, result);
         }
         viewTotal.setText(totalPrice.calculateTotal(expenseList));
-        clearFields();
         total = totalPrice.calculateTotal(expenseList);
     }
 
@@ -259,26 +257,17 @@ public class ExpenseActivity extends Activity {
 
         if (item.getName().length() == 0)
         {
-            return "Item Name required!";
+            return "Expense Name required!";
         }
 
 
 
         if ((isNewItem) && (accessExpenses.getRandom(item.getName()) != null))
         {
-            return "Item " + item.getName() + " already exists";
+            return "Expense " + item.getName() + " already exists";
         }
 
         return null;
-    }
-
-    private void clearFields()
-    {
-        EditText editName = (EditText)findViewById(R.id.editExpenseName);
-        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
-
-        editName.setText("");
-        editPrice.setText("");
     }
 }
 

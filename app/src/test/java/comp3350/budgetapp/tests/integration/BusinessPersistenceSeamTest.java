@@ -40,6 +40,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         source = accessIncomeSource.getSequential();
         assertNotNull(source);
         assertEquals("Starbucks", source.getName());
+        assertEquals("monthly",source.getType());
 
         source = accessIncomeSource.getSequential();
         assertNotNull(source);
@@ -62,7 +63,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNull(source);
 
         //addIncomeSource()
-        source = new IncomeSource("Security Analyst",1200.0);
+        source = new IncomeSource("Security Analyst",1200.0,"bi-weekly");
         result = accessIncomeSource.addIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -71,7 +72,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertEquals(source.getAmount(),tmpSrc.getAmount());
         assertNull(result);
 
-        source = new IncomeSource("Personal Assistant",1000.0);
+        source = new IncomeSource("Personal Assistant",1000.0,"bi-weekly");
         result = accessIncomeSource.addIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -85,7 +86,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNotNull(tmpSrc);
         assertEquals("Security Analyst",tmpSrc.getName());
         assertEquals(1200.00,tmpSrc.getAmount());
-        source = new IncomeSource("Security Analyst", 1270.00);
+        source = new IncomeSource("Security Analyst", 1270.00,"bi-weekly");
         result = accessIncomeSource.updateIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -98,7 +99,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNotNull(tmpSrc);
         assertEquals("Personal Assistant",tmpSrc.getName());
         assertEquals(1000.00,tmpSrc.getAmount());
-        source = new IncomeSource("Personal Assistant", 1090.00);
+        source = new IncomeSource("Personal Assistant", 1090.00,"bi-weekly");
         result = accessIncomeSource.updateIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -107,7 +108,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertEquals(source.getAmount(),tmpSrc.getAmount());
         assertNull(result);
 
-        source = new IncomeSource("Application Developer", 1600.00);
+        source = new IncomeSource("Application Developer", 1600.00,"weekly");
         result = accessIncomeSource.updateIncomeSource(source);
         assertEquals("Tuple not inserted correctly.",result);
 

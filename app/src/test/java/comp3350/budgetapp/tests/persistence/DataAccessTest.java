@@ -129,33 +129,41 @@ public class DataAccessTest extends TestCase {
         income = (IncomeSource) incomelist.get(0);
         assertEquals("Starbucks", income.getName());
         assertEquals(800.00,income.getAmount());
+        assertEquals("monthly",income.getType());
 
         income = (IncomeSource) incomelist.get(1);
         assertEquals("Bartending", income.getName());
         assertEquals(700.00,income.getAmount());
+        assertEquals("monthly",income.getType());
 
-        incomeSource1 = new IncomeSource("Web Developer",21.0);
+        incomeSource1 = new IncomeSource("Web Developer",700.0,"weekly");
         dataAccess.addIncomeSource(incomeSource1);
-        incomeSource2 = new IncomeSource("Teaching Assistant",13.0);
+        incomeSource2 = new IncomeSource("Teaching Assistant",600.0,"bi-weekly");
         dataAccess.addIncomeSource(incomeSource2);
 
         dataAccess.getIncomeSourceSequential(incomelist);
         assertEquals(4,incomelist.size());
 
         income = (IncomeSource) incomelist.get(2);
-        assertEquals(21.0,income.getAmount());
+        assertEquals(700.0,income.getAmount());
+        assertEquals("weekly",income.getType());
         assertEquals("Web Developer",income.getName());
         income = (IncomeSource) incomelist.get(3);
-        assertEquals(13.0,income.getAmount());
+        assertEquals(600.0,income.getAmount());
+        assertEquals("bi-weekly",income.getType());
+
         assertEquals("Teaching Assistant",income.getName());
 
         dataAccess.deleteIncomeSource(incomeSource1);
         dataAccess.getIncomeSourceSequential(incomelist);
         assertEquals(3,incomelist.size());
 
-        incomeSource2 = new IncomeSource("Teaching Assistant",14.0);
+        incomeSource2 = new IncomeSource("Teaching Assistant",670.0,"bi-weekly");
         dataAccess.updateIncomeSource(incomeSource2);
+        income = (IncomeSource) dataAccess.getIncomeSourceRandom(incomeSource2).get(0);
         assertTrue(incomeSource2.equals(incomelist.get(2)));
+        assertEquals(670.0,income.getAmount());
+        assertEquals("bi-weekly",income.getType());
 
         dataAccess.deleteIncomeSource(incomeSource2);
         dataAccess.getIncomeSourceSequential(incomelist);

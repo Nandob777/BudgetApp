@@ -202,22 +202,24 @@ public class AccessIncomeSourceTest extends TestCase
         Services.createDataAccess(new DataAccessStub(dbName));
         accessIncomeSource = new AccessIncomeSource();
 
-        source = new IncomeSource("Security Analyst",1200.0);
+        source = new IncomeSource("Security Analyst",1200.0,"bi-weekly");
         result = accessIncomeSource.addIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
         assertEquals(source,tmpSrc);
         assertEquals(source.getName(),tmpSrc.getName());
         assertEquals(source.getAmount(),tmpSrc.getAmount());
+        assertEquals(source.getType(),tmpSrc.getType());
         assertNull(result);
 
-        source = new IncomeSource("Personal Assistant",1000.0);
+        source = new IncomeSource("Personal Assistant",1000.0,"weekly");
         result = accessIncomeSource.addIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
         assertEquals(source,tmpSrc);
         assertEquals(source.getName(),tmpSrc.getName());
         assertEquals(source.getAmount(),tmpSrc.getAmount());
+        assertEquals(source.getType(),tmpSrc.getType());
         assertNull(result);
 
         Services.closeDataAccess();
@@ -238,26 +240,28 @@ public class AccessIncomeSourceTest extends TestCase
         assertNotNull(tmpSrc);
         assertEquals("Bartending",tmpSrc.getName());
         assertEquals(700.00,tmpSrc.getAmount());
-        source = new IncomeSource("Bartending", 770.00);
+        source = new IncomeSource("Bartending", 770.00, "monthly");
         result = accessIncomeSource.updateIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
         assertEquals(source,tmpSrc);
         assertEquals(source.getName(),tmpSrc.getName());
         assertEquals(source.getAmount(),tmpSrc.getAmount());
+        assertEquals(source.getType(),tmpSrc.getType());
         assertNull(result);
 
         tmpSrc = accessIncomeSource.getRandom("Starbucks");
         assertNotNull(tmpSrc);
         assertEquals("Starbucks",tmpSrc.getName());
         assertEquals(800.00,tmpSrc.getAmount());
-        source = new IncomeSource("Starbucks", 900.00);
+        source = new IncomeSource("Starbucks", 900.00, "weekly");
         result = accessIncomeSource.updateIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
         assertEquals(source,tmpSrc);
         assertEquals(source.getName(),tmpSrc.getName());
         assertEquals(source.getAmount(),tmpSrc.getAmount());
+        assertEquals(source.getType(),tmpSrc.getType());
         assertNull(result);
 
         Services.closeDataAccess();

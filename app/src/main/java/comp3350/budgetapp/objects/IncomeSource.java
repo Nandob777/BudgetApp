@@ -50,7 +50,8 @@ public class IncomeSource extends FinancialObjects
          * type is changed */
 
         this.type = type;
-        if(type.equalsIgnoreCase(TYPE_MONTHLY)){this.frequency = FREQ_MONTHLY;}
+        if(type == null){ this.frequency = DEFAULT_FREQ;}
+        else if(type.equalsIgnoreCase(TYPE_MONTHLY)){this.frequency = FREQ_MONTHLY;}
         else if(type.equalsIgnoreCase(TYPE_BWEEKLY)){this.frequency = FREQ_BWEEKLY;}
         else if(type.equalsIgnoreCase(TYPE_WEEKLY)){this.frequency = FREQ_WEEKLY;}
         else{ this.frequency = DEFAULT_FREQ;}

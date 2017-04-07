@@ -56,9 +56,9 @@ public class DataAccessStub implements DataAccess
         expense = new Expense("Internet",120.00);
         expenses.add(expense);
 
-        incomeSource = new IncomeSource("Starbucks",800.00);
+        incomeSource = new IncomeSource("Starbucks",800.00,"monthly");
         incomes.add(incomeSource);
-        incomeSource = new IncomeSource("Bartending",700.00);
+        incomeSource = new IncomeSource("Bartending",700.00,"monthly");
         incomes.add(incomeSource);
 
 

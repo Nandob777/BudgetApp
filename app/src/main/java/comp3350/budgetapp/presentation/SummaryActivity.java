@@ -5,21 +5,31 @@ import android.os.Bundle;
 import android.widget.TextView;
 
 
+import java.util.ArrayList;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.AccessIncomeSource;
 import comp3350.budgetapp.business.AccessWishListItems;
 import comp3350.budgetapp.business.AccessExpenses;
+import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.objects.FinancialObjects;
 
 public class SummaryActivity extends Activity{
 
     private TextView viewIncome;
     private TextView viewExpenses;
     private TextView viewWishTotal;
+    private TextView viewTotalSavings;
 
     private AccessExpenses accessExpenses;
     private AccessWishListItems accessWishList;
     private AccessIncomeSource accessIncome;
+
+    private AccessWishListItems accessWishListItems;
+    ArrayList<FinancialObjects> itemList;
+    double wishListTotal = 0.00;
+    double expenseTotal = 0.00;
+    double incomeTotal = 0.00;
 
 
 
@@ -33,15 +43,38 @@ public class SummaryActivity extends Activity{
         accessIncome = new AccessIncomeSource();
 
 
+        itemList = new ArrayList<FinancialObjects>();
+        String result = accessWishList.getWishListItems(itemList);
+
+        for(int i =0; i < itemList.size();i++){
+            wishListTotal += itemList.get(i).getAmount();
+        }
+        result = accessExpenses.getExpenses(itemList);
+
+        for(int i =0; i < itemList.size();i++){
+            expenseTotal += itemList.get(i).getAmount();
+        }
+        result = accessIncome.getIncomeSources(itemList);
+
+        for(int i =0; i < itemList.size();i++){
+            incomeTotal += itemList.get(i).getAmount();
+        }
+
+
 
         viewExpenses = (TextView)findViewById(R.id.viewExpenseTotal);
-        viewExpenses.setText(ExpenseActivity.total);
+        viewExpenses.setText(Double.toString(expenseTotal));
 
         viewWishTotal = (TextView)findViewById(R.id.viewWishlistTotal);
-        viewWishTotal.setText(WishlistActivity.total);
+        viewWishTotal.setText(Double.toString(wishListTotal));
 
         viewIncome = (TextView)findViewById(R.id.viewIncomeTotal);
-        viewIncome.setText(IncomeActivity.total);
+        viewIncome.setText(Double.toString(incomeTotal));
+
+        viewWishTotal = (TextView)findViewById(R.id.viewSavingsTotal);
+        viewWishTotal.setText(Double.toString(incomeTotal-expenseTotal));
     }
+
+
 
 }

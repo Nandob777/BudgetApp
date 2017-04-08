@@ -11,7 +11,7 @@ import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.AccessIncomeSource;
 import comp3350.budgetapp.business.AccessWishListItems;
 import comp3350.budgetapp.business.AccessExpenses;
-import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.business.Savings;
 import comp3350.budgetapp.objects.FinancialObjects;
 
 public class SummaryActivity extends Activity{
@@ -19,17 +19,17 @@ public class SummaryActivity extends Activity{
     private TextView viewIncome;
     private TextView viewExpenses;
     private TextView viewWishTotal;
-    private TextView viewTotalSavings;
+    private TextView viewSavings;
 
     private AccessExpenses accessExpenses;
     private AccessWishListItems accessWishList;
     private AccessIncomeSource accessIncome;
 
-    private AccessWishListItems accessWishListItems;
     ArrayList<FinancialObjects> itemList;
     double wishListTotal = 0.00;
     double expenseTotal = 0.00;
     double incomeTotal = 0.00;
+    Savings savings;
 
 
 
@@ -37,6 +37,8 @@ public class SummaryActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_summary);
+
+        savings = new Savings();
 
         accessExpenses = new AccessExpenses();
         accessWishList = new AccessWishListItems();
@@ -71,8 +73,8 @@ public class SummaryActivity extends Activity{
         viewIncome = (TextView)findViewById(R.id.viewIncomeTotal);
         viewIncome.setText(Double.toString(incomeTotal));
 
-        viewWishTotal = (TextView)findViewById(R.id.viewSavingsTotal);
-        viewWishTotal.setText(Double.toString(incomeTotal-expenseTotal));
+        viewSavings = (TextView)findViewById(R.id.viewSavingsTotal);
+        viewSavings.setText(savings.toString());
     }
 
 

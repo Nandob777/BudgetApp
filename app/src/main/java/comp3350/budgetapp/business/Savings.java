@@ -36,9 +36,14 @@ public class Savings
         savingsTotal = Double.parseDouble(incomeTotal) - Double.parseDouble(expenseTotal);
     }
 
+    public double getSavingsTotal()
+    {
+        return savingsTotal;
+    }
+
     public String toString()
     {
-        return String.format(Locale.getDefault(), "$ %.2f", savingsTotal);
+        return String.format(Locale.getDefault(), "$ %.2f", getSavingsTotal());
     }
 
 }

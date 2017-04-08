@@ -2,31 +2,229 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\464a19fc17b7812a35da8a2c7de37e3d952e859c\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="c82741bc129dd5f99f11a4ab8666ae24262053b6">
-        <dex dex="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_f83e97c4a97f201d789ee3e14f54dda6b78e4d06/classes.dex" />
+        sha1="ee394a892dd21c03a528139c1e8d4e0e1264ac84">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_750efbd1cc45d6c1d9137dc8a676d9c14aed3757.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/libs/hsqldb.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\javax.inject\javax.inject\1\6975da39a7040257bd51d21a231b76c915872d38\javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\javax.inject-1_9b915b9d2a0cd59e346744a759e3a7ebf15d6870.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\38ff6251b794ad424386727a9b49d993f782e742\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="702d339bc0a81d21354cd7e2cf2b67225fa4a16c">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_26d3c212d66ac1fb5b0163b1b515cc7b36c1994a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\eac07a40539a8d96a0bb93cc3b2ff60e7a5ec6b5\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="7e11799d8a26bfa5d48acafe012ee5545b9bf468">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\classes_048b0c482272d1808c4475906489b461955d0da8.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\30800bdad1efe835b58363dba6cabbde74c96250\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cb454b52545859ed2f24a6c01366805b0fa04b22">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_0b84d6b0a3d1e7ad9588d3c0840da747c7739e2a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.2.0\support-annotations-25.2.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4a5a82a027706397fff621b22fd6fa796e91d7c5">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\support-annotations-25.2.0_c0aaab9beec05f482a9b446b2cdf902214522520.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-core\1.3\42a25dc3219429f0e5d060061f71acb49bf010a0\hamcrest-core-1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="42a25dc3219429f0e5d060061f71acb49bf010a0">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-core-1.3_80229bd9ac6301f7793d0420e950ea375ecddc54.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\Documents\SandboxSoftEng\app\libs\robotium-solo-5.3.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e6e664ab1b59d2504c3529f128747c13487f96ca">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\robotium-solo-5.3.1_2983d41c870b626057c83f35819c3bb893117f5d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\4b3e26b382016dcf7164294e413f2ed1c93c1e41\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67eb33110dbacb46a48175b08ae0c96761d2c17d">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_941bac9293e0488355548b02cd3f9f4260a511a1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\3985ccad3966c55db71fc6831112d580c69df2d1\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="810f41e5b7fd99f196ebeabe865ba2c54e7e76dc">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_3339aaf235edcf47ab5eea185f2091c75584085f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\com.squareup\javawriter\2.1.1\67ff45d9ae02e583d0f9b3432a5ebbe05c30c966\javawriter-2.1.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="67ff45d9ae02e583d0f9b3432a5ebbe05c30c966">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\javawriter-2.1.1_d78ad1118ff71680f563d109faf659cba6741dcc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-library\1.3\4785a3c21320980282f9f33d0d1264a69040538f\hamcrest-library-1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4785a3c21320980282f9f33d0d1264a69040538f">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-library-1.3_c6e9a65067e75c9c29e23ff91671a82aece30e73.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\91bae1a621ca30f390b8890fddd0b433e9a49f37\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="8fe8a8f77d651982ce5e18f6187dc4daf914ac57">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_d81727b77a967af9716933dc14909cd4a33fccbb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\c38dbb8b90818433ec44df393bfdf21f47a04a50\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="fa0446a14ed5dd3725047d6399ffea771a564b30">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_859823b7a8b3cef5b66f3fc653ca6703213b912d.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\8c384ff3114df3fac95ff5b55f9886068cf0aff8\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="796f9229948e907471c5595fbe94655ccf03ff73">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\classes_2f293966cfa274db2b1cc1202c5497dd3229d9f0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\Documents\SandboxSoftEng\app\libs\hsqldb.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
         sha1="5ee175911824a9913e650246f0759eb30691ca00">
-        <dex dex="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/transforms/dex/debug/folders/1000/2/hsqldb_8af2d2dd3e057e416020c7df5dd4eff5e4705860/classes.dex" />
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\hsqldb_868bdfcfc535e359d3fd2fe4fa25738cb2f6592a.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\9a48df22631ae5bfecdc35f4cad2caaa6ca5c139\output\jars\classes.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="f2ba0aaab1d9d44fad59a7751a2e8feee565103f">
-        <dex dex="/Users/mardelmaduro/Documents/COMP_3350/SoftEngProject/GroupB_iter1/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_1bcb5698906e8c3e7a123b3d2056315a6f9db4b9/classes.dex" />
+        sha1="905f3e63973d47fedf2d945fa31d8c0f0c98816e">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\classes_bb1ddfc0f93aa2a837ae554d70823f3cee7b9b25.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\46eb67592bca80bd87ba6e387d2782dc89e8d225\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_32542e96125bee59a575d8cf0a77b0d8dfa2b170.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\javax.annotation\javax.annotation-api\1.2\479c1e06db31c432330183f5cae684163f186146\javax.annotation-api-1.2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="479c1e06db31c432330183f5cae684163f186146">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\javax.annotation-api-1.2_df457e8c636ec4fe14feb58ee33b5a8effef7f3e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\ffedc9a39b22b576dbcbbe4acabc11f37af07c25\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="a890ee8445927649d9ed50f625a315d8758688be">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\classes_6ea608cc58294eede35bad9410683f57f77aebd0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\652e622f706fbde86676c8571d2d033883fb032c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="e820b7be8c035dd522da4bc822e8a76c8e27921a">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\debug\classes_43c299a37dcdaded5515174025f94d7f860613e2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.android\build-cache\c0d6fe9881c4e7424c43471eaf010de27b6f1ba3\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="d115b0e9e1501135fe91254ba884fcbd83d374c0">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\classes_322ad359f5847ed95042555b6771d4d55223475a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\2.0.1\516c03b21d50a644d538de0f0369c620989cd8f0\jsr305-2.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="516c03b21d50a644d538de0f0369c620989cd8f0">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\jsr305-2.0.1_e70f3982b0231d71e23ee447a501423c211200a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\org.hamcrest\hamcrest-integration\1.3\5de0c73fef18917cd85d0ab70bb23818685e4dfd\hamcrest-integration-1.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="5de0c73fef18917cd85d0ab70bb23818685e4dfd">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-integration-1.3_9651afdc73c4bc7a1d9a5974f4e27fbfee1a1a15.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\wynan\.gradle\caches\modules-2\files-2.1\junit\junit\4.12\2973d150c0dc1fefe998f834810d68f278ea58ec\junit-4.12.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="2973d150c0dc1fefe998f834810d68f278ea58ec">
+        <dex dex="C:\Users\wynan\Documents\SandboxSoftEng\app\build\intermediates\pre-dexed\androidTest\debug\junit-4.12_f13cff472dd75e373271567db04c37a0b2ee0aac.jar" />
     </item>
 
 </items>

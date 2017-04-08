@@ -5,6 +5,7 @@ import java.util.Locale;
 public class FinancialObjects {
     protected String name = "";
     protected double amount = 0.0;
+    protected  String type = "";
 
     public FinancialObjects()
     {
@@ -18,6 +19,13 @@ public class FinancialObjects {
         this.amount = amount;
     }
 
+    public FinancialObjects(String name, double amount, String type)
+    {
+        this.name = name;
+        this.amount = amount;
+        this.type = type;
+    }
+
     public double getAmount()
     {
         return this.amount;
@@ -28,6 +36,11 @@ public class FinancialObjects {
         return this.name;
     }
 
+    public String getType()
+    {
+        return this.type;
+    }
+
     public void setAmount(double amount) {
         this.amount = amount;
     }
@@ -36,8 +49,12 @@ public class FinancialObjects {
         this.name = name;
     }
 
+    public void setType(String type) {
+        this.type = type;
+    }
+
     public String toString() {
-        return String.format(Locale.getDefault(),"%s : $%.2f", name, amount);
+        return String.format(Locale.getDefault(),"%s : $%.2f (%s)", name, amount, type);
     }
 
     public boolean equals(Object object)

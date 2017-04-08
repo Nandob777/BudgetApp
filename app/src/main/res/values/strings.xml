@@ -13,6 +13,12 @@
     <string name="button_delete">Delete</string>
     <string name="button_update">Update</string>
 
+    <string-array name="incomes_array">
+        <item>Misc</item>
+        <item>Weekly</item>
+        <item>Bi-weekly</item>
+        <item>Monthly</item>
+    </string-array>
 
     <string name="fatalError">Fatal error</string>
     <string name="warning">Warning</string>

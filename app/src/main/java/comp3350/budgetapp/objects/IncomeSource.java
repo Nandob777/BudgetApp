@@ -6,12 +6,12 @@ public class IncomeSource extends FinancialObjects
 {
     private String type = "";
     private int frequency;
-    private final String DEFAULT_TYPE = "misc";
-    private final int DEFAULT_FREQ = 1;
+    private final String DEFAULT_TYPE = "Misc";
+    private final int DEFAULT_FREQ = 0;
 
-    private final String TYPE_MONTHLY = "monthly";
-    private final String TYPE_BWEEKLY = "bi-weekly";
-    private final String TYPE_WEEKLY = "weekly";
+    private final String TYPE_MONTHLY = "Monthly";
+    private final String TYPE_BWEEKLY = "Bi-weekly";
+    private final String TYPE_WEEKLY = "Weekly";
 
     private final int FREQ_MONTHLY = 1;
     private final int FREQ_BWEEKLY = 2;
@@ -35,15 +35,18 @@ public class IncomeSource extends FinancialObjects
         setType(type);
     }
 
-    public String getType() {
-        return type;
-    }
-
     public int getFrequency()
     {
         return frequency;
     }
 
+    @Override
+    public String getType()
+    {
+        return this.type;
+    }
+
+    @Override
     public void setType(String type) {
         /*type is the string shown in the app, frequency is how income amount is calculated
          * frequency should not be allowed to change independently --> can only change when
@@ -69,12 +72,7 @@ public class IncomeSource extends FinancialObjects
     {
         boolean result;
 
-        result = false;
-
-        if (object instanceof IncomeSource && super.equals(object))
-        {
-            result = true;
-        }
+        result = object instanceof IncomeSource && super.equals(object);
         return result;
     }
 

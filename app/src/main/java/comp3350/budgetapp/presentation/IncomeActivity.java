@@ -8,10 +8,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.AccessIncomeSource;
@@ -55,7 +57,7 @@ public class IncomeActivity extends Activity {
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                     text1.setText(incomeList.get(position).getName());
-                    text2.setText(String.format("%.2f", incomeList.get(position).getAmount()));
+                    text2.setText(String.format("%.2f (%s)", incomeList.get(position).getAmount(), incomeList.get(position).getType()));
 
                     return view;
                 }
@@ -87,8 +89,18 @@ public class IncomeActivity extends Activity {
 
             viewIncomeTotal = (TextView)findViewById(R.id.viewIncomeTotal);
 
-            viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
-            total = totalPrice.calculateTotal(incomeList);
+            viewIncomeTotal.setText(Calculate.calculateTotal(incomeList));
+            total = Calculate.calculateTotal(incomeList);
+
+            Spinner spinner = (Spinner) findViewById(R.id.incomes_spinner);
+            // Create an ArrayAdapter using the string array and a default spinner layout
+            ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                    R.array.incomes_array, android.R.layout.simple_spinner_item);
+            // Specify the layout to use when the list of choices appears
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            // Apply the adapter to the spinner
+            spinner.setAdapter(adapter);
+
         }
     }
 
@@ -101,6 +113,20 @@ public class IncomeActivity extends Activity {
 
         editName.setText(selected.getName());
         editPrice.setText(String.valueOf(selected.getAmount()));
+
+        String compareType = selected.getType();
+        Spinner editType = (Spinner) findViewById(R.id.incomes_spinner);
+//        ArrayAdapter<CharSequence> adapter =  ArrayAdapter.createFromResource(this, R.array.incomes_array, android.R.layout.simple_spinner_item);
+//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        editType.setAdapter(adapter);
+//        if (!compareType.equals(null))
+//        {
+//            int spinnerPosition = adapter.getPosition(compareType);
+//            editType.setSelection(spinnerPosition);
+//        }
+
+        String[] types = getResources().getStringArray(R.array.incomes_array);
+        editType.setSelection(Arrays.asList(types).indexOf(compareType));
     }
 
     public void buttonIncomeAddOnClick(View v)
@@ -145,8 +171,8 @@ public class IncomeActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
-        total = totalPrice.calculateTotal(incomeList);
+        viewIncomeTotal.setText(Calculate.calculateTotal(incomeList));
+        total = Calculate.calculateTotal(incomeList);
         clearFields();
     }
 
@@ -184,8 +210,8 @@ public class IncomeActivity extends Activity {
         {
             Messages.warning(this, result);
         }
-        viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
-        total = totalPrice.calculateTotal(incomeList);
+        viewIncomeTotal.setText(Calculate.calculateTotal(incomeList));
+        total = Calculate.calculateTotal(incomeList);
         clearFields();
     }
 
@@ -225,8 +251,8 @@ public class IncomeActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
-        viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
-        total = totalPrice.calculateTotal(incomeList);
+        viewIncomeTotal.setText(Calculate.calculateTotal(incomeList));
+        total = Calculate.calculateTotal(incomeList);
         clearFields();
     }
 
@@ -234,8 +260,10 @@ public class IncomeActivity extends Activity {
     {
         EditText editItemName = (EditText) findViewById(R.id.editIncomeName);
         EditText editPrice = (EditText) findViewById(R.id.editIncomeAmount);
+        Spinner editType = (Spinner) findViewById(R.id.incomes_spinner);
         String itemName = editItemName.getText().toString();
         String priceString = editPrice.getText().toString();
+        String type = editType.getSelectedItem().toString();
 
         if(itemName == null || itemName.equals(""))
         {
@@ -248,7 +276,7 @@ public class IncomeActivity extends Activity {
 
         Double price = Double.parseDouble(priceString);
 
-        IncomeSource item = new IncomeSource(itemName, price);
+        IncomeSource item = new IncomeSource(itemName, price, type);
 
         return item;
     }
@@ -272,9 +300,11 @@ public class IncomeActivity extends Activity {
     {
         EditText editName = (EditText)findViewById(R.id.editIncomeName);
         EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
+        Spinner editType = (Spinner) findViewById(R.id.incomes_spinner);
 
         editName.setText(" ");
         editPrice.setText(" ");
+        editType.setSelection(0);
     }
 }
 

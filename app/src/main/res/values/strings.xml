@@ -12,6 +12,7 @@
     <string name="button_add">Add</string>
     <string name="button_delete">Delete</string>
     <string name="button_update">Update</string>
+    <string name="button_purchased">Purchased</string>
 
     <string-array name="incomes_array">
         <item>Misc</item>

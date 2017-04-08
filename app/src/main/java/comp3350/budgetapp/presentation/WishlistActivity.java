@@ -14,7 +14,9 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import comp3350.budgetapp.R;
+import comp3350.budgetapp.business.AccessExpenses;
 import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.business.AccessWishListItems;
@@ -24,6 +26,7 @@ public class WishlistActivity extends Activity {
     private Calculate totalPrice;
     static String total = "Updates on opening Wish List";
     private AccessWishListItems accessWishListItems;
+    private AccessExpenses accessExpenses;
     private ArrayList<FinancialObjects> itemList;
     private ArrayAdapter<FinancialObjects> itemArrayAdapter;
     private int selectedItemPosition = -1;
@@ -87,8 +90,8 @@ public class WishlistActivity extends Activity {
 
             viewTotal = (TextView)findViewById(R.id.viewTotal);
 
-            viewTotal.setText(totalPrice.calculateTotal(itemList));
-            total = totalPrice.calculateTotal(itemList);
+            viewTotal.setText(Calculate.calculateTotal(itemList));
+            total = Calculate.calculateTotal(itemList);
         }
     }
 
@@ -146,8 +149,8 @@ public class WishlistActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewTotal.setText(totalPrice.calculateTotal(itemList));
-        total = totalPrice.calculateTotal(itemList);
+        viewTotal.setText(Calculate.calculateTotal(itemList));
+        total = Calculate.calculateTotal(itemList);
         clearFields();
     }
 
@@ -180,9 +183,18 @@ public class WishlistActivity extends Activity {
         {
             Messages.warning(this, result);
         }
-        viewTotal.setText(totalPrice.calculateTotal(itemList));
-        total = totalPrice.calculateTotal(itemList);
+        viewTotal.setText(Calculate.calculateTotal(itemList));
+        total = Calculate.calculateTotal(itemList);
         clearFields();
+    }
+
+    public void buttonItemPurchasedOnClick(View v)
+    {
+        WishListItem item = createItemFromEditText();
+        accessExpenses = new AccessExpenses();
+        accessExpenses.addExpense(new Expense(item.getName(), item.getAmount()));
+
+        this.buttonItemDeleteOnClick(v);
     }
 
     public void buttonItemUpdateOnClick(View v)
@@ -227,8 +239,8 @@ public class WishlistActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
-        viewTotal.setText(totalPrice.calculateTotal(itemList));
-        total = totalPrice.calculateTotal(itemList);
+        viewTotal.setText(Calculate.calculateTotal(itemList));
+        total = Calculate.calculateTotal(itemList);
         clearFields();
     }
 

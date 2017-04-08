@@ -7,7 +7,7 @@ import comp3350.budgetapp.tests.business.*;
 import comp3350.budgetapp.tests.objects.*;
 import comp3350.budgetapp.tests.persistence.*;
 
-public class AllTests extends TestSuite
+public class RunUnitTests extends TestSuite
 {
     public static TestSuite suite;
     public static TesterMain main;
@@ -15,7 +15,7 @@ public class AllTests extends TestSuite
     public static Test suite()
     {
         main.startUp();
-        suite = new TestSuite("All tests");
+        suite = new TestSuite("Running all unit tests");
         testObjects();
         testBusiness();
         testPersistence();

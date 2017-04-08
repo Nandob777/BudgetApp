@@ -11,7 +11,7 @@ public class TesterMain
     {
         startUp();
 
-        AllTests.suite();
+        RunUnitTests.suite();
 
         shutDown();
         System.out.println("All done");

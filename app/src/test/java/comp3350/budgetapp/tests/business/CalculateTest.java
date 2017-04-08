@@ -511,7 +511,7 @@ public class CalculateTest extends TestCase {
         wish = new WishListItem("Laptop", 2000.0);
         list.add(wish);
 
-        assertEquals("?", Calculate.calculateTotal(list));//invalid total
+        assertEquals("?", Calculate.calculateTotal(list));
 
         System.out.println("Finished testListWithSingleNullWishListItem");
     }

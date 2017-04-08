@@ -11,6 +11,8 @@ public class PersistenceTests
     {
         suite = new TestSuite("Persistence tests");
         suite.addTestSuite(DataAccessTest.class);
+        suite.addTestSuite(DataAccessStubTest.class);
+        suite.addTestSuite(DataAccessFactoryTest.class);
         return suite;
     }
 }

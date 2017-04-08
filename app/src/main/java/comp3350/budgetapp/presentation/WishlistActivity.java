@@ -148,6 +148,7 @@ public class WishlistActivity extends Activity {
 
         viewTotal.setText(totalPrice.calculateTotal(itemList));
         total = totalPrice.calculateTotal(itemList);
+        clearFields();
     }
 
     public void buttonItemDeleteOnClick(View v)
@@ -181,6 +182,7 @@ public class WishlistActivity extends Activity {
         }
         viewTotal.setText(totalPrice.calculateTotal(itemList));
         total = totalPrice.calculateTotal(itemList);
+        clearFields();
     }
 
     public void buttonItemUpdateOnClick(View v)
@@ -227,6 +229,7 @@ public class WishlistActivity extends Activity {
         }
         viewTotal.setText(totalPrice.calculateTotal(itemList));
         total = totalPrice.calculateTotal(itemList);
+        clearFields();
     }
 
     private WishListItem createItemFromEditText()
@@ -265,6 +268,15 @@ public class WishlistActivity extends Activity {
         }
 
         return null;
+    }
+
+    private void clearFields()
+    {
+        EditText editName = (EditText)findViewById(R.id.editItemName);
+        EditText editPrice = (EditText)findViewById(R.id.editPrice);
+
+        editName.setText(" ");
+        editPrice.setText(" ");
     }
 
 }

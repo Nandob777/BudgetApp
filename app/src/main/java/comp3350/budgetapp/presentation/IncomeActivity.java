@@ -147,6 +147,7 @@ public class IncomeActivity extends Activity {
 
         viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
         total = totalPrice.calculateTotal(incomeList);
+        clearFields();
     }
 
     public void buttonIncomeDeleteOnClick(View v)
@@ -185,6 +186,7 @@ public class IncomeActivity extends Activity {
         }
         viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
         total = totalPrice.calculateTotal(incomeList);
+        clearFields();
     }
 
     public void buttonIncomeUpdateOnClick(View v)
@@ -225,6 +227,7 @@ public class IncomeActivity extends Activity {
         }
         viewIncomeTotal.setText(totalPrice.calculateTotal(incomeList));
         total = totalPrice.calculateTotal(incomeList);
+        clearFields();
     }
 
     private IncomeSource createIncomeFromEditText()
@@ -263,6 +266,15 @@ public class IncomeActivity extends Activity {
         }
 
         return null;
+    }
+
+    private void clearFields()
+    {
+        EditText editName = (EditText)findViewById(R.id.editIncomeName);
+        EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
+
+        editName.setText(" ");
+        editPrice.setText(" ");
     }
 }
 

@@ -147,6 +147,7 @@ public class ExpenseActivity extends Activity {
 
         viewTotal.setText(totalPrice.calculateTotal(expenseList));
         total = totalPrice.calculateTotal(expenseList);
+        clearFields();
     }
 
     public void buttonExpenseDeleteOnClick(View v)
@@ -180,6 +181,7 @@ public class ExpenseActivity extends Activity {
         }
         viewTotal.setText(totalPrice.calculateTotal(expenseList));
         total = totalPrice.calculateTotal(expenseList);
+        clearFields();
     }
 
     public void buttonExpenseUpdateOnClick(View v)
@@ -226,6 +228,7 @@ public class ExpenseActivity extends Activity {
         }
         viewTotal.setText(totalPrice.calculateTotal(expenseList));
         total = totalPrice.calculateTotal(expenseList);
+        clearFields();
     }
 
     private Expense createExpenseFromEditText()
@@ -268,6 +271,15 @@ public class ExpenseActivity extends Activity {
         }
 
         return null;
+    }
+
+    private void clearFields()
+    {
+        EditText editName = (EditText)findViewById(R.id.editExpenseName);
+        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
+
+        editName.setText(" ");
+        editPrice.setText(" ");
     }
 }
 

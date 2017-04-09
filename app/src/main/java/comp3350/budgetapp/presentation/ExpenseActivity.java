@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.Calculate;
@@ -28,9 +29,11 @@ public class ExpenseActivity extends Activity {
     private ArrayAdapter<FinancialObjects> itemArrayAdapter;
     private int selectedExpensePosition = -1;
     private TextView viewTotal;
+    Date today;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        today = new Date();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
 
@@ -105,6 +108,8 @@ public class ExpenseActivity extends Activity {
 
     public void buttonExpenseAddOnClick(View v)
     {
+        EditText editName = (EditText)findViewById(R.id.editExpenseName);
+        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
         Expense item = createExpenseFromEditText();
 
         if(expenseList.contains(item) || item.getName().contains("'"))
@@ -112,6 +117,13 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this,"Can't add duplicates of Expenses");
             return;
         }
+
+        if(editPrice.getText().equals("") && editName.getText().equals(""))
+        {
+            Messages.warning(this,"Please enter an expense");
+            return;
+        }
+
         if(item.getAmount() > 1000000)
         {
             Messages.warning(this,"WITH EXPENSES LIKE THAT I DON'T THINK WE CAN HELP YOU");
@@ -152,11 +164,18 @@ public class ExpenseActivity extends Activity {
 
     public void buttonExpenseDeleteOnClick(View v)
     {
+        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
         Expense item = createExpenseFromEditText();
 
-        if(!expenseList.contains(item))
+        if(!expenseList.contains(item) )
         {
             Messages.warning(this,"Can't delete Expense that isn't in system");
+            return;
+        }
+
+        if(editPrice.getText().equals("") )
+        {
+            Messages.warning(this,"Please select an expense to delete");
             return;
         }
 
@@ -186,6 +205,7 @@ public class ExpenseActivity extends Activity {
 
     public void buttonExpenseUpdateOnClick(View v)
     {
+        EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
         Expense item = createExpenseFromEditText();
 
         if(!expenseList.contains(item))
@@ -193,6 +213,13 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this,"Must add expense before updating it");
             return;
         }
+
+        if(editPrice.getText().equals("") )
+        {
+            Messages.warning(this,"Please select an expense to update");
+            return;
+        }
+
         if(item.getAmount() > 1000000)
         {
             Messages.warning(this,"WITH EXPENSES LIKE THAT I DON'T THINK WE CAN HELP YOU");
@@ -278,8 +305,8 @@ public class ExpenseActivity extends Activity {
         EditText editName = (EditText)findViewById(R.id.editExpenseName);
         EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
 
-        editName.setText(" ");
-        editPrice.setText(" ");
+        editName.setText("");
+        editPrice.setText("");
     }
 }
 

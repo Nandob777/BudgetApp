@@ -131,11 +131,18 @@ public class IncomeActivity extends Activity {
 
     public void buttonIncomeAddOnClick(View v)
     {
+        EditText editName = (EditText)findViewById(R.id.editIncomeName);
+        EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
         IncomeSource item = createIncomeFromEditText();
 
         if(incomeList.contains(item) || item.getName().contains("'"))
         {
             Messages.warning(this,"Can't add duplicates of Income Sources");
+            return;
+        }
+        if(editPrice.getText().equals("") && editName.getText().equals(""))
+        {
+            Messages.warning(this,"Please Enter An Income Source");
             return;
         }
         if(item.getAmount() > 1000000)
@@ -178,6 +185,7 @@ public class IncomeActivity extends Activity {
 
     public void buttonIncomeDeleteOnClick(View v)
     {
+        EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
         IncomeSource item = createIncomeFromEditText();
 
         if(!incomeList.contains(item))
@@ -185,6 +193,13 @@ public class IncomeActivity extends Activity {
             Messages.warning(this,"Can't delete Income Source that isn't in system");
             return;
         }
+
+        if(editPrice.getText().equals(""))
+        {
+            Messages.warning(this,"No Income Source Selected for deletion");
+            return;
+        }
+
         if(item.getAmount() > 1000000)
         {
             Messages.warning(this,"YOUR BLOOD IS TOO RICH FOR THIS APP");
@@ -217,11 +232,18 @@ public class IncomeActivity extends Activity {
 
     public void buttonIncomeUpdateOnClick(View v)
     {
+        EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
         IncomeSource item = createIncomeFromEditText();
 
         if(!incomeList.contains(item))
         {
             Messages.warning(this,"Must add Income Source before updating it");
+            return;
+        }
+
+        if(editPrice.getText().equals(""))
+        {
+            Messages.warning(this,"No Income Source Selected for update");
             return;
         }
 
@@ -302,8 +324,8 @@ public class IncomeActivity extends Activity {
         EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
         Spinner editType = (Spinner) findViewById(R.id.incomes_spinner);
 
-        editName.setText(" ");
-        editPrice.setText(" ");
+        editName.setText("");
+        editPrice.setText("");
         editType.setSelection(0);
     }
 }

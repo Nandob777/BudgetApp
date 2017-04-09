@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ListView;
+import java.util.Date;
 
 import java.util.ArrayList;
 
@@ -38,6 +39,7 @@ public class WishlistActivity extends Activity {
         setContentView(R.layout.activity_wishlist);
 
         accessWishListItems = new AccessWishListItems();
+        accessExpenses = new AccessExpenses();
         totalPrice = new Calculate();
 
         itemList = new ArrayList<FinancialObjects>();
@@ -108,6 +110,8 @@ public class WishlistActivity extends Activity {
 
     public void buttonItemAddOnClick(View v)
     {
+        EditText editName = (EditText)findViewById(R.id.editItemName);
+        EditText editPrice = (EditText)findViewById(R.id.editPrice);
         WishListItem item = createItemFromEditText();
 
         if(itemList.contains(item) || item.getName().contains("'"))
@@ -115,6 +119,13 @@ public class WishlistActivity extends Activity {
             Messages.warning(this,"Can't add duplicates of Items");
             return;
         }
+
+        if(editPrice.getText().equals("") && editName.getText().equals(""))
+        {
+            Messages.warning(this,"Please enter an item");
+            return;
+        }
+
 
         if(item.getAmount() > 100000)
         {
@@ -156,11 +167,18 @@ public class WishlistActivity extends Activity {
 
     public void buttonItemDeleteOnClick(View v)
     {
+        EditText editPrice = (EditText)findViewById(R.id.editPrice);
         WishListItem item = createItemFromEditText();
 
         if(!itemList.contains(item))
         {
             Messages.warning(this,"Can't delete Item that isn't in system");
+            return;
+        }
+
+        if(editPrice.getText().equals(""))
+        {
+            Messages.warning(this,"No Wishlist Item Selected for deletion");
             return;
         }
 
@@ -199,11 +217,19 @@ public class WishlistActivity extends Activity {
 
     public void buttonItemUpdateOnClick(View v)
     {
+        EditText editPrice = (EditText)findViewById(R.id.editPrice);
+
         WishListItem item = createItemFromEditText();
 
         if(!itemList.contains(item))
         {
             Messages.warning(this,"Must add Item before updating it");
+            return;
+        }
+
+        if(editPrice.getText().equals(""))
+        {
+            Messages.warning(this,"No Wishlist Item Selected for update");
             return;
         }
 
@@ -243,6 +269,7 @@ public class WishlistActivity extends Activity {
         total = Calculate.calculateTotal(itemList);
         clearFields();
     }
+
 
     private WishListItem createItemFromEditText()
     {
@@ -287,8 +314,8 @@ public class WishlistActivity extends Activity {
         EditText editName = (EditText)findViewById(R.id.editItemName);
         EditText editPrice = (EditText)findViewById(R.id.editPrice);
 
-        editName.setText(" ");
-        editPrice.setText(" ");
+        editName.setText("");
+        editPrice.setText("");
     }
 
 }

@@ -7,7 +7,7 @@ public class IncomeSource extends FinancialObjects
     private String type = "";
     private int frequency;
     private final String DEFAULT_TYPE = "Misc";
-    private final int DEFAULT_FREQ = 1;
+    private final int DEFAULT_FREQ = 0;
 
     private final String TYPE_MONTHLY = "Monthly";
     private final String TYPE_BWEEKLY = "Bi-weekly";

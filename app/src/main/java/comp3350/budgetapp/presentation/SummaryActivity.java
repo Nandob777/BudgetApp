@@ -52,7 +52,12 @@ public class SummaryActivity extends Activity{
 
         result = accessIncome.getIncomeSources(itemList);
         viewIncome = (TextView)findViewById(R.id.viewIncomeTotal);
-        viewIncome.setText("$ " + Calculate.calculateTotal(itemList));
+        double incomeTotal = Double.parseDouble(Calculate.calculateTotal(itemList));
+        for(int i =0; i < itemList.size();i++){
+            if (itemList.get(i).getType().equalsIgnoreCase("Misc"))
+                incomeTotal += itemList.get(i).getAmount();
+        }
+        viewIncome.setText(String.format("$ %.2f", incomeTotal));
 
         viewSavings = (TextView)findViewById(R.id.viewSavingsTotal);
         viewSavings.setText(savings.toString());

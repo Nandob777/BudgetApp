@@ -172,13 +172,13 @@ public class WishlistActivity extends Activity {
 
         if(!itemList.contains(item))
         {
-            Messages.warning(this,"Can't delete Item that isn't in system");
+            Messages.warning(this,"Can't remove Item that isn't in system");
             return;
         }
 
         if(editPrice.getText().equals(""))
         {
-            Messages.warning(this,"No Wishlist Item Selected for deletion");
+            Messages.warning(this,"No Item selected to be removed");
             return;
         }
 
@@ -209,6 +209,13 @@ public class WishlistActivity extends Activity {
     public void buttonItemPurchasedOnClick(View v)
     {
         WishListItem item = createItemFromEditText();
+
+        if(!itemList.contains(item))
+        {
+            Messages.warning(this,"Can't purchase Item that isn't in system");
+            return;
+        }
+
         accessExpenses = new AccessExpenses();
         accessExpenses.addExpense(new Expense(item.getName(), item.getAmount()));
 
@@ -229,7 +236,7 @@ public class WishlistActivity extends Activity {
 
         if(editPrice.getText().equals(""))
         {
-            Messages.warning(this,"No Wishlist Item Selected for update");
+            Messages.warning(this,"No Item selected for update");
             return;
         }
 

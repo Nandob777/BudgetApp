@@ -1,0 +1,149 @@
+People 						Date (MM/DD)		Description						                          Total Time
+
+All						    01/27	Discussed app ideas, ultimately settled on
+                                    a personal budgeting app			                                    50mins
+
+All						    02/01	Revised and finalized Iteration 0 hand-in material
+								    (vision statement, big user stories, detailed
+								    user stories)							                                50mins
+
+
+Wynand, Neil, Tina			02/03	Discussed Iteration 1 requirements, created repository,
+								    discussed development of high priority stories	Currently
+								    unable to connect to repository
+								    (/home/student/badenhow/groupB/budgetAppRepo)
+								    --> access is denied						                            50mins
+
+
+Wynand, Hui					02/03										                                    50mins
+
+
+All						    02/06	Created working repository, downloaded Android Studio,
+								    got sample project to work
+								    Working repository: (/home/student/marzonr/groupB/repo)		            50mins
+
+
+Mardel, Hui, Tina, Wynand	02/08	Decided on using sample project as foundation for app,
+								    creating wishlist object as priority (add & remove wishlist
+								    --> edit wishlist can be done through add & remove for now),
+								    split up work (implement add/remove, stub db, testing, display
+								    wishlist to user, setting up the framework, main objects)
+								    Waiting to divide tasks when all members are present	            	30mins
+
+
+Neil, Tina, Mardel, Wynand	02/10   Split up developer tasks for each group member, created
+								    deadlines for tasks 	Tasks found on it1_notes, deadlines
+								    are: Feb. 15 -> be ready to start, Feb. 22 -> be ready to
+								    tweak code and have it ready for it1 hand-in	                		25mins
+
+
+Wynand						02/27	uploaded stub database code to slack (android studio 
+							        not interfacing properly with svn)				                    	1.5hr
+
+
+Hui						    02/26	set up framework (based off of sample)			                		6hrs
+
+
+Mardel						02/26	created domain objects 						                        	4hrs
+
+
+Hui, Mardel					02/27	created accesswishlist, changed .xml files 
+							        (activity_wishlist & activity_main),
+							        uploaded Wynand's database					                        	12hrs
+
+
+Hui						    02/28	fixed database, add/remove/update functions, added messages
+							        and CLI files database now works similar to sample project				6hrs
+
+
+Mardel, Wynand				02/28	fixed add/remove/update functions, added service file	        		4hrs
+
+
+Tina						02/28	created test files, logic file (calculate), updated 
+							        activity_wishlist.xml to include logic				                	6hrs
+	
+
+Neil						02/28	created business tests, edited calculate file		            		5hrs
+
+
+Tina						03/01	created and edited hand-in files				                    	2hrs
+
+
+Mardel, Tina, Neil, Wynand	03/01	Looking for and fixing last minute errors and preparing the
+							        code for hand-in							                            5hrs
+
+
+Tina, Mardel, Wynand, Neil	03/03	Decided on developer tasks to work on for iteration 2, split
+							        up tasks, and discussed bugs/errors found on iteration 1
+							        project	(all developer tasks found on it_2.doc)				            50mins
+
+
+Tina						03/13	Created hand-in files	uploaded to google docs and Slack group	    	15 mins
+
+
+All						    03/17	Went over the Iteration 1 marks and goals for future for Iterations 	1hr
+
+
+Neil						03/18	Modified WishListItem class & WishListItemTest class	
+							        WishListItem: changed toString() & discount calculations;
+							        Completely changed testing and more thorough testing		        	3 hrs
+
+
+All						    03/24	Group meeting about Iteration 2 failures/bugs 				            50 mins
+
+
+All						    03/27	Group meeting about Iteration 3 expectations, jobs to be done, 	    	50 mins
+							        team retrospective (decided on commucation failures)
+
+Tina						04/02	Started refactoring Calculate code to work using polymorphism
+							        Added new Calculate tests and deleted old tests		 		             4hrs
+
+Tina						04/03	Fixed Access* tests, added more tests, and updated DataAccessStub   	4hrs
+
+All						    04/03	Slack meeting to discuss potential presentation dates			        15 mins
+
+Neil						04/05	Added Total Savings to Financial Summary interface, refactored code 	5hrs
+
+Tina						04/06	Implemented integration tests, fixed bugs based off of integration
+							        test failures, updated budget scripts					                6hrs
+					
+All						    04/07	Meeting to discuss final tasks for iteration 3
+							        (bug fixes, final features, feature freeze on April 9, split up
+							        tasks, team retrospective, presentation discussion)			            50 mins
+
+Mardel 						04/07	Updated BUDGET.script so that IncomeSources account have a
+							        type column; fixed iteration 2 bug where all activities needed
+							        to be accessed in order to get financial summary to show amounts	    2hrs
+
+Tina						04/07	Updated all code related to IncomeSource to account for newest
+							        column in script; Updated tests related to IncomeSource; Updated
+							        error messages in *Activity to be more logical/consistent		        3hrs
+
+Neil						04/07	Fixed layout for viewSavingsTotal		                    			1hr
+
+Neil						04/08	Added Savings class to business logic; SummaryActivity to 
+							        display Total Savings				                        			7hrs
+
+Mardel						04/08	Fixed issue where fields wouldn’t clear automatically after
+							        clicking a button and performing a task				                    6hrs
+
+Tina						04/08	Removed discount & priority variables/methods from WishListItem
+							        object; refactored code to account for changes; updated README		    1hr
+
+Hui						    04/08	Created IncomeSource type drop down menu; Changed files related
+							        to new update; Edited and simplified SummaryActivity;
+							        Created Purchased function in WishList to move purchased items
+							        to Expense list and update Financial Summary				            14hrs
+
+Wynand						04/08	Created Acceptance Test framework based off of sample project		    2hrs
+
+Mardel						04/08	Fixed issue found when clicking buttons with empty fields		        1hr
+
+Neil						04/09	Added SavingsTest; Updated README					                    2hrs
+
+Tina						04/09	Fixed bug found when pressing Purchased button on item not
+							        in the Wish List; updated errors messages to be consistent;
+							        Updated all tests/code to related to IncomeSource to test for type	    30mins
+
+
+

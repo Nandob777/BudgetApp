@@ -1,10 +1,10 @@
-BudgIt is an application that allows the user to track their total expenses, total income, total cost of items
-they want to purchase, and total savings. This is done by allowing the user to input various financial information
-and wanted items into the application. The application then calculates the totals and
+BudgIt is a personal budgeting application that allows users to track their personal financial activity. It creates a financial
+summary based on the user's income, expenses, wishlist items, and total savings based on their income and expenses.
+This is done by allowing the user to input various financial information and wanted items into the application.
 
 Major Changes:
 --------------
-Structure – Integration tests between seams were implemented in new integration packages
+Structure – Integration tests between seams were implemented in new integration package
           - Tests were grouped based on integration, unit, and acceptance tests
           - Objects now take advantage of polymorphism (used in Calculate)
 
@@ -59,17 +59,10 @@ Packages:
             CLI - command line interface
             Messages - used for error interaction within the application
     - comp3350.budgetapp (androidTest)
-*************************************************************
-*************************************************************
+        ~ acceptance
+            AcceptanceTests
 
-*************************************************************
-*************************************************************
-*************~ ACCEPTANCE TESTS SHOULD BE HERE **************
-*************************************************************
-*************************************************************
-
-*************************************************************
-*************************************************************
+        RunAcceptanceTests
     - comp3350.budgetapp (test)
         ~ tests (Unit Tests):
             AccessWishListItemsTest (business)
@@ -77,13 +70,18 @@ Packages:
             AccessExpenseTest (business)
             CalculateTest (business)
             SavingsTest (business)
+            BusinessTests
+
             WishListItemTest (object)
             IncomeSourceTest (object)
             ExpenseTest (object)
             FinancialObjectsTest (object)
+            ObjectTests
+
             DataAccessFactoryTest (persistence)
             DataAccessTest (persistence)
             DataAccessStubTest (persistence)
+            PersistenceTests
         ~ RunUnitTests
         ~ TesterMain - starts up main that calls stub database to test
         ~ (Integration Tests)

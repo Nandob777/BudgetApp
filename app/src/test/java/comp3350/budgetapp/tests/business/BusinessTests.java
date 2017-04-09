@@ -14,6 +14,7 @@ public class BusinessTests
         suite.addTestSuite(AccessWishListItemsTest.class);
         suite.addTestSuite(AccessExpensesTest.class);
         suite.addTestSuite(AccessIncomeSourceTest.class);
+        suite.addTestSuite(SavingsTest.class);
         return suite;
     }
 }

@@ -11,7 +11,7 @@ Structure – Integration tests between seams were implemented in new integratio
 Behaviour - Viewing financial summary before opening other pages (Wishlist, Income Sources, Expenses)
             now shows totals [Iteration 2 bug]
           - Drop down menu added in Income Sources (used to pick type)
-          - **DELETE IF UNDONE** Button added in Wishlist (used remove item from wishlist if item was bought)
+          - Button added in Wishlist (removes item from Wishlist and add to Expenses if an item was bought)
 
 Unresolved Issues:
 ------------------
@@ -75,16 +75,15 @@ Packages:
             AccessWishListItemsTest (business)
             AccessIncomeSourceTest (business)
             AccessExpenseTest (business)
-            CalculateWishListTotalTest (business)
-            CalculateExpenseTotalTest (business)
-            CalculateIncomeSourceTotalTest (business)
+            CalculateTest (business)
+            SavingsTest (business)
             WishListItemTest (object)
             IncomeSourceTest (object)
             ExpenseTest (object)
             FinancialObjectsTest (object)
             DataAccessFactoryTest (persistence)
             DataAccessTest (persistence)
-            DataAccessStub (persistence)
+            DataAccessStubTest (persistence)
         ~ RunUnitTests
         ~ TesterMain - starts up main that calls stub database to test
         ~ (Integration Tests)

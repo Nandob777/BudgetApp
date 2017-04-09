@@ -142,7 +142,7 @@ public class IncomeActivity extends Activity {
         }
         if(editPrice.getText().equals("") && editName.getText().equals(""))
         {
-            Messages.warning(this,"Please Enter An Income Source");
+            Messages.warning(this,"Please enter an Income Source");
             return;
         }
         if(item.getAmount() > 1000000)
@@ -196,7 +196,7 @@ public class IncomeActivity extends Activity {
 
         if(editPrice.getText().equals(""))
         {
-            Messages.warning(this,"No Income Source Selected for deletion");
+            Messages.warning(this,"No Income Source selected for deletion");
             return;
         }
 
@@ -243,7 +243,7 @@ public class IncomeActivity extends Activity {
 
         if(editPrice.getText().equals(""))
         {
-            Messages.warning(this,"No Income Source Selected for update");
+            Messages.warning(this,"No Income Source selected for update");
             return;
         }
 

@@ -7,7 +7,7 @@ public class IncomeSource extends FinancialObjects
     private String type = "";
     private int frequency;
     private final String DEFAULT_TYPE = "Misc";
-    private final int DEFAULT_FREQ = 0;
+    private final int DEFAULT_FREQ = 1;
 
     private final String TYPE_MONTHLY = "Monthly";
     private final String TYPE_BWEEKLY = "Bi-weekly";
@@ -53,11 +53,11 @@ public class IncomeSource extends FinancialObjects
          * type is changed */
 
         this.type = type;
-        if(type == null){ this.frequency = DEFAULT_FREQ;}
+        if(type == null){ this.frequency = DEFAULT_FREQ; this.type = DEFAULT_TYPE;}
         else if(type.equalsIgnoreCase(TYPE_MONTHLY)){this.frequency = FREQ_MONTHLY;}
         else if(type.equalsIgnoreCase(TYPE_BWEEKLY)){this.frequency = FREQ_BWEEKLY;}
         else if(type.equalsIgnoreCase(TYPE_WEEKLY)){this.frequency = FREQ_WEEKLY;}
-        else{ this.frequency = DEFAULT_FREQ;}
+        else{ this.frequency = DEFAULT_FREQ; this.type = DEFAULT_TYPE;}
     }
 
     @Override

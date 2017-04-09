@@ -10,13 +10,11 @@ import comp3350.budgetapp.persistence.DataAccess;
 
 public class DataAccessTest extends TestCase {
 
-    //private static String dbName = "stub";
     private static String dbName = Main.dbName;
 
     public static WishListItem wish1, wish2;
     public static Expense expense1, expense2;
     public static IncomeSource incomeSource1, incomeSource2;
-
 
     public DataAccessTest(String arg0)
     {
@@ -129,16 +127,16 @@ public class DataAccessTest extends TestCase {
         income = (IncomeSource) incomelist.get(0);
         assertEquals("Starbucks", income.getName());
         assertEquals(800.00,income.getAmount());
-        assertEquals("monthly",income.getType());
+        assertEquals("Monthly",income.getType());
 
         income = (IncomeSource) incomelist.get(1);
         assertEquals("Bartending", income.getName());
         assertEquals(700.00,income.getAmount());
-        assertEquals("monthly",income.getType());
+        assertEquals("Monthly",income.getType());
 
-        incomeSource1 = new IncomeSource("Web Developer",700.0,"weekly");
+        incomeSource1 = new IncomeSource("Web Developer",700.0,"Weekly");
         dataAccess.addIncomeSource(incomeSource1);
-        incomeSource2 = new IncomeSource("Teaching Assistant",600.0,"bi-weekly");
+        incomeSource2 = new IncomeSource("Teaching Assistant",600.0,"Bi-weekly");
         dataAccess.addIncomeSource(incomeSource2);
 
         dataAccess.getIncomeSourceSequential(incomelist);
@@ -146,11 +144,11 @@ public class DataAccessTest extends TestCase {
 
         income = (IncomeSource) incomelist.get(2);
         assertEquals(700.0,income.getAmount());
-        assertEquals("weekly",income.getType());
+        assertEquals("Weekly",income.getType());
         assertEquals("Web Developer",income.getName());
         income = (IncomeSource) incomelist.get(3);
         assertEquals(600.0,income.getAmount());
-        assertEquals("bi-weekly",income.getType());
+        assertEquals("Bi-weekly",income.getType());
 
         assertEquals("Teaching Assistant",income.getName());
 
@@ -158,12 +156,12 @@ public class DataAccessTest extends TestCase {
         dataAccess.getIncomeSourceSequential(incomelist);
         assertEquals(3,incomelist.size());
 
-        incomeSource2 = new IncomeSource("Teaching Assistant",670.0,"bi-weekly");
+        incomeSource2 = new IncomeSource("Teaching Assistant",670.0,"Bi-weekly");
         dataAccess.updateIncomeSource(incomeSource2);
         income = (IncomeSource) dataAccess.getIncomeSourceRandom(incomeSource2).get(0);
         assertTrue(incomeSource2.equals(incomelist.get(2)));
         assertEquals(670.0,income.getAmount());
-        assertEquals("bi-weekly",income.getType());
+        assertEquals("Bi-weekly",income.getType());
 
         dataAccess.deleteIncomeSource(incomeSource2);
         dataAccess.getIncomeSourceSequential(incomelist);

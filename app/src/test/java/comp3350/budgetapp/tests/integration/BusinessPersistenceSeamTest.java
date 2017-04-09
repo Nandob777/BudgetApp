@@ -40,7 +40,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         source = accessIncomeSource.getSequential();
         assertNotNull(source);
         assertEquals("Starbucks", source.getName());
-        assertEquals("monthly",source.getType());
+        assertEquals("Monthly",source.getType());
 
         source = accessIncomeSource.getSequential();
         assertNotNull(source);
@@ -63,7 +63,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNull(source);
 
         //addIncomeSource()
-        source = new IncomeSource("Security Analyst",1200.0,"bi-weekly");
+        source = new IncomeSource("Security Analyst",1200.0,"Bi-weekly");
         result = accessIncomeSource.addIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -72,7 +72,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertEquals(source.getAmount(),tmpSrc.getAmount());
         assertNull(result);
 
-        source = new IncomeSource("Personal Assistant",1000.0,"bi-weekly");
+        source = new IncomeSource("Personal Assistant",1000.0,"Bi-weekly");
         result = accessIncomeSource.addIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -86,7 +86,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNotNull(tmpSrc);
         assertEquals("Security Analyst",tmpSrc.getName());
         assertEquals(1200.00,tmpSrc.getAmount());
-        source = new IncomeSource("Security Analyst", 1270.00,"bi-weekly");
+        source = new IncomeSource("Security Analyst", 1270.00,"Bi-weekly");
         result = accessIncomeSource.updateIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -99,7 +99,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNotNull(tmpSrc);
         assertEquals("Personal Assistant",tmpSrc.getName());
         assertEquals(1000.00,tmpSrc.getAmount());
-        source = new IncomeSource("Personal Assistant", 1090.00,"bi-weekly");
+        source = new IncomeSource("Personal Assistant", 1090.00,"Bi-weekly");
         result = accessIncomeSource.updateIncomeSource(source);
         tmpSrc = accessIncomeSource.getRandom(source.getName());
         assertNotNull(tmpSrc);
@@ -108,7 +108,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertEquals(source.getAmount(),tmpSrc.getAmount());
         assertNull(result);
 
-        source = new IncomeSource("Application Developer", 1600.00,"weekly");
+        source = new IncomeSource("Application Developer", 1600.00,"Weekly");
         result = accessIncomeSource.updateIncomeSource(source);
         assertEquals("Tuple not inserted correctly.",result);
 
@@ -174,7 +174,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNull(expense);
 
         //addExpense()
-        expense = new Expense("Electricty Bill",100.0);
+        expense = new Expense("Electricity Bill",100.0);
         result = accessExpenses.addExpense(expense);
         tmpExp = accessExpenses.getRandom(expense.getName());
         assertNotNull(tmpExp);
@@ -193,10 +193,10 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertNull(result);
 
         //updateExpense()
-        tmpExp = accessExpenses.getRandom("Electricty Bill");
-        assertEquals("Electricty Bill",tmpExp.getName());
+        tmpExp = accessExpenses.getRandom("Electricity Bill");
+        assertEquals("Electricity Bill",tmpExp.getName());
         assertEquals(100.00,tmpExp.getAmount());
-        expense = new Expense("Electricty Bill",160.00);
+        expense = new Expense("Electricity Bill",160.00);
         result = accessExpenses.updateExpense(expense);
         tmpExp = accessExpenses.getRandom(expense.getName());
         assertNotNull(tmpExp);
@@ -222,7 +222,7 @@ public class BusinessPersistenceSeamTest extends TestCase{
         assertEquals("Tuple not inserted correctly.",result);
 
         //deleteExpense()
-        tmpExp = accessExpenses.getRandom("Electricty Bill");
+        tmpExp = accessExpenses.getRandom("Electricity Bill");
         result = accessExpenses.deleteExpense(tmpExp);
         tmpExp = accessExpenses.getRandom(tmpExp.getName());
         assertNull(tmpExp);

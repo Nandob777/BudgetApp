@@ -213,19 +213,19 @@ public class CalculateTest extends TestCase {
     public void testDifferentIncomeFrequencies() {
         System.out.println("\nStarting testDifferentIncomeFrequencies");
 
-        income = new IncomeSource("Starbucks", 500.00, "monthly");
+        income = new IncomeSource("Starbucks", 500.00, "Monthly");
         list.add(income);
 
-        income = new IncomeSource("Allowance", 20.00, "bi-weekly");
+        income = new IncomeSource("Allowance", 20.00, "Bi-weekly");
         list.add(income);
 
-        income = new IncomeSource("Blackberry", 4000.00, "misc");
+        income = new IncomeSource("Blackberry", 4000.00, "Misc");
         list.add(income);
 
-        income = new IncomeSource("H&M", 600.00, "once");
+        income = new IncomeSource("H&M", 600.00, "Once");
         list.add(income);
 
-        income = new IncomeSource("IBM", 1000.00, "weekly");
+        income = new IncomeSource("IBM", 1000.00, "Weekly");
         list.add(income);
 
         income = new IncomeSource("McDonalds", 300.00);

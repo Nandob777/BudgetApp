@@ -31,6 +31,26 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
     public void testAddItem()
     {
 
+        System.out.println("Getting to wishlist activity for addItem test");
+
+        String price = "" + randomPrice();
+        String name = randomString();
+
+        getToActivity();
+
+        solo.clearEditText(0);
+        solo.enterText(0,name);
+        solo.clearEditText(1);
+        solo.enterText(1,price);
+        solo.clickOnButton("Add");
+        solo.clearEditText(0);
+        solo.clearEditText(1);
+        Assert.assertTrue(solo.searchText(name));
+        Assert.assertTrue(solo.searchText(price));
+
+        //cleanup
+        solo.enterText(0,name);
+        solo.clickOnButton("Delete");
     }
 
     public void testEditItem(){
@@ -55,5 +75,28 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
         Assert.assertTrue(solo.searchButton("Purchased"));
 
         Assert.assertTrue(solo.searchText("Total:"));
+    }
+
+    private void getToActivity(){
+        solo.waitForActivity("MainActivity");
+        solo.clickOnButton("Wish List");
+    }
+
+    private double randomPrice(){
+        double price = Math.random()*1000;
+        price = ((double)((int)(price*100)))/100;
+
+        return price;
+    }
+
+    private String randomString(){
+        String result = "";
+
+        for(int i = 0; i < 12; i++){
+            int key = (int)(Math.random()*52) + 'a';
+            result += (char)key;
+        }
+
+        return result;
     }
 }

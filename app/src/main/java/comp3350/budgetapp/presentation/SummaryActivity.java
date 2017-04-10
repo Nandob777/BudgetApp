@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.AccessIncomeSource;
@@ -28,6 +29,8 @@ public class SummaryActivity extends AppCompatActivity {
 
     ArrayList<FinancialObjects> itemList;
     Savings savings;
+    double incomeTotal;
+    String incomePerMo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +55,15 @@ public class SummaryActivity extends AppCompatActivity {
 
         result = accessIncome.getIncomeSources(itemList);
         viewIncome = (TextView)findViewById(R.id.viewIncomeTotal);
-        double incomeTotal = Double.parseDouble(Calculate.calculateTotal(itemList));
+
+        incomePerMo = Calculate.calculateTotal(itemList);
+        incomeTotal = Double.parseDouble(incomePerMo);
         for(int i =0; i < itemList.size();i++){
             if (itemList.get(i).getType().equalsIgnoreCase("Misc"))
                 incomeTotal += itemList.get(i).getAmount();
         }
-        viewIncome.setText(String.format("$ %.2f", incomeTotal));
+        viewIncome.setText("$ " + Calculate.calculateTotal(itemList) + String.format(Locale.getDefault(), "\t\t($ %.2f)", incomeTotal));
+
 
         viewSavings = (TextView)findViewById(R.id.viewSavingsTotal);
         viewSavings.setText(savings.toString());

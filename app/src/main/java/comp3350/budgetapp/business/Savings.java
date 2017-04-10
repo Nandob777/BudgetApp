@@ -9,9 +9,10 @@ public class Savings
 {
 
     private Calculate calculate;
-    private String expenseTotal;
-    private String incomeTotal;
     private double savingsTotal = 0.0;
+    private double incomeTotal = 0.0;
+    private double expenseTotal = 0.0;
+    private String total;
 
     private AccessExpenses accessExpenses;
     private AccessIncomeSource accessIncomeSource;
@@ -28,12 +29,19 @@ public class Savings
         itemList = new ArrayList<FinancialObjects>();
 
         result = accessExpenses.getExpenses(itemList);
-        expenseTotal = calculate.calculateTotal(itemList);
+        total = calculate.calculateTotal(itemList);
+        expenseTotal = Double.parseDouble(total);
 
         result = accessIncomeSource.getIncomeSources(itemList);
-        incomeTotal = calculate.calculateTotal(itemList);
+        total = calculate.calculateTotal(itemList);
+        incomeTotal = Double.parseDouble(total);
 
-        savingsTotal = Double.parseDouble(incomeTotal) - Double.parseDouble(expenseTotal);
+        for(int i =0; i < itemList.size();i++){
+            if (itemList.get(i).getType().equalsIgnoreCase("Misc"))
+                incomeTotal += itemList.get(i).getAmount();
+        }
+
+        savingsTotal = incomeTotal - expenseTotal;
     }
 
     public double getSavingsTotal()

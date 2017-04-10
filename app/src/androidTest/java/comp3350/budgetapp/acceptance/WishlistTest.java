@@ -103,6 +103,50 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
         Assert.assertTrue(solo.searchText("Total:"));
     }
 
+    public void testInvalidAmount(){
+        getToActivity();
+
+        String name = randomString();
+        String price = "100000000";
+
+        solo.enterText(0,name);
+        solo.enterText(1,price);
+
+        solo.clickOnButton("Add");
+
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+    }
+
+    public void testInvalidPresses(){
+        getToActivity();
+
+        solo.clickOnButton("Delete");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+        solo.goBack();
+        solo.clickOnButton("Update");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+        solo.goBack();
+        solo.clickOnButton("Purchased");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+
+    }
+
+    public void testDuplicateAdd(){
+        getToActivity();
+        String name = randomString();
+
+        solo.enterText(0,name);
+        solo.clickOnButton("Add");
+        solo.enterText(0,name);
+        solo.clickOnButton("Add");
+
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+
+        solo.goBack();
+        solo.enterText(0,name);
+        solo.clickOnButton("Delete");
+    }
+
     private void getToActivity(){
         solo.waitForActivity("MainActivity");
         solo.clickOnButton("Wish List");

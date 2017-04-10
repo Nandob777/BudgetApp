@@ -102,6 +102,16 @@ public class ExpensesTest extends ActivityInstrumentationTestCase2<MainActivity>
         Assert.assertTrue(solo.searchText("Total:"));
     }
 
+    public void testInvalidButtonPresses(){
+        getToActivity();
+
+        solo.clickOnButton("Delete");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+        solo.goBack();
+        solo.clickOnButton("Update");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+    }
+
     private void getToActivity(){
         solo.waitForActivity("MainActivity");
         solo.clickOnButton("Expenses");

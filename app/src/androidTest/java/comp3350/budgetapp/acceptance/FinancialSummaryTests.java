@@ -34,7 +34,7 @@ public class FinancialSummaryTests extends ActivityInstrumentationTestCase2<Main
         solo.clickOnButton("Financial Summary");
         solo.assertCurrentActivity("Expected activity SummaryActivity", "SummaryActivity");
 
-        Assert.assertTrue(solo.searchText("BudgIt: Summary"));
+        Assert.assertTrue(solo.searchText("BudgIt: Your Finicial Summary"));
 
         Assert.assertTrue(solo.searchText("Total Income this month:"));
         Assert.assertTrue(solo.searchText("Total Expenses this month:"));

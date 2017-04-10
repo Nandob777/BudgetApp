@@ -47,7 +47,7 @@
 
         <activity
             android:name=".presentation.SummaryActivity"
-            android:label="BudgIt: Summary" >
+            android:label="BudgIt: Your Finicial Summary" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".presentation.MainActivity" />

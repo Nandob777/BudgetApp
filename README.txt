@@ -13,19 +13,10 @@ Behaviour - Viewing financial summary before opening other pages (Wishlist, Inco
           - Drop down menu added in Income Sources (used to pick type)
           - Button added in Wishlist (removes item from Wishlist and add to Expenses if an item was bought)
 
-Unresolved Issues:
-------------------
-*************************************************************
-*************************************************************
-
-*************************************************************
-*************************************************************
-*************????????? ARE THERE ANY ????????? **************
-*************************************************************
-*************************************************************
-
-*************************************************************
-*************************************************************
+Location of Database file (used to restore database if needed):
+---------------------------------------------------------------
+BUDGET.script found in databaseBackUp folder
+    - app/databaseBackUp/BUDGET.script
 
 CONTENTS OF SUBMISSION:
 ----------------------
@@ -61,6 +52,11 @@ Packages:
     - comp3350.budgetapp (androidTest)
         ~ acceptance
             AcceptanceTests
+            ExpensesTest
+            WishlistTest
+            IncomeSourcesTest
+            PurchaseHistoryTest
+            FinancialSummaryTest
 
         RunAcceptanceTests
     - comp3350.budgetapp (test)

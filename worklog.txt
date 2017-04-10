@@ -93,7 +93,7 @@ All						    03/24	Group meeting about Iteration 2 failures/bugs 				           
 
 
 All						    03/27	Group meeting about Iteration 3 expectations, jobs to be done, 	    	50 mins
-							        team retrospective (decided on commucation failures)
+							        team retrospective (decided on communication failures)
 
 Tina						04/02	Started refactoring Calculate code to work using polymorphism
 							        Added new Calculate tests and deleted old tests		 		             4hrs
@@ -145,5 +145,9 @@ Tina						04/09	Fixed bug found when pressing Purchased button on item not
 							        in the Wish List; updated errors messages to be consistent;
 							        Updated all tests/code to related to IncomeSource to test for type	    30mins
 
+Wynand                      04/09   Acceptance tests created                                                7hrs
 
+Hui                         04/09   Added Action bar for activities                                         4hrs
+
+Tina                        04/10   Ensured all acceptance tests passed                                     20mins
 

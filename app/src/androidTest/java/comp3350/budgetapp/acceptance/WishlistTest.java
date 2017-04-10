@@ -31,8 +31,6 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
     public void testAddItem()
     {
 
-        System.out.println("Getting to wishlist activity for addItem test");
-
         String price = "" + randomPrice();
         String name = randomString();
 
@@ -54,11 +52,49 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
     }
 
     public void testEditItem(){
+        String price = "" + randomPrice();
+        String name = randomString();
+        String otherPrice = "" + randomPrice();
 
+        getToActivity();
+
+        solo.clearEditText(0);
+        solo.enterText(0,name);
+        solo.clearEditText(1);
+        solo.enterText(1,price);
+        solo.clickOnButton("Add");
+
+        solo.enterText(0, name);
+        solo.enterText(1,otherPrice);
+        solo.clickOnButton("Update");
+
+        Assert.assertFalse(solo.searchText(price,true));
+        Assert.assertTrue(solo.searchText(otherPrice,true));
+
+        //cleanup
+        solo.enterText(0,name);
+        solo.clickOnButton("Delete");
     }
 
     public void testDeleteItem(){
+        String price = "" + randomPrice();
+        String name = randomString();
 
+        getToActivity();
+
+        solo.clearEditText(0);
+        solo.enterText(0,name);
+        solo.clearEditText(1);
+        solo.enterText(1,price);
+        solo.clickOnButton("Add");
+        solo.clearEditText(0);
+        solo.clearEditText(1);
+
+        //cleanup
+        solo.enterText(0,name);
+        solo.clickOnButton("Delete");
+        Assert.assertFalse(solo.searchText(name,true)); // searching only visible text, for speed
+        Assert.assertFalse(solo.searchText(price,true));
     }
 
     public void testAccess() // tests whether user can access and see relevent info
@@ -93,7 +129,7 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
         String result = "";
 
         for(int i = 0; i < 12; i++){
-            int key = (int)(Math.random()*52) + 'a';
+            int key = (int)(Math.random()*52) + 'A';
             result += (char)key;
         }
 

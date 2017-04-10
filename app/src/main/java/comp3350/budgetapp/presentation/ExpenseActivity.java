@@ -13,7 +13,6 @@ import android.widget.TextView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.Calculate;
@@ -30,11 +29,9 @@ public class ExpenseActivity extends AppCompatActivity {
     private ArrayAdapter<FinancialObjects> itemArrayAdapter;
     private int selectedExpensePosition = -1;
     private TextView viewTotal;
-    Date today;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        today = new Date();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_expense);
 
@@ -113,9 +110,15 @@ public class ExpenseActivity extends AppCompatActivity {
         EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
         Expense item = createExpenseFromEditText();
 
-        if(expenseList.contains(item) || item.getName().contains("'"))
+        if(expenseList.contains(item))
         {
             Messages.warning(this,"Can't add duplicates of Expenses");
+            return;
+        }
+
+        if(item.getName().contains("'"))
+        {
+            Messages.warning(this,"No SQL Injection Allowed");
             return;
         }
 

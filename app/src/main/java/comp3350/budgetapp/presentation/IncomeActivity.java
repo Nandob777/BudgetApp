@@ -136,9 +136,14 @@ public class IncomeActivity extends AppCompatActivity {
         EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
         IncomeSource item = createIncomeFromEditText();
 
-        if(incomeList.contains(item) || item.getName().contains("'"))
+        if(incomeList.contains(item))
         {
             Messages.warning(this,"Can't add duplicates of Income Sources");
+            return;
+        }
+        if(item.getName().contains("'"))
+        {
+            Messages.warning(this,"No SQL Injection Allowed");
             return;
         }
         if(editPrice.getText().equals("") && editName.getText().equals(""))

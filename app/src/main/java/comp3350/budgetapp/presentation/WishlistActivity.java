@@ -115,9 +115,15 @@ public class WishlistActivity extends AppCompatActivity {
         EditText editPrice = (EditText)findViewById(R.id.editPrice);
         WishListItem item = createItemFromEditText();
 
-        if(itemList.contains(item) || item.getName().contains("'"))
+        if(itemList.contains(item))
         {
             Messages.warning(this,"Can't add duplicates of Items");
+            return;
+        }
+
+        if(item.getName().contains("'"))
+        {
+            Messages.warning(this,"No SQL Injectioin Allowed");
             return;
         }
 

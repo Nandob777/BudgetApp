@@ -87,6 +87,29 @@ public class IncomeSourcesTest extends ActivityInstrumentationTestCase2<MainActi
         Assert.assertFalse(solo.searchText(price,true));
     }
 
+    public void testInvalidPresses(){
+        getToActivity();
+
+        solo.clickOnButton("Delete");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+        solo.goBack();
+        solo.clickOnButton("Update");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+
+    }
+
+    public void testLudicrousNumber(){
+        getToActivity();
+
+        String name = randomString();
+        String price = "100000000";
+
+        solo.enterText(0,name);
+        solo.enterText(1,price);
+        solo.clickOnButton("Add");
+        Assert.assertTrue(solo.waitForText("Warning",1,10000));
+    }
+
     public void testAccess() // tests whether user can access and see relevent info
     {
         solo.waitForActivity("MainActivity");

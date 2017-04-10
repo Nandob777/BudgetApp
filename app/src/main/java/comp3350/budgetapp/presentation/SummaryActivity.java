@@ -2,6 +2,7 @@ package comp3350.budgetapp.presentation;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
 
@@ -15,7 +16,7 @@ import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.business.Savings;
 import comp3350.budgetapp.objects.FinancialObjects;
 
-public class SummaryActivity extends Activity{
+public class SummaryActivity extends AppCompatActivity {
 
     private TextView viewIncome;
     private TextView viewExpenses;

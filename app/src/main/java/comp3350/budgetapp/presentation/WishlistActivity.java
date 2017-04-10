@@ -2,6 +2,7 @@ package comp3350.budgetapp.presentation;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -22,7 +23,7 @@ import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.WishListItem;
 import comp3350.budgetapp.business.AccessWishListItems;
 
-public class WishlistActivity extends Activity {
+public class WishlistActivity extends AppCompatActivity {
 
     private Calculate totalPrice;
     static String total = "Updates on opening Wish List";

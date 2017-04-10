@@ -2,6 +2,7 @@ package comp3350.budgetapp.presentation;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -21,7 +22,7 @@ import comp3350.budgetapp.business.Calculate;
 import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.IncomeSource;
 
-public class IncomeActivity extends Activity {
+public class IncomeActivity extends AppCompatActivity {
 
     private Calculate totalPrice;
     static String total = "Updates on opening Income Source";

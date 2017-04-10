@@ -2,6 +2,7 @@ package comp3350.budgetapp.presentation;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -20,7 +21,7 @@ import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.business.AccessExpenses;
 import comp3350.budgetapp.objects.FinancialObjects;
 
-public class ExpenseActivity extends Activity {
+public class ExpenseActivity extends AppCompatActivity {
 
     private Calculate totalPrice;
     static String total = "Updates on opening Expenses";
@@ -90,8 +91,8 @@ public class ExpenseActivity extends Activity {
 
             viewTotal = (TextView)findViewById(R.id.viewExpenseTotal);
 
-            viewTotal.setText(totalPrice.calculateTotal(expenseList));
-            total = totalPrice.calculateTotal(expenseList);
+            viewTotal.setText(Calculate.calculateTotal(expenseList));
+            total = Calculate.calculateTotal(expenseList);
         }
     }
 
@@ -157,8 +158,8 @@ public class ExpenseActivity extends Activity {
             Messages.warning(this, result);
         }
 
-        viewTotal.setText(totalPrice.calculateTotal(expenseList));
-        total = totalPrice.calculateTotal(expenseList);
+        viewTotal.setText(Calculate.calculateTotal(expenseList));
+        total = Calculate.calculateTotal(expenseList);
         clearFields();
     }
 
@@ -198,8 +199,8 @@ public class ExpenseActivity extends Activity {
         {
             Messages.warning(this, result);
         }
-        viewTotal.setText(totalPrice.calculateTotal(expenseList));
-        total = totalPrice.calculateTotal(expenseList);
+        viewTotal.setText(Calculate.calculateTotal(expenseList));
+        total = Calculate.calculateTotal(expenseList);
         clearFields();
     }
 
@@ -253,8 +254,8 @@ public class ExpenseActivity extends Activity {
         {
             Messages.fatalError(this, result);
         }
-        viewTotal.setText(totalPrice.calculateTotal(expenseList));
-        total = totalPrice.calculateTotal(expenseList);
+        viewTotal.setText(Calculate.calculateTotal(expenseList));
+        total = Calculate.calculateTotal(expenseList);
         clearFields();
     }
 

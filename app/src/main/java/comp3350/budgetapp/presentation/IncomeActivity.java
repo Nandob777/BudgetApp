@@ -1,6 +1,5 @@
 package comp3350.budgetapp.presentation;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -117,14 +116,6 @@ public class IncomeActivity extends AppCompatActivity {
 
         String compareType = selected.getType();
         Spinner editType = (Spinner) findViewById(R.id.incomes_spinner);
-//        ArrayAdapter<CharSequence> adapter =  ArrayAdapter.createFromResource(this, R.array.incomes_array, android.R.layout.simple_spinner_item);
-//        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        editType.setAdapter(adapter);
-//        if (!compareType.equals(null))
-//        {
-//            int spinnerPosition = adapter.getPosition(compareType);
-//            editType.setSelection(spinnerPosition);
-//        }
 
         String[] types = getResources().getStringArray(R.array.incomes_array);
         editType.setSelection(Arrays.asList(types).indexOf(compareType));

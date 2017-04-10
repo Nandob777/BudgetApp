@@ -1,6 +1,5 @@
 package comp3350.budgetapp.presentation;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -293,8 +292,6 @@ public class ExpenseActivity extends AppCompatActivity {
         {
             return "Expense Name required!";
         }
-
-
 
         if ((isNewItem) && (accessExpenses.getRandom(item.getName()) != null))
         {

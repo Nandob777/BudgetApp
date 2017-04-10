@@ -18,6 +18,12 @@ Location of Database file (used to restore database if needed):
 BUDGET.script found in databaseBackUp folder
     - app/databaseBackUp/BUDGET.script
 
+Unresolved Issues:
+------------------
+Acceptance tests randomly fails
+    - testAddItem for ExpensesTest
+    - testPurchaseItem
+
 CONTENTS OF SUBMISSION:
 ----------------------
 Manifest:

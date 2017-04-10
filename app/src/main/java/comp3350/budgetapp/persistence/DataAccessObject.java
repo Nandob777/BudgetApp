@@ -1,8 +1,3 @@
-/**
- * This code is not used in the first iteration. It is provided as
- * an example of usage of HSQLDB (for iteration 2).
- */
-
 package comp3350.budgetapp.persistence;
 
 import java.sql.Connection;

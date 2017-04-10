@@ -97,14 +97,6 @@ public class CLI  // command-line interface
         {
             processGetIncomeSource();
         }
-//        else if (inputTokens[1].equalsIgnoreCase("something here"))
-//        {
-//            //processGetSC();
-//        }
-//        else if (inputTokens[1].equalsIgnoreCase("something more here"))
-//        {
-//            //processGetCS();
-//        }
         else
         {
             System.out.println("Invalid data type");

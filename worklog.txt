@@ -14,9 +14,7 @@ Wynand, Neil, Tina			02/03	Discussed Iteration 1 requirements, created repositor
 								    (/home/student/badenhow/groupB/budgetAppRepo)
 								    --> access is denied						                            50mins
 
-
 Wynand, Hui					02/03										                                    50mins
-
 
 All						    02/06	Created working repository, downloaded Android Studio,
 								    got sample project to work
@@ -150,4 +148,6 @@ Wynand                      04/09   Acceptance tests created                    
 Hui                         04/09   Added Action bar for activities                                         4hrs
 
 Tina                        04/10   Ensured all acceptance tests passed                                     20mins
+
+Mardel, Tina, Neil, Wynand  04/10   Went over phyiscal and electronic files for hand in                     2hrs
 

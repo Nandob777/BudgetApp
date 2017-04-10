@@ -9,21 +9,6 @@
     tools:context="comp3350.budgetapp.presentation.SummaryActivity"
     android:weightSum="1">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:fontFamily="monospace"
-        android:text="Your Financial Summary"
-        android:layout_marginBottom="2dp"  />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#000000"
-        android:id="@+id/separator"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="64dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -31,7 +16,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Total Income this month:"
         android:id="@+id/textIncomeAmountSummary"
-        android:layout_marginBottom="10dp"  />
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"/>
 
     <TextView
         android:id="@+id/viewIncomeTotal"

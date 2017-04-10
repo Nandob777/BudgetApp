@@ -59,7 +59,7 @@ public class ExpenseActivity extends AppCompatActivity {
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                     text1.setText(expenseList.get(position).getName());
-                    text2.setText(String.format("%.2f", expenseList.get(position).getAmount()));
+                    text2.setText(String.format("$ %.2f", expenseList.get(position).getAmount()));
 
                     return view;
                 }
@@ -91,7 +91,7 @@ public class ExpenseActivity extends AppCompatActivity {
 
             viewTotal = (TextView)findViewById(R.id.viewExpenseTotal);
 
-            viewTotal.setText(Calculate.calculateTotal(expenseList));
+            viewTotal.setText("$ " + Calculate.calculateTotal(expenseList));
             total = Calculate.calculateTotal(expenseList);
         }
     }

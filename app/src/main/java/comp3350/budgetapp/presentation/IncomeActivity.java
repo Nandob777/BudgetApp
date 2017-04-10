@@ -58,7 +58,7 @@ public class IncomeActivity extends AppCompatActivity {
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                     text1.setText(incomeList.get(position).getName());
-                    text2.setText(String.format("%.2f (%s)", incomeList.get(position).getAmount(), incomeList.get(position).getType()));
+                    text2.setText(String.format("$ %.2f (%s)", incomeList.get(position).getAmount(), incomeList.get(position).getType()));
 
                     return view;
                 }
@@ -90,7 +90,7 @@ public class IncomeActivity extends AppCompatActivity {
 
             viewIncomeTotal = (TextView)findViewById(R.id.viewIncomeTotal);
 
-            viewIncomeTotal.setText(Calculate.calculateTotal(incomeList));
+            viewIncomeTotal.setText("$ " + Calculate.calculateTotal(incomeList));
             total = Calculate.calculateTotal(incomeList);
 
             Spinner spinner = (Spinner) findViewById(R.id.incomes_spinner);

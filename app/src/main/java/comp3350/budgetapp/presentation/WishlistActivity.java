@@ -61,7 +61,7 @@ public class WishlistActivity extends AppCompatActivity {
                     TextView text2 = (TextView) view.findViewById(android.R.id.text2);
 
                     text1.setText(itemList.get(position).getName());
-                    text2.setText(String.format("%.2f", itemList.get(position).getAmount()));
+                    text2.setText(String.format("$ %.2f", itemList.get(position).getAmount()));
 
                     return view;
                 }
@@ -93,7 +93,7 @@ public class WishlistActivity extends AppCompatActivity {
 
             viewTotal = (TextView)findViewById(R.id.viewTotal);
 
-            viewTotal.setText(Calculate.calculateTotal(itemList));
+            viewTotal.setText("$ " + Calculate.calculateTotal(itemList));
             total = Calculate.calculateTotal(itemList);
         }
     }

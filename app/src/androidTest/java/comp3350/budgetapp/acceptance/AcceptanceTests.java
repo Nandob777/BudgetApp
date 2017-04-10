@@ -18,6 +18,7 @@ public class AcceptanceTests
         suite.addTestSuite(WishlistTest.class);
         suite.addTestSuite(ExpensesTest.class);
         suite.addTestSuite(IncomeSourcesTest.class);
+        suite.addTestSuite(PurchaseHistoryTests.class);
         // Add all the test suites here
     }
 }

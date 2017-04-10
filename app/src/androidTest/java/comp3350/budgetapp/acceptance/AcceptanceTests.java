@@ -16,6 +16,7 @@ public class AcceptanceTests
 
     private static void loadFullTestSuite(){
         suite.addTestSuite(WishlistTest.class);
+        suite.addTestSuite(ExpensesTest.class);
         //Example: suite.addTestSuite(StudentsTest.class);
         // Add all the test suites here
     }

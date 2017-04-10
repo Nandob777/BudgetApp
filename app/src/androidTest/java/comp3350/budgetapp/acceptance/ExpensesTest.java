@@ -1,18 +1,17 @@
 package comp3350.budgetapp.acceptance;
 
+import android.test.ActivityInstrumentationTestCase2;
+
+import comp3350.budgetapp.presentation.MainActivity;
+
 import junit.framework.Assert;
 
 import com.robotium.solo.Solo;
 
-import comp3350.budgetapp.presentation.MainActivity;
-
-import android.test.ActivityInstrumentationTestCase2;
-
-public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity> {
-
+public class ExpensesTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private Solo solo;
 
-    public WishlistTest()
+    public ExpensesTest()
     {
         super(MainActivity.class);
     }
@@ -28,7 +27,7 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
         solo.finishOpenedActivities();
     }
 
-    public void testAddItem()
+    public void testAddItem() // fails randomly sometimes
     {
 
         String price = "" + randomPrice();
@@ -53,6 +52,7 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
         String otherPrice = "" + randomPrice();
 
         getToActivity();
+
 
         solo.enterText(0,name);
         solo.enterText(1,price);
@@ -90,22 +90,21 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
     public void testAccess() // tests whether user can access and see relevent info
     {
         solo.waitForActivity("MainActivity");
-        Assert.assertTrue(solo.searchButton("Wish List", true)); // only searches visible buttons
-        solo.clickOnButton("Wish List");
-        solo.assertCurrentActivity("Expected activity WishlistActivity", "WishlistActivity");
+        Assert.assertTrue(solo.searchButton("Expenses", true)); // only searches visible buttons
+        solo.clickOnButton("Expenses");
+        solo.assertCurrentActivity("Expected activity ExpenseActivity", "ExpenseActivity");
 
         // Assert.assertTrue(solo.searchText("BudgIt: Wishlist")); // may need to be more specific, an entry may be called that
         Assert.assertTrue(solo.searchButton("Delete"));
         Assert.assertTrue(solo.searchButton("Add"));
         Assert.assertTrue(solo.searchButton("Update"));
-        Assert.assertTrue(solo.searchButton("Purchased"));
 
         Assert.assertTrue(solo.searchText("Total:"));
     }
 
     private void getToActivity(){
         solo.waitForActivity("MainActivity");
-        solo.clickOnButton("Wish List");
+        solo.clickOnButton("Expenses");
     }
 
     private double randomPrice(){

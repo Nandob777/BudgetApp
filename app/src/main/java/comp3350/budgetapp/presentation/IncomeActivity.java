@@ -69,16 +69,21 @@ public class IncomeActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Button addButton = (Button)findViewById(R.id.buttonIncomeAdd);
                     Button updateButton = (Button)findViewById(R.id.buttonIncomeUpdate);
                     Button deleteButton = (Button)findViewById(R.id.buttonIncomeDelete);
 
                     if (position == selectedItemPosition) {
                         listView.setItemChecked(position, false);
+                        addButton.setEnabled(true);
                         updateButton.setEnabled(false);
                         deleteButton.setEnabled(false);
+                        clearFields();
                         selectedItemPosition = -1;
                     } else {
                         listView.setItemChecked(position, true);
+                        addButton.setEnabled(false);
                         updateButton.setEnabled(true);
                         deleteButton.setEnabled(true);
                         selectedItemPosition = position;
@@ -324,6 +329,13 @@ public class IncomeActivity extends AppCompatActivity {
         editName.setText("");
         editPrice.setText("");
         editType.setSelection(0);
+        ListView listView = (ListView) findViewById(R.id.incomes);
+        listView.setItemChecked(listView.getCheckedItemPosition(), false);
+    }
+
+    public void ClearOnClick(View v)
+    {
+        clearFields();
     }
 }
 

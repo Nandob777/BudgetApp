@@ -67,16 +67,20 @@ public class ExpenseActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Button addButton = (Button)findViewById(R.id.buttonExpenseAdd);
                     Button updateButton = (Button)findViewById(R.id.buttonExpenseUpdate);
                     Button deleteButton = (Button)findViewById(R.id.buttonExpenseDelete);
 
                     if (position == selectedExpensePosition) {
                         listView.setItemChecked(position, false);
+                        addButton.setEnabled(true);
                         updateButton.setEnabled(false);
                         deleteButton.setEnabled(false);
+                        clearFields();
                         selectedExpensePosition = -1;
                     } else {
                         listView.setItemChecked(position, true);
+                        addButton.setEnabled(false);
                         updateButton.setEnabled(true);
                         deleteButton.setEnabled(true);
                         selectedExpensePosition = position;
@@ -308,6 +312,14 @@ public class ExpenseActivity extends AppCompatActivity {
 
         editName.setText("");
         editPrice.setText("");
+
+        ListView listView = (ListView) findViewById(R.id.expenses);
+        listView.setItemChecked(listView.getCheckedItemPosition(), false);
+    }
+
+    public void ClearOnClick(View v)
+    {
+        clearFields();
     }
 }
 

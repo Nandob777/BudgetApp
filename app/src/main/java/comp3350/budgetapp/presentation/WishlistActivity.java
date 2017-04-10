@@ -71,18 +71,26 @@ public class WishlistActivity extends AppCompatActivity {
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                    Button addButton = (Button)findViewById(R.id.buttonItemAdd);
                     Button updateButton = (Button)findViewById(R.id.buttonItemUpdate);
                     Button deleteButton = (Button)findViewById(R.id.buttonItemDelete);
+                    Button boughtButton = (Button)findViewById(R.id.buttonItemBought);
 
                     if (position == selectedItemPosition) {
                         listView.setItemChecked(position, false);
+                        addButton.setEnabled(true);
                         updateButton.setEnabled(false);
                         deleteButton.setEnabled(false);
+                        boughtButton.setEnabled(false);
+                        clearFields();
                         selectedItemPosition = -1;
                     } else {
                         listView.setItemChecked(position, true);
+                        addButton.setEnabled(false);
                         updateButton.setEnabled(true);
                         deleteButton.setEnabled(true);
+                        boughtButton.setEnabled(true);
                         selectedItemPosition = position;
                         selectItemAtPosition(position);
                     }
@@ -98,6 +106,7 @@ public class WishlistActivity extends AppCompatActivity {
 
     public void selectItemAtPosition(int position)
     {
+
         WishListItem selected = (WishListItem) itemArrayAdapter.getItem(position);
 
         EditText editName = (EditText)findViewById(R.id.editItemName);
@@ -105,6 +114,7 @@ public class WishlistActivity extends AppCompatActivity {
 
         editName.setText(selected.getName());
         editPrice.setText(String.valueOf(selected.getAmount()));
+
     }
 
     public void buttonItemAddOnClick(View v)
@@ -214,6 +224,11 @@ public class WishlistActivity extends AppCompatActivity {
     public void buttonItemPurchasedOnClick(View v)
     {
         WishListItem item = createItemFromEditText();
+        ArrayList<FinancialObjects> expenseList;
+        accessExpenses = new AccessExpenses();
+        expenseList = new ArrayList<FinancialObjects>();
+        String result = accessExpenses.getExpenses(expenseList);
+
 
         if(!itemList.contains(item))
         {
@@ -221,7 +236,15 @@ public class WishlistActivity extends AppCompatActivity {
             return;
         }
 
-        accessExpenses = new AccessExpenses();
+        Expense wishToExpense = new Expense(item.getName(), item.getAmount());
+
+        if(expenseList.contains(wishToExpense))
+        {
+            Messages.warning(this,"Item has already been purchased, please remove from Wishlist");
+            return;
+        }
+
+
         accessExpenses.addExpense(new Expense(item.getName(), item.getAmount()));
 
         this.buttonItemDeleteOnClick(v);
@@ -323,11 +346,21 @@ public class WishlistActivity extends AppCompatActivity {
 
     private void clearFields()
     {
+        Button addButton = (Button)findViewById(R.id.buttonItemAdd);
+
         EditText editName = (EditText)findViewById(R.id.editItemName);
         EditText editPrice = (EditText)findViewById(R.id.editPrice);
 
         editName.setText("");
         editPrice.setText("");
+        addButton.setEnabled(true);
+        ListView listView = (ListView) findViewById(R.id.listWishes);
+        listView.setItemChecked(listView.getCheckedItemPosition(), false);
+    }
+
+    public void ClearOnClick(View v)
+    {
+        clearFields();
     }
 
 }

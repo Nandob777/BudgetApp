@@ -35,11 +35,11 @@ public class CalculateTest extends TestCase {
     public void testValidIncomeList() {
         System.out.println("\nStarting testValidIncomeList");
 
-        income = new IncomeSource("Starbucks", 500.0);
+        income = new IncomeSource("Starbucks", 500.0,"Monthly");
         list.add(income);
-        income = new IncomeSource("Application Developer", 1000.0);
+        income = new IncomeSource("Application Developer", 1000.0,"Monthly");
         list.add(income);
-        income = new IncomeSource("Allowance", 20.0);
+        income = new IncomeSource("Allowance", 20.0,"Monthly");
         list.add(income);
 
         assertEquals("1520.00", Calculate.calculateTotal(list));
@@ -50,21 +50,21 @@ public class CalculateTest extends TestCase {
     public void testOneIncomeSource() {
         System.out.println("\nStarting testOneIncomeSource");
 
-        income = new IncomeSource("Starbucks", 500.0);
+        income = new IncomeSource("Starbucks", 500.0,"Monthly");
         list.add(income);
         assertEquals("500.00", Calculate.calculateTotal(list));
 
-        income = new IncomeSource("Application Developer", 1000.0);
+        income = new IncomeSource("Application Developer", 1000.0, "Bi-weekly");
         list.set(0, income);
-        assertEquals("1000.00", Calculate.calculateTotal(list));
+        assertEquals("2000.00", Calculate.calculateTotal(list));
 
-        income = new IncomeSource("Contractor", 5000.0);
+        income = new IncomeSource("Contractor", 5000.0,"Monthly");
         list.set(0, income);
         assertEquals("5000.00", Calculate.calculateTotal(list));
 
-        income = new IncomeSource("Sales Associate", 400.0);
+        income = new IncomeSource("Sales Associate", 400.0, "Bi-Weekly");
         list.set(0, income);
-        assertEquals("400.00", Calculate.calculateTotal(list));
+        assertEquals("800.00", Calculate.calculateTotal(list));
 
         System.out.println("Finished testOneIncomeSource");
     }
@@ -72,11 +72,11 @@ public class CalculateTest extends TestCase {
     public void testOddIncomeSourceList() {
         System.out.println("\nStarting testOddIncomeSourceList");
 
-        income = new IncomeSource("Starbucks", 399.9999999);
+        income = new IncomeSource("Starbucks", 399.9999999,"Monthly");
         list.add(income);
-        income = new IncomeSource("Contractor", 5999.9999999);
+        income = new IncomeSource("Contractor", 5999.9999999,"Monthly");
         list.add(income);
-        income = new IncomeSource("Allowance", 19.9999999);
+        income = new IncomeSource("Allowance", 19.9999999,"Monthly");
         list.add(income);
 
         assertEquals("6420.00", Calculate.calculateTotal(list));
@@ -111,13 +111,13 @@ public class CalculateTest extends TestCase {
     public void testSomeBlankIncomes() {
         System.out.println("\nStarting testSomeBlankIncomes");
 
-        income = new IncomeSource("Starbucks", 500.00);
+        income = new IncomeSource("Starbucks", 500.00,"Monthly");
         list.add(income);
 
-        income = new IncomeSource("Allowance", 20.00);
+        income = new IncomeSource("Allowance", 20.00,"Monthly");
         list.add(income);
 
-        income = new IncomeSource("Blackberry", 4000.00);
+        income = new IncomeSource("Blackberry", 4000.00,"Monthly");
         list.add(income);
 
         income = new IncomeSource("H&M");
@@ -134,19 +134,19 @@ public class CalculateTest extends TestCase {
     public void testMixedBlankIncomes() {
         System.out.println("\nStarting testMixedBlankIncomes");
 
-        income = new IncomeSource("Starbucks", 500.00);
+        income = new IncomeSource("Starbucks", 500.00,"Monthly");
         list.add(income);
 
         income = new IncomeSource("IBM");
         list.add(income);
 
-        income = new IncomeSource("Blackberry", 4000.00);
+        income = new IncomeSource("Blackberry", 4000.00,"Monthly");
         list.add(income);
 
         income = new IncomeSource("H&M");
         list.add(income);
 
-        income = new IncomeSource("Allowance", 20.00);
+        income = new IncomeSource("Allowance", 20.00,"Monthly");
         list.add(income);
 
         assertEquals("4520.00", Calculate.calculateTotal(list));
@@ -190,19 +190,19 @@ public class CalculateTest extends TestCase {
     public void testSomeNegativeIncomes() {
         System.out.println("\nStarting testSomeNegativeIncomes");
 
-        income = new IncomeSource("Starbucks", -(500.00));
+        income = new IncomeSource("Starbucks", -(500.00),"Monthly");
         list.add(income);
 
-        income = new IncomeSource("H&M", 600.00);
+        income = new IncomeSource("H&M", 600.00, "Monthly");
         list.add(income);
 
-        income = new IncomeSource("IBM", 2000.00);
+        income = new IncomeSource("IBM", 2000.00, "Monthly");
         list.add(income);
 
-        income = new IncomeSource("Allowance", -(20.00));
+        income = new IncomeSource("Allowance", -(20.00),"Monthly");
         list.add(income);
 
-        income = new IncomeSource("Blackberry", -(4000.00));
+        income = new IncomeSource("Blackberry", -(4000.00),"Monthly");
         list.add(income);
 
         assertEquals("2600.00", Calculate.calculateTotal(list));
@@ -219,16 +219,16 @@ public class CalculateTest extends TestCase {
         income = new IncomeSource("Allowance", 20.00, "Bi-weekly");
         list.add(income);
 
-        income = new IncomeSource("Blackberry", 4000.00, "Misc");
+        income = new IncomeSource("Blackberry", 4000.00, "Monthly");
         list.add(income);
 
-        income = new IncomeSource("H&M", 600.00, "Once");
+        income = new IncomeSource("H&M", 600.00, "Monthly");
         list.add(income);
 
         income = new IncomeSource("IBM", 1000.00, "Weekly");
         list.add(income);
 
-        income = new IncomeSource("McDonalds", 300.00);
+        income = new IncomeSource("McDonalds", 300.00,"Monthly");
         list.add(income);
 
         assertEquals("9440.00", Calculate.calculateTotal(list));

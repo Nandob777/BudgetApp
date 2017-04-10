@@ -16,8 +16,8 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Sales Associate", src1.getName());
         assertEquals(0.0,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $0.00, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $0.00, Type: Misc, Frequency: 0",
                 src1.toString());
 
         src1.setName("Web Developer");
@@ -25,16 +25,16 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Web Developer", src1.getName());
         assertEquals(0.0,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Web Developer, Amount: $0.00, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Web Developer, Amount: $0.00, Type: Misc, Frequency: 0",
                 src1.toString());
 
         src1.setName("Application Developer");
         assertEquals("Application Developer", src1.getName());
         assertEquals(0.0,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Application Developer, Amount: $0.00, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Application Developer, Amount: $0.00, Type: Misc, Frequency: 0",
                 src1.toString());
 
         System.out.println("Finished testIncomeSourceItemNameOnly");
@@ -49,8 +49,8 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Sales Associate", src1.getName());
         assertEquals(11.0,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $11.00, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $11.00, Type: Misc, Frequency: 0",
                 src1.toString());
 
         src1.setAmount(11.50);
@@ -58,8 +58,8 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Sales Associate", src1.getName());
         assertEquals(11.50,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $11.50, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $11.50, Type: Misc, Frequency: 0",
                 src1.toString());
 
         src1.setAmount(12.75);
@@ -67,8 +67,8 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Sales Associate", src1.getName());
         assertEquals(12.75,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $12.75, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $12.75, Type: Misc, Frequency: 0",
                 src1.toString());
 
         System.out.println("Finished testIncomeSourceItemNameAndAmountOnly");
@@ -117,8 +117,8 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Sales Associate", src1.getName());
         assertEquals(12.4925000000001,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $12.49, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $12.49, Type: Misc, Frequency: 0",
                 src1.toString());
 
         src1.setAmount(13.0000000000001);
@@ -126,8 +126,8 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Sales Associate", src1.getName());
         assertEquals(13.0000000000001,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $13.00, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $13.00, Type: Misc, Frequency: 0",
                 src1.toString());
 
         src1.setAmount(13.9999999999999);
@@ -135,8 +135,8 @@ public class IncomeSourceTest extends TestCase
         assertEquals("Sales Associate", src1.getName());
         assertEquals(13.9999999999999,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $14.00, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $14.00, Type: Misc, Frequency: 0",
                 src1.toString());
 
         System.out.println("Finished testOddIncomeSourceAmountsOnly");
@@ -146,22 +146,22 @@ public class IncomeSourceTest extends TestCase
     {
         System.out.println("\nStarting testOddIncomeSourceType");
 
-        src1 = new IncomeSource("Sales Associate",11.0,"once");
+        src1 = new IncomeSource("Sales Associate",210.0,"once");
         assertNotNull(src1);
         assertEquals("Sales Associate", src1.getName());
-        assertEquals(11.0,src1.getAmount());
+        assertEquals(210.0,src1.getAmount());
         assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $11.00, Type: Misc, Frequency: 1",
+        assertEquals(0,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $210.00, Type: Misc, Frequency: 0",
                 src1.toString());
 
-        src1.setType("Misc");
+        src1.setType("Bi-weekly");
         assertNotNull(src1);
         assertEquals("Sales Associate", src1.getName());
-        assertEquals(11.0,src1.getAmount());
-        assertEquals("Misc",src1.getType());
-        assertEquals(1,src1.getFrequency());
-        assertEquals("Income Source Name: Sales Associate, Amount: $11.00, Type: Misc, Frequency: 1",
+        assertEquals(210.0,src1.getAmount());
+        assertEquals("Bi-weekly",src1.getType());
+        assertEquals(2,src1.getFrequency());
+        assertEquals("Income Source Name: Sales Associate, Amount: $210.00, Type: Bi-weekly, Frequency: 2",
                 src1.toString());
 
         System.out.println("Finished testOddIncomeSourceType");

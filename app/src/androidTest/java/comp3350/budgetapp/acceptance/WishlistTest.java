@@ -39,6 +39,13 @@ public class WishlistTest extends ActivityInstrumentationTestCase2<MainActivity>
         solo.enterText(0,name);
         solo.enterText(1,price);
         solo.clickOnButton("Add");
+
+        try {
+            solo.wait();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
         Assert.assertTrue(solo.searchText(name));
         Assert.assertTrue(solo.searchText(price));
 

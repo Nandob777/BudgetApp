@@ -44,7 +44,13 @@ public class PurchaseHistoryTests extends ActivityInstrumentationTestCase2<MainA
         solo.goBack();
         solo.clickOnButton("Expenses");
 
-        Assert.assertTrue(solo.searchText(name,true)); // sometimes fails here, too fast
+        try {
+            solo.wait();
+        } catch(Exception e){
+            System.out.println(e);
+        }
+
+        Assert.assertTrue(solo.searchText(name,true));
 
         solo.enterText(0,name);
         solo.clickOnButton("Delete");

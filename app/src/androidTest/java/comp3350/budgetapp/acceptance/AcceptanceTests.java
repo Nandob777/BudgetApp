@@ -19,6 +19,7 @@ public class AcceptanceTests
         suite.addTestSuite(ExpensesTest.class);
         suite.addTestSuite(IncomeSourcesTest.class);
         suite.addTestSuite(PurchaseHistoryTests.class);
+        suite.addTestSuite(FinancialSummaryTests.class);
         // Add all the test suites here
     }
 }

@@ -49,6 +49,18 @@ public class Savings
         return savingsTotal;
     }
 
+    public boolean isPositiveSavings()
+    {
+        boolean isPositive = true;
+        if (savingsTotal < 0.0)
+        {
+            isPositive = false;
+        }
+
+        return isPositive;
+    }
+
+
     public String toString()
     {
         return String.format(Locale.getDefault(), "$ %.2f", getSavingsTotal());

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.AccessExpenses;
 import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.business.Savings;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.WishListItem;
@@ -35,6 +36,14 @@ public class WishlistActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+
         setContentView(R.layout.activity_wishlist);
 
         accessWishListItems = new AccessWishListItems();
@@ -101,6 +110,29 @@ public class WishlistActivity extends AppCompatActivity {
 
             viewTotal.setText("$ " + Calculate.calculateTotal(itemList));
             total = Calculate.calculateTotal(itemList);
+            clearFields();
+        }
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        financialColorChange();
+
+    }
+
+    public void financialColorChange()
+    {
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+        else
+        {
+            super.setTheme(R.style.AppTheme);
         }
     }
 
@@ -347,6 +379,9 @@ public class WishlistActivity extends AppCompatActivity {
     private void clearFields()
     {
         Button addButton = (Button)findViewById(R.id.buttonItemAdd);
+        Button deleteButton = (Button)findViewById(R.id.buttonItemDelete);
+        Button updateButton = (Button)findViewById(R.id.buttonItemUpdate);
+        Button buyButton = (Button)findViewById(R.id.buttonItemBought);
 
         EditText editName = (EditText)findViewById(R.id.editItemName);
         EditText editPrice = (EditText)findViewById(R.id.editPrice);
@@ -354,6 +389,10 @@ public class WishlistActivity extends AppCompatActivity {
         editName.setText("");
         editPrice.setText("");
         addButton.setEnabled(true);
+        deleteButton.setEnabled(false);
+        updateButton.setEnabled(false);
+        buyButton.setEnabled(false);
+        financialColorChange();
         ListView listView = (ListView) findViewById(R.id.listWishes);
         listView.setItemChecked(listView.getCheckedItemPosition(), false);
     }

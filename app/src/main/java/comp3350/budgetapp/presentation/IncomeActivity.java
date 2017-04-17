@@ -18,6 +18,7 @@ import java.util.Arrays;
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.AccessIncomeSource;
 import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.business.Savings;
 import comp3350.budgetapp.objects.FinancialObjects;
 import comp3350.budgetapp.objects.IncomeSource;
 
@@ -30,14 +31,22 @@ public class IncomeActivity extends AppCompatActivity {
     private ArrayAdapter<FinancialObjects> itemArrayAdapter;
     private int selectedItemPosition = -1;
     private TextView viewIncomeTotal;
+    Savings sav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
         setContentView(R.layout.activity_incomesource);
 
         accessIncomeSources = new AccessIncomeSource();
         totalPrice = new Calculate();
+        sav = new Savings();
 
         incomeList = new ArrayList<FinancialObjects>();
         String result = accessIncomeSources.getIncomeSources(incomeList);
@@ -96,6 +105,7 @@ public class IncomeActivity extends AppCompatActivity {
 
             viewIncomeTotal.setText("$ " + Calculate.calculateTotal(incomeList));
             total = Calculate.calculateTotal(incomeList);
+            clearFields();
 
             Spinner spinner = (Spinner) findViewById(R.id.incomes_spinner);
             // Create an ArrayAdapter using the string array and a default spinner layout
@@ -106,6 +116,28 @@ public class IncomeActivity extends AppCompatActivity {
             // Apply the adapter to the spinner
             spinner.setAdapter(adapter);
 
+        }
+    }
+
+    @Override
+    protected void onResume()
+    {
+        financialColorChange();
+        super.onResume();
+
+
+    }
+
+    public void financialColorChange()
+    {
+        Savings sav =  new Savings();
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+        else
+        {
+            super.setTheme(R.style.AppTheme);
         }
     }
 
@@ -325,10 +357,18 @@ public class IncomeActivity extends AppCompatActivity {
         EditText editName = (EditText)findViewById(R.id.editIncomeName);
         EditText editPrice = (EditText)findViewById(R.id.editIncomeAmount);
         Spinner editType = (Spinner) findViewById(R.id.incomes_spinner);
+        Button addButton = (Button)findViewById(R.id.buttonIncomeAdd);
+        Button deleteButton = (Button)findViewById(R.id.buttonIncomeDelete);
+        Button updateButton = (Button)findViewById(R.id.buttonIncomeUpdate);
 
         editName.setText("");
         editPrice.setText("");
         editType.setSelection(0);
+        addButton.setEnabled(true);
+        deleteButton.setEnabled(false);
+        updateButton.setEnabled(false);
+        financialColorChange();
+
         ListView listView = (ListView) findViewById(R.id.incomes);
         listView.setItemChecked(listView.getCheckedItemPosition(), false);
     }

@@ -15,8 +15,10 @@ import java.io.InputStreamReader;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.application.Main;
+import comp3350.budgetapp.business.Savings;
 
 public class MainActivity extends AppCompatActivity {
+    Savings sav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +28,15 @@ public class MainActivity extends AppCompatActivity {
 
         Main.startUp();
 
+        sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+
         setContentView(R.layout.activity_main);
+
     }
 
     @Override
@@ -34,6 +44,28 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
 
         Main.shutDown();
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        financialColorChange();
+
+    }
+
+    public void financialColorChange()
+    {
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+        else
+        {
+            super.setTheme(R.style.AppTheme);
+        }
     }
 
 
@@ -100,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
     {
         Intent intent = new Intent(this, WishlistActivity.class);
         startActivity(intent);
+
     }
 
     public void addIncomeSource(View view)

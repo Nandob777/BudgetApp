@@ -1,5 +1,7 @@
 package comp3350.budgetapp.presentation;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,6 +17,7 @@ import java.util.ArrayList;
 
 import comp3350.budgetapp.R;
 import comp3350.budgetapp.business.Calculate;
+import comp3350.budgetapp.business.Savings;
 import comp3350.budgetapp.objects.Expense;
 import comp3350.budgetapp.business.AccessExpenses;
 import comp3350.budgetapp.objects.FinancialObjects;
@@ -32,6 +35,13 @@ public class ExpenseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+
         setContentView(R.layout.activity_expense);
 
         accessExpenses = new AccessExpenses();
@@ -93,6 +103,30 @@ public class ExpenseActivity extends AppCompatActivity {
 
             viewTotal.setText("$ " + Calculate.calculateTotal(expenseList));
             total = Calculate.calculateTotal(expenseList);
+            clearFields();
+        }
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        financialColorChange();
+
+    }
+
+
+    public void financialColorChange()
+    {
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+        else
+        {
+            super.setTheme(R.style.AppTheme);
         }
     }
 
@@ -309,9 +343,17 @@ public class ExpenseActivity extends AppCompatActivity {
     {
         EditText editName = (EditText)findViewById(R.id.editExpenseName);
         EditText editPrice = (EditText)findViewById(R.id.editExpenseAmount);
+        Button addButton = (Button)findViewById(R.id.buttonExpenseAdd);
+        Button deleteButton = (Button)findViewById(R.id.buttonExpenseDelete);
+        Button updateButton = (Button)findViewById(R.id.buttonExpenseUpdate);
 
         editName.setText("");
         editPrice.setText("");
+
+        addButton.setEnabled(true);
+        deleteButton.setEnabled(false);
+        updateButton.setEnabled(false);
+        financialColorChange();
 
         ListView listView = (ListView) findViewById(R.id.expenses);
         listView.setItemChecked(listView.getCheckedItemPosition(), false);
@@ -321,6 +363,7 @@ public class ExpenseActivity extends AppCompatActivity {
     {
         clearFields();
     }
+
 }
 
 

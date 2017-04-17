@@ -1,5 +1,6 @@
 package comp3350.budgetapp.presentation;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -35,6 +36,14 @@ public class SummaryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+
         setContentView(R.layout.activity_summary);
 
         savings = new Savings();
@@ -67,6 +76,27 @@ public class SummaryActivity extends AppCompatActivity {
 
         viewSavings = (TextView)findViewById(R.id.viewSavingsTotal);
         viewSavings.setText(savings.toString());
+        if(!savings.isPositiveSavings())
+        {
+            viewSavings.setTextColor(Color.RED);
+        }
     }
 
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        financialColorChange();
+
+    }
+
+    public void financialColorChange()
+    {
+        Savings sav = new Savings();
+
+        if(!sav.isPositiveSavings())
+        {
+            super.setTheme(R.style.AppTheme2);
+        }
+    }
 }

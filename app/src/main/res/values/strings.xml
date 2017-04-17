@@ -1,11 +1,12 @@
 <resources>
     <string name="app_name">BudgIt</string>
-    <string name="app_title">Personal Budgeting App</string>
+    <string name="app_title">Your Personal Budgeting App</string>
 
     <string name="button_wishlist">Wish List</string>
     <string name="button_income_source">Income Source</string>
     <string name="button_expenses">Expenses</string>
     <string name="button_financial_summary">Financial Summary</string>
+    <string name="button_buy">Buy</string>
 
     <string name="text_item_name">Item Name</string>
     <string name="text_price">Price</string>
@@ -23,4 +24,5 @@
 
     <string name="fatalError">Fatal error</string>
     <string name="warning">Warning</string>
+
 </resources>
